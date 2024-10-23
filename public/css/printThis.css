@@ -1,0 +1,13 @@
+div.dataTables_wrapper div.dataTables_paginate, .dataTables_info, .dataTables_length, .dataTables_filter {
+	display: none;
+}
+.table > caption + thead > tr:first-child > th, .table > caption + thead > tr:first-child > td, .table > colgroup + thead > tr:first-child > th, .table > colgroup + thead > tr:first-child > td, .table > thead:first-child > tr:first-child > th, .table > thead:first-child > tr:first-child > td {
+	font-weight: bolder;
+}
+table.dataTable tr.group td {
+	padding: 5px;
+}
+.group tr td {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}

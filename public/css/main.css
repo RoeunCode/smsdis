@@ -1,0 +1,89 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.css");
+
+.form-control-sm {
+    height: calc(1.5em + .5rem + 2px);
+    padding: .25rem .5rem;
+    font-size: .875rem;
+    line-height: 1.5;
+    border-radius: .2rem;
+}
+
+.layout-has-drawer .app-layout-header,
+.layout-has-drawer .app-layout-content,
+.layout-has-drawer .app-layout-footer {
+    padding-left: 0;
+}
+
+.btn-sm,
+.btn-group-sm>.btn {
+    padding: 4px 10px;
+}
+.text-white {
+    color: #fff;
+}
+
+.text-right {
+    text-align: right !important;
+}
+.text-center {
+    text-align: center !important;
+}
+
+.card .media-body h4 {
+    font-size: 12px;
+    color: #fff;
+}
+
+.align-self-center {
+    align-self: center !important;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.media {
+    align-items: flex-start;
+}
+
+.card-body {
+    padding: 10px;
+}
+
+.card-content i {
+    font-size: 25px;
+    color: #fff;
+}
+
+.bg-dark {
+    background-color: #4a4a4a;
+}
+
+.bg-primary {
+    background-color: #2a629c;
+}
+
+.bg-gray {
+    background-color: #d6d6d6;
+}
+
+.bg-green {
+    background-color: #3b9e75;
+}
+
+.card-name .card-content {
+    padding: 5px;
+}
+
+.card-block {
+    padding: 12px 12px;
+}
+.font-weight-bold {
+    font-weight: bold;
+}
+.font-battambang {
+    font-family: 'Battambang', cursive;
+}
+
+
+        

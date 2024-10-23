@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Battambang&display=swap');
+.header .header-title {
+	line-height: 0;
+	font-size: 12px;
+	font-family: 'Battambang', cursive;
+}
+.header .header-subtitle {
+	line-height: 4px;
+	font-size: 11px;
+}
+.header .header-date {
+	line-height: 20px;
+	font-size: 10px;
+	color: #505050;
+    font-weight: 500;
+}
+.invoice_total .text-invoice-total,
+.total-received .text-total-received {
+	font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    line-height: 2px;
+}
+.invoice_total .number-invoice-total,
+.total-received .number-total-received {
+	font-size: 14px;
+	font-weight: bold;
+	text-align: center;
+	line-height: 0px;
+}
+table.dataTable tr.group td {
+    font-weight: bold;
+    font-size: 10px;
+    text-align: left;
+    /* background-color:red;
+    */
+}
+t
+.cash_report {
+	margin-top: 20px;
+}
+.cash_report .table th, td {
+    font-size: 10px;
+}
+div.dataTables_wrapper div.dataTables_info {
+    font-size: 12px;
+}
+
+div.dataTables_wrapper div.dataTables_filter label {
+    font-size: 12px;
+}
+
+div.dataTables_wrapper div.dataTables_length label {
+    font-size: 12px;
+}
+
+div.dataTables_wrapper div.dataTables_length select {
+    width: 52px;
+}
+
+.due_report {
+	margin-top: 20px;
+}
+.due_report .table th, td {
+    font-size: 10px;
+}
+.exp_due {
+	margin-top: 20px;
+}
+.exp_due .table th, td {
+    font-size: 10px;
+}
+.input-sm,
+.input-group-sm>.form-control,
+.input-group-sm>.input-group-addon,
+.input-group-sm>.input-group-btn>.btn {
+    height: 26px;
+    padding: 5px 7px;
+}
+
+.pagination>li {
+    font-size: 12px;
+}
+
+.pagination>li>a,
+.pagination>li>span {
+    padding: 8px 10px;
+}
+
+.pagination>.active>a,
+.pagination>.active>a:hover,
+.pagination>.active>a:focus,
+.pagination>.active>span,
+.pagination>.active>span:hover,
+.pagination>.active>span:focus {
+    border-radius: 50% !important;
+    margin-left: 2px;
+    margin-right: 2px;
+    background-color: #26557d;
+    border-color: #26557d;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.pagination>li>a:hover {
+    border-radius: 50% !important;
+    background-color: #f7f7f7;
+}
+.pagination>li>span:hover {
+    background-color: transparent;
+}
+
+@media screen and (min-width: 768px) {
+    .cash_report .table-responsive {
+        overflow-x: inherit;
+    }
+    .cash_report .table th:nth-child(4) {
+        width: 40%;
+    }
+}
+table tr td:nth-child(1) {
+    vertical-align: middle;
+}
+table tr td:nth-child(2) {
+    vertical-align: middle;
+}
+table tr td:nth-child(3) {
+    vertical-align: middle;
+}
+.dt-buttons {
+    margin-bottom: -25px;
+}

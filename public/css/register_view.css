@@ -1,0 +1,442 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Battambang&family=Cabin&display=swap');
+
+body {
+    overflow-x: hidden;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+table th {
+    text-transform: uppercase;
+    font-size: 10px;
+    font-weight: 900;
+}
+
+table td {
+    font-size: 12px;
+}
+
+.select2-container--default .select2-results>.select2-results__options {
+    height: 273px;
+    max-height: 273px;
+}
+
+.select2-selection__arrow {
+    display: none
+}
+
+
+.sq {
+    width: 14px;
+    height: 14px;
+    margin: 1px;
+    padding-top: 2px;
+    border: 1px solid rgba(0, 0, 0, .2);
+    display: inline-block;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    line-height: 17px;
+    margin-top: 3px;
+}
+
+.select2-container--default .select2-results>.select2-results__options {
+    height: 262px;
+    max-height: 300px;
+}
+
+.select2-selection__arrow {
+    display: none
+}
+
+
+.sq {
+    width: 14px;
+    height: 14px;
+    margin: 1px;
+    padding-top: 2px;
+    border: 1px solid rgba(0, 0, 0, .2);
+    display: inline-block;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    line-height: 17px;
+    margin-top: 3px;
+}
+
+. .select2-container--default .select2-selection--single {
+    border: 1px solid #edeeef;
+}
+
+.select2-container .select2-selection--single {
+    padding: 2px 5px;
+    font-size: .875rem;
+    line-height: 1.5;
+}
+
+.select2-container {
+    width: 100% !important;
+}
+
+.select2-search--dropdown {
+    margin-top: 5px;
+    padding: 0;
+}
+
+.select2-container--default .select2-search--dropdown .select2-search__field {
+    border: 1px solid #edeeef;
+    height: calc(1.5em + .5rem + 2px);
+    padding: .25rem .5rem;
+    font-size: .875rem;
+    line-height: 1.5;
+}
+
+.select2-container .select2-dropdown {
+    border-color: #ffffff;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    z-index: 0;
+}
+
+.select2-container--default .select2-selection--single {
+    border: 1px solid #ececec;
+}
+
+.select2-results__option {
+    font-size: 13px;
+}
+
+.inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.inputfile-4+label {
+    color: #4a4a4a;
+    text-align: center;
+}
+
+.inputfile+label {
+    /*max-width: 80%;*/
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    /*padding: 0.625rem 1.25rem;*/
+}
+
+.inputfile-4+label figure {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    /*background-color: #d3394c;*/
+    display: block;
+    padding: 20px;
+    margin: 0 auto 10px;
+    border: 1px solid #000;
+}
+
+.inputfile-4+label svg {
+    width: 100%;
+    height: 100%;
+    fill: #000000;
+}
+
+.btn-blue-sea {
+    color: #fff;
+    background-color: #26557d;
+    border-color: #26557d;
+    font-size: 10px;
+}
+
+.btn-blue-sea:hover {
+    color: #fff;
+}
+
+.btn-blue-sea:visited {
+    color: #fff;
+}
+
+.info table td {
+    font-size: 14px;
+}
+
+div.dataTables_wrapper div.dataTables_info {
+    font-size: 12px;
+}
+
+div.dataTables_wrapper div.dataTables_filter label {
+    font-size: 12px;
+}
+
+div.dataTables_wrapper div.dataTables_length label {
+    font-size: 12px;
+}
+
+div.dataTables_wrapper div.dataTables_length select {
+    width: 52px;
+}
+
+.input-sm,
+.input-group-sm>.form-control,
+.input-group-sm>.input-group-addon,
+.input-group-sm>.input-group-btn>.btn {
+    height: 26px;
+    padding: 5px 7px;
+}
+
+.pagination>li {
+    font-size: 12px;
+}
+
+.pagination>li>a,
+.pagination>li>span {
+    padding: 8px 10px;
+}
+
+.pagination>.active>a,
+.pagination>.active>a:hover,
+.pagination>.active>a:focus,
+.pagination>.active>span,
+.pagination>.active>span:hover,
+.pagination>.active>span:focus {
+    border-radius: 50% !important;
+    margin-left: 2px;
+    margin-right: 2px;
+    background-color: #26557d;
+    border-color: #26557d;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.pagination>li>a:hover {
+    border-radius: 50% !important;
+    background-color: #f7f7f7;
+}
+
+.pagination>li>span:hover {
+    background-color: transparent;
+}
+
+.label {
+    position: absolute;
+    top: 0px;
+    right: -7px;
+    text-align: center;
+    font-size: 9px;
+    padding: 2px 3px;
+    line-height: .9;
+    border-radius: 0;
+}
+
+.dropdown .dropdown-menu {
+    position: absolute;
+    right: 7%;
+    left: auto;
+    z-index: 1;
+}
+
+.dropdown .dropdown-menu .menu {
+    max-height: 200px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow-x: hidden;
+}
+
+.dropdown .dropdown-menu .menu li {
+    border-bottom: 1px solid #f4f4f4;
+    padding: 10px;
+}
+
+.dropdown .dropdown-menu .menu li:hover {
+    background-color: #F8F8F8;
+}
+
+.dropdown .dropdown-menu .menu li>a p {
+    color: #444;
+    font-size: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0px;
+    white-space: nowrap;
+    display: block;
+    margin: 0 0 0 45px;
+}
+
+.dropdown .dropdown-menu .menu li>a h4 {
+    color: #444;
+    font-size: 13px;
+    margin-top: 0px;
+    margin: 0 0 0 45px;
+}
+
+.dropdown .dropdown-menu .menu li>a img {
+    width: 40px;
+    border-radius: 50%;
+    margin-top: -3px;
+    margin-right: 12px;
+}
+
+.dropdown .dropdown-menu li.header {
+    color: #444 !important;
+    font-size: 13px;
+    padding: 7px 10px;
+    border-bottom: 1px solid #f4f4f4;
+    background: #fff !important;
+}
+
+.dropdown .dropdown-menu li.footer {
+    position: relative;
+}
+
+.dropdown .dropdown-menu li.footer>a {
+    background-color: #fff !important;
+    color: #444 !important;
+    font-size: 12px;
+    text-align: center;
+    padding: 4px 0;
+}
+
+.dropdown .dropdown-menu:before {
+    content: "";
+    border-bottom: 10px solid #fff;
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
+    position: absolute;
+    top: -10px;
+    right: 20px;
+    z-index: 2;
+}
+
+.dropdown .dropdown-menu:after {
+    content: "";
+    border-bottom: 12px solid #fff;
+    border-right: 12px solid transparent;
+    border-left: 12px solid transparent;
+    position: absolute;
+    top: -12px;
+    right: 20px;
+    z-index: 2;
+}
+
+.dropup, .dropdown {
+    position: unset;
+}
+
+.card-header {
+    padding: 0;
+}
+
+main .notification {
+    position: relative;
+}
+
+main .notification svg {
+    width: 4em;
+    height: 41px;
+    margin-top: 20px;
+    margin-bottom: -10px;
+}
+
+main .notification svg>path {
+    fill: #fff;
+}
+
+main .notification--bell {
+    animation: bell 2.2s linear infinite;
+    transform-origin: 50% 0%;
+}
+
+main .notification--bellClapper {
+    animation: bellClapper 2.2s 0.1s linear infinite;
+}
+
+main .notification--num {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    font-size: 11px;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    background-color: #ff4c13;
+    border: 4px solid #ff4c13;
+    color: #ffffff;
+    text-align: center;
+    animation: notification 2.2s linear;
+    line-height: 13px;
+}
+
+@keyframes bell {
+
+    0%,
+    25%,
+    75%,
+    100% {
+        transform: rotate(0deg);
+    }
+
+    40% {
+        transform: rotate(10deg);
+    }
+
+    45% {
+        transform: rotate(-10deg);
+    }
+
+    55% {
+        transform: rotate(8deg);
+    }
+
+    60% {
+        transform: rotate(-8deg);
+    }
+}
+
+@keyframes bellClapper {
+
+    0%,
+    25%,
+    75%,
+    100% {
+        transform: translateX(0);
+    }
+
+    40% {
+        transform: translateX(-0.15em);
+    }
+
+    45% {
+        transform: translateX(0.15em);
+    }
+
+    55% {
+        transform: translateX(-0.1em);
+    }
+
+    60% {
+        transform: translateX(0.1em);
+    }
+}
+
+@keyframes notification {
+
+    0%,
+    25%,
+    75%,
+    100% {
+        opacity: 1;
+    }
+
+    30%,
+    70% {
+        opacity: 0;
+    }
+}
