@@ -126,6 +126,32 @@
                                     <a href="{{route('cambodia-curriculum.index')}}">Primary Score ( C C )</a>
                                 </li>
 
+                                <li>
+                                    {{--<a href="{{route('student.index')}}">@lang('layout.m1_s1')</a>--}}{{-- Sela URL--}}
+                                    <a href="{{route('secondary-curriculum.index')}}">Secondary Score ( C C )</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item nav-item-has-subnav">
+                            <a href="javascript:void(0)"><i class="fas fa-clipboard-list"></i>Report</a>
+                            <ul class="nav nav-subnav">
+                                <li>
+                                    {{--<a href="{{route('student.index')}}">@lang('layout.m1_s1')</a>--}}{{-- Sela URL--}}
+                                    <a href="{{route('cambodia-curriculum.index')}}">Score Primary CC By Month</a>
+                                </li>
+
+
+
+                            </ul>
+                        </li>
+                        <li class="nav-item nav-item-has-subnav">
+                            <a href="javascript:void(0)"><i class="fas fa-sticky-note"></i>Attandacne</a>
+                            <ul class="nav nav-subnav">
+                                <li>
+                                    {{--<a href="{{route('student.index')}}">@lang('layout.m1_s1')</a>--}}{{-- Sela URL--}}
+                                    <a href="{{route('attendance.index')}}">Create Attandance</a>
+                                </li>
+
 
                             </ul>
                         </li>

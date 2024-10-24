@@ -258,9 +258,21 @@ Route::middleware(['auth','isactive','setlanguage'])->group(function () {
     Route::resource('getReport','TestACController');
     Route::POST('testajax_ac','TestACController@testajax_ac')->name('testajax_ac');
     //Test API Google
+
+
+    // New Route for ICONIC
+
+
     Route::resource('cambodia-curriculum','roeun\ScoreKhmerController');
     Route::post('getclass','roeun\ScoreKhmerController@getclass')->name('getclass');
     Route::post('showstudent','roeun\ScoreKhmerController@showstudent')->name('showstudent');
+
+    Route::resource('secondary-curriculum','roeun\SecondaryScoreController');
+    Route::post('getclasssecondary','roeun\SecondaryScoreController@getclasssecondary')->name('getclasssecondary');
+    Route::post('showstudentsecondary','roeun\SecondaryScoreController@showstudentsecondary')->name('showstudentsecondary');
+
+
+    // End
 
 
     Route::GET('/test',function (){

@@ -180,6 +180,7 @@
                     $('.status_loading').html('មិនមានថ្នាក់រៀនសម្រាប់ឆ្នាំសិក្សានេះទេ')
                     $('.status_loading').show()
                     $('.option_choose').hide()
+                    $('#show_student').hide()
                 } else {
                     var select = '<option disabled >ជ្រើសរើសថ្នាក់រៀន</option>'
                     data.class.forEach(function(d) {
@@ -262,12 +263,7 @@
 
                     })
 
-
-
-
                     $('#tbl_list tbody').html(output_data1)
-
-
 
 
                 } else {
