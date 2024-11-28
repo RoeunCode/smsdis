@@ -272,6 +272,10 @@ Route::middleware(['auth','isactive','setlanguage'])->group(function () {
     Route::post('showstudentsecondary','roeun\SecondaryScoreController@showstudentsecondary')->name('showstudentsecondary');
 
 
+    Route::resource('uppersecondary','roeun\UpperSecondaryController');
+    Route::post('getclassuppercc','roeun\UpperSecondaryController@getclassuppercc')->name('getclassuppercc');
+    Route::post('showstudentupper','roeun\UpperSecondaryController@showstudentupper')->name('showstudentupper');
+
     // End
 
 

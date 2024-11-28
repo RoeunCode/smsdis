@@ -5,7 +5,7 @@ namespace App\Http\Controllers\roeun;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use DB;
-class SecondaryScoreController extends Controller
+class UpperSecondaryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,21 +14,29 @@ class SecondaryScoreController extends Controller
      */
     public function index()
     {
-        //
+
         $academic = DB::table('academic_year')->orderby('name','DESC')->get();
         $month = DB::table('month')->get();
-        return view('scoreiconic.secondary_score')->with('academic',$academic)
+        return view('scoreiconic.upper_secondary')->with('academic',$academic)
         ->with('month',$month);
     }
 
-    public function getclasssecondary(Request $request)
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
     {
+        //
+    }
+    public function getclassuppercc(Request $request){
 
         $class = DB::table('class_view')
                 ->where('ac_id',$request->id_ac)
                 ->where('cur_id',1)
                 ->where('deleted',0)
-                ->whereBetween('grade',[6,9])
+                ->whereBetween('grade',[9,12])
                 // ->whereRaw('CAST(`grade` AS SIGNED) BETWEEN ? AND ?', [1, 6])
                 ->orderby('academic_year','DESC')
                 ->get();
@@ -39,15 +47,14 @@ class SecondaryScoreController extends Controller
 
             ]
         ) ;
-
     }
+    public function showstudentupper(Request $request){
 
-    public function showstudentsecondary(Request $request){
 
-
-        $check_score = DB::table('score_secondary_cc')
+        $check_score = DB::table('score_upper_cc')
         ->where('class_id',$request->class_id)
         ->where('month_id',$request->month_id)
+
         ->count();
 
 
@@ -68,23 +75,23 @@ class SecondaryScoreController extends Controller
             ) ;
             }else{
 
-                $seachStudent = DB::table('score_secondary_cc')
-                                ->join('student','score_secondary_cc.student_id' ,'=','student.id')
+                $seachStudent = DB::table('score_upper_cc')
+                                ->join('student','score_upper_cc.student_id' ,'=','student.id')
                                 ->where('class_id',$request->class_id)
                                 ->where('month_id',$request->month_id)
-                ->select(DB::raw('score_secondary_cc.*,student.kh_name'))
+                ->select(DB::raw('score_upper_cc.*,student.kh_name'))
                 ->get();
 
                 $seachStudent2 = DB::table('student_class')
                 ->join('student','student_class.student_id' ,'=','student.id')
                 ->join('class','student_class.class_id','=','class.id')
                 ->where('class.id',$request->class_id)
-                // ->where('score_secondary_cc.month_id',$request->month_id)
-                ->whereRaw('student_class.student_id NOT IN (SELECT student_id from score_secondary_cc where student_class.class_id='.$request->class_id.' and
-                score_secondary_cc.month_id = '.$request->month_id.' )')
-                ->select(DB::raw('null as writing, null as essay,'.$request->class_id.' as class_id, null as khmer,null as
-                morality , null as history,null as geography, null as math, null as id, null as lmathistent, null as physical,
-                '.$request->month_id.' as month_id, null as chemistry , null as biology, null as geology,null as house_education,student.id as student_id,null as english,
+                // ->where('score_upper_cc.month_id',$request->month_id)
+                ->whereRaw('student_class.student_id NOT IN (SELECT student_id from score_upper_cc where student_class.class_id='.$request->class_id.' and
+                score_upper_cc.month_id = '.$request->month_id.' )')
+                ->select(DB::raw('null as khmer, null as morality,'.$request->class_id.' as class_id, null as history,null as
+                geography , null as math,null as physical, null as chemistry, null as id, null as biology, null as earth_sicence,
+                '.$request->month_id.' as month_id, null as english ,
                 student.kh_name'))
                 ->get()->toArray();
 
@@ -121,20 +128,9 @@ class SecondaryScoreController extends Controller
 
 
 
-            }
+        }
 
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -156,26 +152,25 @@ class SecondaryScoreController extends Controller
                     'class_id' =>$request->class_id,
                     'month_id'=>$request->month_id,
                     'avg_m' =>$request->avg,
-                    'writing'=>$request->writing[$i],
-                    'essay' => $request->essay[$i],
-                    'khmer' =>$request->khmer[$i],
-                    'morality' =>$request->morality[$i],
-                    'history' =>$request->history[$i],
-                    'geography' =>$request->geography[$i],
-                    'math' =>$request->math[$i],
-                    'physical' =>$request->physical[$i],
-                    'chemistry' =>$request->chemistry[$i],
-                    'biology' =>$request->biology[$i],
-                    'geology' =>$request->geology[$i],
-                    'house_education' =>$request->house_education[$i],
-                    'english' =>$request->english[$i]
+                    'khmer'=>$request->khmer[$i],
+                    'morality'=>$request->morality[$i],
+                    'history'=>$request->history[$i],
+                    'geography'=>$request->geography[$i],
+                    'math'=>$request->math[$i],
+                    'physical'=>$request->physical[$i],
+                    'chemistry'=>$request->chemistry[$i],
+                    'biology'=>$request->biology[$i],
+                    'earth_science'=>$request->earth_science[$i],
+                    'english'=>$request->english[$i]
+
+
 
 
                 ];
 
             }
 
-            $data = DB::table('score_secondary_cc')->insert($array_save);
+            $data = DB::table('score_upper_cc')->insert($array_save);
 
             if($data)
             {
@@ -199,7 +194,7 @@ class SecondaryScoreController extends Controller
 
         }else{
             $array_save2=[];
-            $del = DB::table('score_secondary_cc')
+            $del = DB::table('score_upper_cc')
             ->where('class_id',$request->class_id)
             ->where('month_id',$request->month_id)
             ->delete();
@@ -216,19 +211,18 @@ class SecondaryScoreController extends Controller
                             'class_id' =>$request->class_id,
                             'month_id'=>$request->month_id,
                             'avg_m' =>$request->avg,
-                            'writing'=>$request->writing[$i],
-                            'essay' => $request->essay[$i],
-                            'khmer' =>$request->khmer[$i],
-                            'morality' =>$request->morality[$i],
-                            'history' =>$request->history[$i],
-                            'geography' =>$request->geography[$i],
-                            'math' =>$request->math[$i],
-                            'physical' =>$request->physical[$i],
-                            'chemistry' =>$request->chemistry[$i],
-                            'biology' =>$request->biology[$i],
-                            'geology' =>$request->geology[$i],
-                            'house_education' =>$request->house_education[$i],
-                            'english' =>$request->english[$i]
+                            'khmer'=>$request->khmer[$i],
+                            'morality'=>$request->morality[$i],
+                            'history'=>$request->history[$i],
+                            'geography'=>$request->geography[$i],
+                            'math'=>$request->math[$i],
+                            'physical'=>$request->physical[$i],
+                            'chemistry'=>$request->chemistry[$i],
+                            'biology'=>$request->biology[$i],
+                            'earth_science'=>$request->earth_science[$i],
+                            'english'=>$request->english[$i]
+
+
 
                         ];
                         // $del = DB::table('score_primary_cc')
@@ -236,7 +230,7 @@ class SecondaryScoreController extends Controller
 
 
                     }
-                    $data= DB::table('score_secondary_cc')
+                    $data= DB::table('score_upper_cc')
                     ->insert($array_save2);
 
                     if($data)
@@ -264,7 +258,6 @@ class SecondaryScoreController extends Controller
             }
 
         }
-
     }
 
     /**

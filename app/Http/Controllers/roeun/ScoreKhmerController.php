@@ -38,6 +38,7 @@ class ScoreKhmerController extends Controller
 
             $student_class = DB::table('v_student_class')
             ->where('class_id',$request->class_id)
+            ->orderby('sort')
             ->get();
             return response()->json(
                 [

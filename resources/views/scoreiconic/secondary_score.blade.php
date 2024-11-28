@@ -126,14 +126,20 @@
                                     </div>
                                 </div>
 
-                                <div id="msg_showstudent">
+                                {{-- <div id="msg_showstudent">
                                     <p style="text-align: center;color:red">
 
                                         មិនមានសិស្សបញ្ជូលពិន្ទុទេ
                                     </p>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
+                    </div>
+                    <div id="msg_showstudent">
+                        <p style="text-align: center;color:red">
+
+                            មិនមានសិស្សបញ្ជូលពិន្ទុទេ
+                        </p>
                     </div>
 
                 </div>
@@ -193,7 +199,7 @@
 
         })
 
-        $('#btn_get_student').click(function(){
+        $('#btn_get_student').click(function() {
 
             var class_id = $('#select_class').val()
             var month_id = $('#select_month').val()
@@ -218,22 +224,20 @@
 
 
                 if (data.student_class.length == 0) {
-                    $('#show_student').slideDown()
+                  //  $('#show_student').slideDown()
                     $('#msg_showstudent').show()
-
+                    $('#btn_get_student').html('    <i class="fa fa-search"></i> &nbsp;បង្ហាញសិស្ស​')
                     return;
                 }
                 status = data.status
 
-                if(status == 1)
-                {
+                if (status == 1) {
 
                     var output_data = "";
 
-
                     data.student_class.forEach(function(student) {
                         output_data +=
-                        "<tr style='text-align:center;'><td style='font-size:12px'>" + student
+                            "<tr style='text-align:center;'><td style='font-size:12px'>" + student
                             .kh_name +
                             "</td>" +
                             "<td><input class='form-control txt_writing'></td>" +
@@ -260,7 +264,67 @@
                     $('#tbl_list tbody').html(output_data)
 
 
-                }else{
+                } else {
+
+
+                    var output_data = "";
+                    $('#txt_avg').val(data.student_class[0].avg_m)
+
+
+                    data.student_class.forEach(function(student) {
+                        student.writing = student.writing == null ? '' : student.writing
+                        student.essay = student.essay == null ? '' : student.essay
+                        student.khmer = student.khmer == null ? '' : student.khmer
+                        student.morality = student.morality == null ? '' : student.morality
+                        student.history = student.history == null ? '' : student.history
+                        student.geography = student.geography == null ? '' : student.geography
+                        student.math = student.math == null ? '' : student.math
+                        student.physical = student.physical == null ? '' : student.physical
+                        student.chemistry = student.chemistry == null ? '' : student.chemistry
+                        student.biology = student.biology == null ? '' : student.biology
+                        student.geology = student.geology == null ? '' : student.geology
+                        student.house_education = student.house_education == null ? '' : student
+                            .house_education
+                        student.english = student.english == null ? '' : student.english
+                        output_data +=
+                            "<tr style='text-align:center;'><td style='font-size:12px'>" + student
+                            .kh_name +
+                            "</td>" +
+                            "<td><input class='form-control txt_writing' value=" + student.writing +
+                            "></td>" +
+                            "<td><input class='form-control txt_essay' value=" + student.essay +
+                            "></td>" +
+                            "<td><input class='form-control txt_khmer' value=" + student.khmer +
+                            "></td>" +
+                            "<td><input class='form-control txt_morality' value=" + student
+                            .morality + "></td>" +
+                            "<td><input class='form-control txt_history' value=" + student.history +
+                            "></td>" +
+                            "<td><input class='form-control txt_geography' value=" + student
+                            .geography + "></td>" +
+                            "<td><input class='form-control txt_math' value=" + student.math +
+                            "></td>" +
+                            "<td><input class='form-control txt_physical' value=" + student
+                            .physical + "></td>" +
+                            "<td><input class='form-control txt_chemistry' value=" + student
+                            .chemistry + "></td>" +
+                            "<td><input class='form-control txt_biology' value=" + student.biology +
+                            "></td>" +
+                            "<td><input class='form-control txt_geology' value=" + student.geology +
+                            "></td>" +
+                            "<td><input class='form-control txt_house_education' value=" + student
+                            .house_education + "></td>" +
+                            "<td><input class='form-control txt_english' value=" + student.english +
+                            "></td>" +
+                            "<td hidden><input class='form-control txt_student_id' value=" + student
+                            .student_id +
+                            "></td>" +
+                            "</tr>"
+
+                    })
+
+
+                    $('#tbl_list tbody').html(output_data)
 
 
 
@@ -276,7 +340,7 @@
                 $('#btn_get_student').html('  <i class="fa fa-search"></i> &nbsp;បង្ហាញសិស្ស​')
 
 
-            }).fail((err)=>{
+            }).fail((err) => {
 
             })
 
@@ -284,7 +348,149 @@
 
 
         })
-        $('#btn_save_score').click(function(){
+        $('#btn_save_score').click(function() {
+
+            var writing = []
+            var essay = []
+            var khmer = []
+            var morality = []
+            var history = []
+            var geography = []
+            var math = []
+            var physical = []
+            var chemistry = []
+            var biology = []
+            var house_education = []
+            var english = []
+            var geology = []
+            var student_id = []
+            var id = []
+            var class_id = $('#select_class').val()
+            var month_id = $('#select_month').val()
+
+            $('.txt_writing').each(function() {
+                writing.push($(this).val())
+            })
+            $('.txt_essay').each(function() {
+                essay.push($(this).val())
+            })
+            $('.txt_khmer').each(function() {
+                khmer.push($(this).val())
+            })
+            $('.txt_morality').each(function() {
+                morality.push($(this).val())
+            })
+            $('.txt_history').each(function() {
+                history.push($(this).val())
+            })
+            $('.txt_geography').each(function() {
+                geography.push($(this).val())
+            })
+            $('.txt_math').each(function() {
+                math.push($(this).val())
+            })
+            $('.txt_physical').each(function() {
+                physical.push($(this).val())
+            })
+            $('.txt_chemistry').each(function() {
+                chemistry.push($(this).val())
+            })
+            $('.txt_biology').each(function() {
+                biology.push($(this).val())
+            })
+            $('.txt_house_education').each(function() {
+                house_education.push($(this).val())
+            })
+            $('.txt_geology').each(function() {
+                geology.push($(this).val())
+            })
+            $('.txt_english').each(function() {
+                english.push($(this).val())
+            })
+            $('.txt_student_id').each(function() {
+                student_id.push($(this).val())
+            })
+
+            var avg = $('#txt_avg').val()
+
+            if (avg == "") {
+                Swal.fire({
+                    type: 'warning',
+                    title: '',
+                    text: 'សូមបញ្ជូលតួចែកជាមុនសិន'
+                })
+                return
+            }
+
+            Swal.fire({
+                type: "warning",
+                title: "រក្សាពិន្ទុ",
+                text: "តើអ្នកចង់បញ្ជូលពិន្ទុសម្រាប់ថ្នាក់រៀននេះមែនទេ!",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes"
+            }).then((result) => {
+
+
+                if (result.value == true) {
+                    $.ajax({
+
+                        type: 'post',
+                        url: '{{ route('secondary-curriculum.store') }}',
+                        data: {
+                            '_token': '{{ csrf_token() }}',
+                            'class_id': class_id,
+                            'month_id': month_id,
+                            'student_id': student_id,
+                            'avg': avg,
+                            'writing': writing,
+                            'essay': essay,
+                            'khmer': khmer,
+                            'morality': morality,
+                            'history': history,
+                            'geography': geography,
+                            'math': math,
+                            'physical': physical,
+                            'chemistry': chemistry,
+                            'biology': biology,
+                            'geology': geology,
+                            'house_education': house_education,
+                            'english': english,
+                            'status': status
+
+                        },
+                        beforeSend: function() {
+
+                        },
+                        success: function(data) {
+                            $('#btn_save_score').removeClass('disabled')
+                            $('#btn_save_score').html('បញ្ជូលពិន្ទុ')
+                            Swal.fire({
+                                'type': 'success',
+                                'text': 'បញ្ជូលពិន្ទុបានជោគជ័យ',
+                                'title': 'ពិន្ទុ'
+                            }).then(function() {
+                                $('#show_student').slideUp()
+                            })
+
+                        },
+                        error: function(err) {
+                            $('#btn_save_score').removeClass('disabled')
+                            $('#btn_save_score').html('បញ្ជូលពិន្ទុ')
+                        }
+
+
+                    })
+
+
+
+
+                }
+
+            })
+
+
 
         })
     </script>

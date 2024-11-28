@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layout_score')
 @section('content')
     <style>
         .col-lg-3 {
@@ -17,9 +17,14 @@
         }
     </style>
     <div class="col-lg-12">
+
         <div class="card js-wizard-simple" id="add-student">
             <!-- Step Tabs -->
-            <ul class="nav nav-tabs nav-justified" id="menu">
+            <a href="{{ route('student.index') }}" class="btn btn-danger btn-sm m-a">
+                <i class="fa fa-arrow-left"></i> ត្រលប់ក្រោយ
+            </a>
+
+            <ul class="nav nav-tabs nav-justified m-t" id="menu">
                 <li class="active">
                     <a id="step1" href="#simple-classic-step1" data-toggle="tab">ទម្រង់ចុះឈ្មោះសិស្សចូលរៀន</a>
                 </li>
@@ -27,6 +32,7 @@
             <!-- End Step Tabs -->
 
             <!-- Form -->
+
             <form class="form-horizontal" action="{{ route('student.store') }}" method="POST" enctype="multipart/form-data" id="add">
                 <!-- Steps Content -->
                 <div class="card-block tab-content">

@@ -94,6 +94,10 @@
                             <ul class="nav nav-subnav">
                                 <li>
                                     {{--<a href="{{route('student.index')}}">@lang('layout.m1_s1')</a>--}}{{-- Sela URL--}}
+                                    <a href="{{route('student.create')}}">Register Student</a>
+                                </li>
+                                <li>
+                                    {{--<a href="{{route('student.index')}}">@lang('layout.m1_s1')</a>--}}{{-- Sela URL--}}
                                     <a href="{{route('student.index')}}">@lang('layout.m1_s1')</a>
                                 </li>
                                 <li class="nav-item">
@@ -119,16 +123,20 @@
                             </ul>
                         </li>
                         <li class="nav-item nav-item-has-subnav">
-                            <a href="javascript:void(0)"><i class="fas fa-clipboard-list"></i>Score</a>
+                            <a href="javascript:void(0)"><i class="fas fa-clipboard-list"></i>Score [ C C ]</a>
                             <ul class="nav nav-subnav">
                                 <li>
                                     {{--<a href="{{route('student.index')}}">@lang('layout.m1_s1')</a>--}}{{-- Sela URL--}}
-                                    <a href="{{route('cambodia-curriculum.index')}}">Primary Score ( C C )</a>
+                                    <a href="{{route('cambodia-curriculum.index')}}">Primary Score</a>
                                 </li>
 
                                 <li>
                                     {{--<a href="{{route('student.index')}}">@lang('layout.m1_s1')</a>--}}{{-- Sela URL--}}
-                                    <a href="{{route('secondary-curriculum.index')}}">Secondary Score ( C C )</a>
+                                    <a href="{{route('secondary-curriculum.index')}}">Secondary</a>
+                                </li>
+                                <li>
+                                    {{--<a href="{{route('student.index')}}">@lang('layout.m1_s1')</a>--}}{{-- Sela URL--}}
+                                    <a href="{{route('uppersecondary.index')}}">Upper Secondary</a>
                                 </li>
                             </ul>
                         </li>
