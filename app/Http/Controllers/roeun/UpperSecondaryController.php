@@ -36,7 +36,7 @@ class UpperSecondaryController extends Controller
                 ->where('ac_id',$request->id_ac)
                 ->where('cur_id',1)
                 ->where('deleted',0)
-                ->whereBetween('grade',[9,12])
+                ->whereBetween('grade',[10,12])
                 // ->whereRaw('CAST(`grade` AS SIGNED) BETWEEN ? AND ?', [1, 6])
                 ->orderby('academic_year','DESC')
                 ->get();
@@ -90,7 +90,7 @@ class UpperSecondaryController extends Controller
                 ->whereRaw('student_class.student_id NOT IN (SELECT student_id from score_upper_cc where student_class.class_id='.$request->class_id.' and
                 score_upper_cc.month_id = '.$request->month_id.' )')
                 ->select(DB::raw('null as khmer, null as morality,'.$request->class_id.' as class_id, null as history,null as
-                geography , null as math,null as physical, null as chemistry, null as id, null as biology, null as earth_sicence,
+                geography , null as math,null as physical, null as chemistry, student.id as student_id, null as pe , null as computer ,null as biology, null as earth_sicence,
                 '.$request->month_id.' as month_id, null as english ,
                 student.kh_name'))
                 ->get()->toArray();
@@ -161,8 +161,9 @@ class UpperSecondaryController extends Controller
                     'chemistry'=>$request->chemistry[$i],
                     'biology'=>$request->biology[$i],
                     'earth_science'=>$request->earth_science[$i],
-                    'english'=>$request->english[$i]
-
+                    'english'=>$request->english[$i],
+                    'pe'=>$request->pe[$i],
+                    'computer'=>$request->computer[$i]
 
 
 
@@ -198,6 +199,8 @@ class UpperSecondaryController extends Controller
             ->where('class_id',$request->class_id)
             ->where('month_id',$request->month_id)
             ->delete();
+
+
             if($del)
             {
 
@@ -220,7 +223,9 @@ class UpperSecondaryController extends Controller
                             'chemistry'=>$request->chemistry[$i],
                             'biology'=>$request->biology[$i],
                             'earth_science'=>$request->earth_science[$i],
-                            'english'=>$request->english[$i]
+                            'english'=>$request->english[$i],
+                            'pe'=>$request->pe[$i],
+                            'computer'=>$request->computer[$i]
 
 
 

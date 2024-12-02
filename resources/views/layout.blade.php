@@ -22,13 +22,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
     {{--<link href="https://fonts.googleapis.com/css2?family=Battambang&display=swap" rel="stylesheet">--}}
     <style>
-        @media print {
+        /* @media print {
             body {
                 -webkit-print-color-adjust: exact;
             }
             .pagebreak { clear: both;
                 page-break-after: always; }
-        }
+        } */
         .test {
             background-color: blue;
             color: white;
@@ -37,6 +37,12 @@
             font-family: 'Battambang', cursive;
             {{--src: url('{{ public_path('fonts/KhmerOSbattambang.tff') }}');--}}
             src:url("https://fonts.googleapis.com/css2?family=Battambang&display=swap");
+        }
+
+        @font-face {
+            font-family: 'tacteing';
+            src: url('{{ public_path('fonts/Tacteing.TTF') }}');
+
         }
         table > thead {
             background-color:#2A629C;
@@ -90,96 +96,111 @@
                     <ul class="nav nav-drawer">
                     <li class="nav-item nav-drawer-header">MAIN NAVIGATION</li>
                         <li class="nav-item nav-item-has-subnav">
-                            <a href="javascript:void(0)"><i class="fas fa-user-graduate"></i>@lang('layout.m1')</a>
+                            <a href="javascript:void(0)"><i class="fas fa-user-graduate"></i>សិស្ស</a>
                             <ul class="nav nav-subnav">
                                 <li>
                                     {{--<a href="{{route('student.index')}}">@lang('layout.m1_s1')</a>--}}{{-- Sela URL--}}
-                                    <a href="{{route('student.create')}}">Register Student</a>
+                                    <a href="{{route('student.create')}}">ចុះឈ្មោះសិស្ស</a>
                                 </li>
                                 <li>
                                     {{--<a href="{{route('student.index')}}">@lang('layout.m1_s1')</a>--}}{{-- Sela URL--}}
-                                    <a href="{{route('student.index')}}">@lang('layout.m1_s1')</a>
+                                    <a href="{{route('student.index')}}">បញ្ជីសិស្ស</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{route('stdd')}}">@lang('layout.m1_s2')</a>
+                                    <a href="{{route('stdd')}}">សិស្សបានលុប</a>
                                 </li>
                             </ul>
                         </li>
                         <li class="nav-item nav-item-has-subnav">
-                            <a href="javascript:void(0)"><i class="fas fa-university"></i>Class & Grade</a>
+                            <a href="javascript:void(0)"><i class="fas fa-university"></i>ថ្នាក់រៀន</a>
                             <ul class="nav nav-subnav">
                                 <li>
                                     {{--<a href="{{route('student.index')}}">@lang('layout.m1_s1')</a>--}}{{-- Sela URL--}}
-                                    <a href="{{route('class.index')}}">View All Class</a>
+                                    <a href="{{route('class.index')}}">ថ្នាក់រៀនទាំងអស់</a>
                                 </li>
 
                                 <li class="nav-item">
-                                    <a href="{{route('classroom.index')}}">Create ClassRoom</a>
+                                    <a href="{{route('classroom.index')}}">បង្តើតបន្ទប់រៀន</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{route('grade.index')}}">Create Grade</a>
+                                    <a href="{{route('grade.index')}}">បង្កើត Grade</a>
                                 </li>
 
                             </ul>
                         </li>
                         <li class="nav-item nav-item-has-subnav">
-                            <a href="javascript:void(0)"><i class="fas fa-clipboard-list"></i>Score [ C C ]</a>
+                            <a href="javascript:void(0)"><i class="fas fa-clipboard-list"></i>ពិន្ទុកម្មវិធីខ្មែរ</a>
                             <ul class="nav nav-subnav">
+
                                 <li>
                                     {{--<a href="{{route('student.index')}}">@lang('layout.m1_s1')</a>--}}{{-- Sela URL--}}
-                                    <a href="{{route('cambodia-curriculum.index')}}">Primary Score</a>
+                                    <a href="{{route('cambodia-curriculum.index')}}">ថ្នាក់បឋម</a>
                                 </li>
 
                                 <li>
                                     {{--<a href="{{route('student.index')}}">@lang('layout.m1_s1')</a>--}}{{-- Sela URL--}}
-                                    <a href="{{route('secondary-curriculum.index')}}">Secondary</a>
+                                    <a href="{{route('secondary-curriculum.index')}}">ថ្នាក់អនុ</a>
                                 </li>
                                 <li>
                                     {{--<a href="{{route('student.index')}}">@lang('layout.m1_s1')</a>--}}{{-- Sela URL--}}
-                                    <a href="{{route('uppersecondary.index')}}">Upper Secondary</a>
+                                    <a href="{{route('uppersecondary.index')}}">ថ្នាក់វិទ្យាល័យ</a>
                                 </li>
                             </ul>
                         </li>
                         <li class="nav-item nav-item-has-subnav">
-                            <a href="javascript:void(0)"><i class="fas fa-clipboard-list"></i>Report</a>
+                            <a href="javascript:void(0)"><i class="fas fa-clipboard-list"></i>របាយការណ៍កម្មវិធីខ្មែរ</a>
+                            <ul class="nav nav-subnav">
+                                <a href="javascript:void(0)"><i class="fas fa-arrow-down"></i>&nbsp;ថ្នាក់វិទ្យាល័យ</a>
+                                <ul class="nav nav-subnav">
+                                    <li>
+                                        {{--<a href="{{route('student.index')}}">@lang('layout.m1_s1')</a>--}}{{-- Sela URL--}}
+                                        <a href="{{route('reportuppercc.index')}}">&nbsp;&nbsp;&nbsp;&nbsp;លទ្ធផលប្រចាំខែ</a>
+                                    </li>
+                                    <li>
+                                        {{--<a href="{{route('student.index')}}">@lang('layout.m1_s1')</a>--}}{{-- Sela URL--}}
+                                        <a href="{{route('uppersemesterone.index')}}">&nbsp;&nbsp;&nbsp;&nbsp;លទ្ធផលឆមាសទី 1</a>
+                                    </li>
+
+                                    <li>
+                                        {{--<a href="{{route('student.index')}}">@lang('layout.m1_s1')</a>--}}{{-- Sela URL--}}
+                                        <a href="{{route('uppersemestertwo.index')}}">&nbsp;&nbsp;&nbsp;&nbsp;លទ្ធផលឆមាសទី 2</a>
+                                    </li>
+                                    <li>
+                                        {{--<a href="{{route('student.index')}}">@lang('layout.m1_s1')</a>--}}{{-- Sela URL--}}
+                                        <a href="{{route('reportyearupper.index')}}">&nbsp;&nbsp;&nbsp;&nbsp;លទ្ធផលប្រចាំឆ្នាំ</a>
+                                    </li>
+                                </ul>
+
+                            </ul>
+                        </li>
+                        <li class="nav-item nav-item-has-subnav">
+                            <a href="javascript:void(0)"><i class="fas fa-sticky-note"></i>អវត្តមានសិស្ស</a>
                             <ul class="nav nav-subnav">
                                 <li>
                                     {{--<a href="{{route('student.index')}}">@lang('layout.m1_s1')</a>--}}{{-- Sela URL--}}
-                                    <a href="{{route('cambodia-curriculum.index')}}">Score Primary CC By Month</a>
+                                    <a href="{{route('attendance.index')}}">ស្រង់អវត្តមានសិស្ស</a>
                                 </li>
-
 
 
                             </ul>
                         </li>
                         <li class="nav-item nav-item-has-subnav">
-                            <a href="javascript:void(0)"><i class="fas fa-sticky-note"></i>Attandacne</a>
+                            <a href="javascript:void(0)"><i class="fas fa-university"></i>ឆ្នាំសិក្សារ</a>
                             <ul class="nav nav-subnav">
                                 <li>
                                     {{--<a href="{{route('student.index')}}">@lang('layout.m1_s1')</a>--}}{{-- Sela URL--}}
-                                    <a href="{{route('attendance.index')}}">Create Attandance</a>
+                                    <a href="{{route('academic_year.index')}}">បង្កើតឆ្នាំសិក្សារ</a>
                                 </li>
 
 
                             </ul>
                         </li>
                         <li class="nav-item nav-item-has-subnav">
-                            <a href="javascript:void(0)"><i class="fas fa-university"></i>Academic Year</a>
+                            <a href="javascript:void(0)"><i class="fas fa-chalkboard-teacher"></i>គ្រូបង្រៀន</a>
                             <ul class="nav nav-subnav">
                                 <li>
                                     {{--<a href="{{route('student.index')}}">@lang('layout.m1_s1')</a>--}}{{-- Sela URL--}}
-                                    <a href="{{route('academic_year.index')}}">Create Academic</a>
-                                </li>
-
-
-                            </ul>
-                        </li>
-                        <li class="nav-item nav-item-has-subnav">
-                            <a href="javascript:void(0)"><i class="fas fa-chalkboard-teacher"></i>Teacher</a>
-                            <ul class="nav nav-subnav">
-                                <li>
-                                    {{--<a href="{{route('student.index')}}">@lang('layout.m1_s1')</a>--}}{{-- Sela URL--}}
-                                    <a href="{{route('teacher.index')}}">Create Teacher</a>
+                                    <a href="{{route('teacher.index')}}">បង្កើតគ្រូបង្រៀន</a>
                                 </li>
 
 

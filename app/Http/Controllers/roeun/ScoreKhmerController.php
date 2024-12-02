@@ -63,7 +63,7 @@ class ScoreKhmerController extends Controller
             ->whereRaw('student_class.student_id NOT IN (SELECT student_id from score_primary_cc where student_class.class_id='.$request->class_id.' and
             score_primary_cc.month_id = '.$request->month_id.' )')
             ->select(DB::raw('null as art, null as chemistry,'.$request->class_id.' as class_id, null as essay,null as
-            grammar , null as healthy,null as history, null as homework, null as id, null as listent, null as math,
+            grammar , null as healthy,null as history, null as homework, null as id, student.id as student_id ,null as listent, null as math,
             '.$request->month_id.' as month_id, null as moralty , null as pe, null as physical,null as speaking,student.id as student_id,null as word ,null as writing,
             student.kh_name'))
             ->get()->toArray();

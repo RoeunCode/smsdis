@@ -111,6 +111,12 @@
                                         <th style="text-align: center;font-size: 12px">
                                             អង់គ្លេស
                                         </th>
+                                        <th style="text-align: center;font-size: 12px">
+                                            កីឡា
+                                        </th>
+                                        <th style="text-align: center;font-size: 12px">
+                                            កុំព្យូទ័រ
+                                        </th>
                                     </thead>
                                     <tbody>
 
@@ -253,6 +259,8 @@
                             "<td><input class='form-control txt_geology'></td>" +
                             "<td><input class='form-control txt_house_education'></td>" +
                             "<td><input class='form-control txt_english'></td>" +
+                            "<td><input class='form-control txt_pe'></td>" +
+                            "<td><input class='form-control txt_computer'></td>" +
                             "<td hidden><input class='form-control txt_student_id' value=" + student
                             .id +
                             "></td>" +
@@ -283,8 +291,11 @@
                         student.chemistry = student.chemistry == null ? '' : student.chemistry
                         student.biology = student.biology == null ? '' : student.biology
                         student.geology = student.geology == null ? '' : student.geology
+                        student.pe = student.pe == null ? '' : student.pe
+                        student.computer = student.computer == null ? '' : student.computer
                         student.house_education = student.house_education == null ? '' : student
                             .house_education
+
                         student.english = student.english == null ? '' : student.english
                         output_data +=
                             "<tr style='text-align:center;'><td style='font-size:12px'>" + student
@@ -315,6 +326,10 @@
                             "<td><input class='form-control txt_house_education' value=" + student
                             .house_education + "></td>" +
                             "<td><input class='form-control txt_english' value=" + student.english +
+                            "></td>" +
+                            "<td><input class='form-control txt_pe' value=" + student.pe +
+                            "></td>" +
+                            "<td><input class='form-control txt_computer' value=" + student.computer +
                             "></td>" +
                             "<td hidden><input class='form-control txt_student_id' value=" + student
                             .student_id +
@@ -364,6 +379,8 @@
             var english = []
             var geology = []
             var student_id = []
+            var pe = []
+            var computer = []
             var id = []
             var class_id = $('#select_class').val()
             var month_id = $('#select_month').val()
@@ -409,6 +426,12 @@
             })
             $('.txt_student_id').each(function() {
                 student_id.push($(this).val())
+            })
+            $('.txt_pe').each(function() {
+                pe.push($(this).val())
+            })
+            $('.txt_computer').each(function() {
+                computer.push($(this).val())
             })
 
             var avg = $('#txt_avg').val()
@@ -457,7 +480,10 @@
                             'geology': geology,
                             'house_education': house_education,
                             'english': english,
-                            'status': status
+                            'pe': pe,
+                            'computer': computer,
+                            'status': status,
+
 
                         },
                         beforeSend: function() {

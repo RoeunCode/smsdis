@@ -28,7 +28,7 @@ class SecondaryScoreController extends Controller
                 ->where('ac_id',$request->id_ac)
                 ->where('cur_id',1)
                 ->where('deleted',0)
-                ->whereBetween('grade',[6,9])
+                ->whereBetween('grade',[7,9])
                 // ->whereRaw('CAST(`grade` AS SIGNED) BETWEEN ? AND ?', [1, 6])
                 ->orderby('academic_year','DESC')
                 ->get();
@@ -83,7 +83,7 @@ class SecondaryScoreController extends Controller
                 ->whereRaw('student_class.student_id NOT IN (SELECT student_id from score_secondary_cc where student_class.class_id='.$request->class_id.' and
                 score_secondary_cc.month_id = '.$request->month_id.' )')
                 ->select(DB::raw('null as writing, null as essay,'.$request->class_id.' as class_id, null as khmer,null as
-                morality , null as history,null as geography, null as math, null as id, null as lmathistent, null as physical,
+                morality , null as history,null as geography, null as math, null as id,student.id as student_id, null as lmathistent, null as physical,
                 '.$request->month_id.' as month_id, null as chemistry , null as biology, null as geology,null as house_education,student.id as student_id,null as english,
                 student.kh_name'))
                 ->get()->toArray();
@@ -167,6 +167,8 @@ class SecondaryScoreController extends Controller
                     'chemistry' =>$request->chemistry[$i],
                     'biology' =>$request->biology[$i],
                     'geology' =>$request->geology[$i],
+                    'pe' =>$request->pe[$i],
+                    'computer' =>$request->computer[$i],
                     'house_education' =>$request->house_education[$i],
                     'english' =>$request->english[$i]
 
@@ -228,6 +230,8 @@ class SecondaryScoreController extends Controller
                             'biology' =>$request->biology[$i],
                             'geology' =>$request->geology[$i],
                             'house_education' =>$request->house_education[$i],
+                            'pe'=>$request->pe[$i],
+                            'computer'=>$request->computer[$i],
                             'english' =>$request->english[$i]
 
                         ];

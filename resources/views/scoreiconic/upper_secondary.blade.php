@@ -103,6 +103,12 @@
                                         <th style="text-align: center;font-size: 12px">
                                             អង់គ្លេស
                                         </th>
+                                        <th style="text-align: center;font-size: 12px">
+                                            កីឡា
+                                        </th>
+                                        <th style="text-align: center;font-size: 12px">
+                                            កុំព្យូទ័រ
+                                        </th>
 
                                     </thead>
                                     <tbody>
@@ -144,6 +150,7 @@
 @section('footer')
     <script>
         var status;
+        var grade_check;
         $('#show_student').hide()
         $('.status_loading').hide()
         $('#msg_showstudent').hide()
@@ -174,10 +181,14 @@
                     $('.option_choose').hide()
                     $('#show_student').hide()
                 } else {
-                    var select = '<option disabled >ជ្រើសរើសថ្នាក់រៀន</option>'
+
+
+                    var select = '<option value=""  >ជ្រើសរើសថ្នាក់រៀន</option>'
                     data.class.forEach(function(d) {
-                        select += "<option value=" + d.id + ">ថ្នាកទី : " + d.grade + "  </option>"
+
+                        select += "<option data-grade="+d.grade+" value=" + d.id + ">ថ្នាកទី : " + d.grade + "  </option>"
                     })
+
                     $('.status_loading').hide()
                     $('#select_class').html(select)
                     $('.option_choose').slideDown()
@@ -190,11 +201,25 @@
 
 
         })
-
+        $('#select_class').on('change',function(){
+             var check = $('option:selected', this).attr('data-grade');
+              grade_check = check
+        })
         $('#btn_get_student').click(function() {
 
             var class_id = $('#select_class').val()
             var month_id = $('#select_month').val()
+            var check_grade = $('#select_class').val()
+            if(check_grade == "")
+            {
+                $('#show_student').hide()
+                Swal.fire({
+                    type: 'warning',
+                    title: '',
+                    text: 'សូមជ្រើសរើសថ្នាក់រៀន'
+                })
+                return
+            }
 
             $.ajax({
 
@@ -214,7 +239,7 @@
 
             }).then((data) => {
 
-
+                console.log(grade_check)
                 if (data.student_class.length == 0) {
                    // $('#show_student').slideDown()
                     $('#msg_showstudent').show()
@@ -228,8 +253,21 @@
 
                     var output_data = "";
 
-
+                    var input_grade ="";
                     data.student_class.forEach(function(student) {
+
+                        if(grade_check == 12)
+                        {
+                            input_grade ="<td><input disabled value='0.0.1'  class='form-control txt_pe'></td>" +
+                                     "<td><input  disabled value='0.0.1' class='form-control txt_computer'></td>" ;
+
+                        }else if(grade_check == 11) {
+                            input_grade ="<td><input disabled value='0.0.1' class='form-control txt_pe'></td>" +
+                                         "<td><input  class='form-control txt_computer'></td>" ;
+                        }else{
+                            input_grade ="<td><input class='form-control txt_pe'></td>" +
+                                        "<td><input  class='form-control txt_computer'></td>" ;
+                        }
                         output_data +=
                             "<tr style='text-align:center;'><td style='font-size:12px'>" + student
                             .kh_name +
@@ -244,6 +282,7 @@
                             "<td><input class='form-control txt_bio'></td>" +
                             "<td><input class='form-control txt_earth'></td>" +
                             "<td><input class='form-control txt_english'></td>" +
+                            input_grade+
                             "<td hidden><input class='form-control txt_student_id' value=" + student
                             .id +
                             "></td>" +
@@ -259,7 +298,7 @@
 
 
                     var output_data = "";
-
+                    var input_grade_edit ="";
                     $('#txt_avg').val(data.student_class[0].avg_m)
 
                     data.student_class.forEach(function(student) {
@@ -277,6 +316,20 @@
                         student.english = student.english == null ? '' : student
                             .english
                         student.english = student.english == null ? '' : student.english
+                        student.computer = student.computer == null ? '' : student.computer
+                        student.pe = student.pe == null ? '' : student.pe
+                        if(grade_check == 12)
+                        {
+                            input_grade_edit ="<td><input disabled value='0.0.1'  class='form-control txt_pe'></td>" +
+                                     "<td><input disabled value='0.0.1'  class='form-control txt_computer'></td>";
+
+                        }else if(grade_check == 11) {
+                            input_grade_edit ="<td><input disabled value='0.0.1' class='form-control txt_pe'></td>" +
+                                         "<td><input value='"+student.computer+"'  class='form-control txt_computer'></td>" ;
+                        }else{
+                            input_grade_edit ="<td><input value='"+student.pe+"' class='form-control txt_pe'></td>" +
+                                        "<td><input value='"+student.computer+"'  class='form-control txt_computer'></td>" ;
+                        }
                         output_data +=
                             "<tr style='text-align:center;'><td style='font-size:12px'>" + student
                             .kh_name +
@@ -301,6 +354,7 @@
                             "></td>" +
                             "<td><input class='form-control txt_english' value=" + student.english +
                             "></td>" +
+                            input_grade_edit+
                             "<td hidden><input class='form-control txt_student_id' value=" + student
                             .student_id +
                             "></td>" +
@@ -350,6 +404,8 @@
             var biology =[]
             var earth_science =[]
             var english = []
+            var pe =[]
+            var computer =[]
             $('.txt_student_id').each(function() {
                 student_id.push($(this).val())
             })
@@ -382,6 +438,12 @@
             })
             $('.txt_english').each(function() {
                 english.push($(this).val())
+            })
+            $('.txt_pe').each(function() {
+                pe.push($(this).val())
+            })
+            $('.txt_computer').each(function() {
+                computer.push($(this).val())
             })
             var avg = $('#txt_avg').val()
 
@@ -426,6 +488,8 @@
                             'earth_science':earth_science,
                             'english':english,
                             'physical':physical,
+                            'pe':pe,
+                            'computer':computer,
                             'status': status
 
                         },
