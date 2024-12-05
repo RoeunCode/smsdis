@@ -107,7 +107,7 @@
                     <table id="dt" class="table table-bordered">
                         <thead>
                         <tr>
-                            <th style="display: none">ID</th>
+                            <th style="text-align: center;display: none">ID</th>
                             <th style="text-align: center">@lang('class.room')</th>
                             <th style="text-align: center">@lang('class.campus')</th>
                             <th style="text-align: center">@lang('class.cur')</th>
@@ -120,7 +120,7 @@
                         <tbody>
                         @foreach($data as $d)
                             <tr style="text-align: center">
-                                <td style="display: none">{{$d->id}}</td>
+                                <td style="text-align: center;display: none">{{$d->id}}</td>
                                 <td>{{$d->classroom}}</td>
                                 <td>{{$d->campus}}</td>
                                 <td>{{$d->curriculum}}</td>
@@ -143,7 +143,9 @@
 @section('footer')
     <script>
         $(document).ready(function () {
-            $('#dt').DataTable();
+            $('#dt').DataTable({
+                order:[[1,'DESC']]
+            });
         });
     </script>
     <script>

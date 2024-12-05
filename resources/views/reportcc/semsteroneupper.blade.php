@@ -98,7 +98,7 @@
                                 <div class="m-t">
                                     <p style="text-align: center">ចំណាត់ថ្នាក់ប្រចាំឆមាសទី១ <br />
                                         <span id="txt_grade"></span>
-                                        ឆ្នាំសិក្សា <span id="txt_year"></span>
+                                         <span id="txt_year"></span>
                                     </p>
 
                                 </div>
@@ -389,6 +389,20 @@
                             "<tr/>"
 
                     })
+                    for(i;i<=35;i)
+                    {
+                        output_data +=
+                            "<tr style='text-align:center;'><td style='font-size:12px'>" + i++ +
+                            "</td>" +
+                            "<td style='font-size:12px;text-align:left;'></td>" +
+                            "<td style='font-size:12px'></td>" +
+                            "<td style='font-size:12px'> </td>" +
+                            "<td style='font-size:12px'></td>" +
+                            "<td style='font-size:12px;'></td>" +
+                            "<td style='font-size:12px'></td>" +
+                            "<td style='font-size:12px'></td>" +
+                            "<td style='font-size:12px'></td><tr/>"
+                    }
                     $('#total_student').html(data.data.length)
                     $('#total_student_girl').html(total_student_girl)
                     $('#tbl_result tbody').html(output_data)

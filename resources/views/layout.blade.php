@@ -20,6 +20,10 @@
     <link rel="stylesheet" href="{{asset('theme/dist/assets/js/plugins/select2/select2.min.css')}}" />
     <link rel="stylesheet" href="{{asset('theme/dist/assets/js/plugins/select2/select2-bootstrap.css')}}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Moul&display=swap" rel="stylesheet">
+
     {{--<link href="https://fonts.googleapis.com/css2?family=Battambang&display=swap" rel="stylesheet">--}}
     <style>
         /* @media print {
@@ -33,6 +37,12 @@
             background-color: blue;
             color: white;
         }
+        .moul-regular {
+            font-family: "Moul", serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
         @font-face {
             font-family: 'Battambang', cursive;
             {{--src: url('{{ public_path('fonts/KhmerOSbattambang.tff') }}');--}}
@@ -139,7 +149,7 @@
 
                                 <li>
                                     {{--<a href="{{route('student.index')}}">@lang('layout.m1_s1')</a>--}}{{-- Sela URL--}}
-                                    <a href="{{route('secondary-curriculum.index')}}">ថ្នាក់អនុ</a>
+                                    <a href="{{route('secondary-curriculum.index')}}">ថ្នាក់អនុវិទ្យាល័យ</a>
                                 </li>
                                 <li>
                                     {{--<a href="{{route('student.index')}}">@lang('layout.m1_s1')</a>--}}{{-- Sela URL--}}
@@ -169,6 +179,40 @@
                                         {{--<a href="{{route('student.index')}}">@lang('layout.m1_s1')</a>--}}{{-- Sela URL--}}
                                         <a href="{{route('reportyearupper.index')}}">&nbsp;&nbsp;&nbsp;&nbsp;លទ្ធផលប្រចាំឆ្នាំ</a>
                                     </li>
+                                </ul>
+
+                            </ul>
+                            <ul class="nav nav-subnav">
+                                <a href="javascript:void(0)"><i class="fas fa-arrow-down"></i>&nbsp;ថ្នាក់អនុវិទ្យាល័យ</a>
+                                <ul class="nav nav-subnav">
+                                    <li>
+
+                                        <a href="{{route('reportsecondarycc.index')}}">&nbsp;&nbsp;&nbsp;&nbsp;លទ្ធផលប្រចាំខែ</a>
+                                    </li>
+                                    <li>
+
+                                        <a href="{{route('reportsecondary_cc_semmester')}}">&nbsp;&nbsp;&nbsp;&nbsp;លទ្ធផលឆមាសទី 1</a>
+                                    </li>
+                                    <li>
+
+                                        <a href="{{route('secondary_cc_semmester_two')}}">&nbsp;&nbsp;&nbsp;&nbsp;លទ្ធផលឆមាសទី 2</a>
+                                    </li>
+                                    <li>
+
+                                        <a href="{{route('report_year_secondary')}}">&nbsp;&nbsp;&nbsp;&nbsp;លទ្ធផលប្រចាំឆ្នាំ</a>
+                                    </li>
+
+                                </ul>
+
+                            </ul>
+                            <ul class="nav nav-subnav">
+                                <a href="javascript:void(0)"><i class="fas fa-arrow-down"></i>&nbsp;ថ្នាក់បឋម</a>
+                                <ul class="nav nav-subnav">
+                                    <li>
+
+                                        <a href="{{route('reportprimarycc.index')}}">&nbsp;&nbsp;&nbsp;&nbsp;លទ្ធផលប្រចាំខែ</a>
+                                    </li>
+
                                 </ul>
 
                             </ul>

@@ -158,6 +158,7 @@
 @section('footer')
     <script>
         var status;
+        var grade_check;
         $('#show_student').hide()
         $('.status_loading').hide()
         $('#msg_showstudent').hide()
@@ -190,7 +191,7 @@
                 } else {
                     var select = '<option disabled >ជ្រើសរើសថ្នាក់រៀន</option>'
                     data.class.forEach(function(d) {
-                        select += "<option value=" + d.id + ">ថ្នាកទី : " + d.grade + "  </option>"
+                        select += "<option data-grade="+d.grade+" value=" + d.id + ">ថ្នាកទី : " + d.grade + "  </option>"
                     })
                     $('.status_loading').hide()
                     $('#select_class').html(select)
@@ -203,6 +204,11 @@
             })
 
 
+        })
+
+        $('#select_class').on('change',function(){
+             var check = $('option:selected', this).attr('data-grade');
+              grade_check = check
         })
 
         $('#btn_get_student').click(function() {
@@ -241,7 +247,17 @@
 
                     var output_data = "";
 
+                    var input_grade ="";
                     data.student_class.forEach(function(student) {
+                        if(grade_check == 9)
+                        {
+                            input_grade ="<td><input disabled value='0.0.1'  class='form-control txt_pe'></td>" +
+                                     "<td><input  class='form-control txt_computer'></td>" ;
+
+                        }else{
+                            input_grade ="<td><input class='form-control txt_pe'></td>" +
+                                          "<td><input  class='form-control txt_computer'></td>" ;
+                        }
                         output_data +=
                             "<tr style='text-align:center;'><td style='font-size:12px'>" + student
                             .kh_name +
@@ -259,8 +275,7 @@
                             "<td><input class='form-control txt_geology'></td>" +
                             "<td><input class='form-control txt_house_education'></td>" +
                             "<td><input class='form-control txt_english'></td>" +
-                            "<td><input class='form-control txt_pe'></td>" +
-                            "<td><input class='form-control txt_computer'></td>" +
+                            input_grade+
                             "<td hidden><input class='form-control txt_student_id' value=" + student
                             .id +
                             "></td>" +
@@ -297,6 +312,18 @@
                             .house_education
 
                         student.english = student.english == null ? '' : student.english
+                        if(grade_check == 9)
+                        {
+                            input_grade = "<td><input disabled class='form-control txt_pe' value='0.0.1'></td>" +
+                                        "<td><input class='form-control txt_computer' value=" + student.computer +
+                                        "></td>" ;
+
+                        }else{
+                            input_grade =  "<td><input class='form-control txt_pe' value=" + student.pe +
+                                        "></td>" +
+                                        "<td><input class='form-control txt_computer' value=" + student.computer +
+                                        "></td>" ;
+                        }
                         output_data +=
                             "<tr style='text-align:center;'><td style='font-size:12px'>" + student
                             .kh_name +
@@ -327,10 +354,7 @@
                             .house_education + "></td>" +
                             "<td><input class='form-control txt_english' value=" + student.english +
                             "></td>" +
-                            "<td><input class='form-control txt_pe' value=" + student.pe +
-                            "></td>" +
-                            "<td><input class='form-control txt_computer' value=" + student.computer +
-                            "></td>" +
+                            input_grade+
                             "<td hidden><input class='form-control txt_student_id' value=" + student
                             .student_id +
                             "></td>" +

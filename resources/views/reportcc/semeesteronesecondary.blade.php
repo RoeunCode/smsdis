@@ -6,11 +6,14 @@
             margin-top: 0;
             margin-bottom: 0;
         }
-        /* html {margin:0 6cm} */
     }
     tr td {
         padding: 0 !important;
         margin: 0 !important;
+        font-size: 12px;
+    }
+    tr th {
+        font-size: 12px;
     }
 </style>
 @section('content')
@@ -18,7 +21,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header bg-blue bg-inverse">
-                    <p style="text-align: left">លទ្ធផលប្រចាំខែសម្រាប់ថ្នាក់​វិទ្យាល័យ</p>
+                    <p style="text-align: left">លទ្ធផលប្រចាំឆមាសទី 1 សម្រាប់ថ្នាក់​អនុវិទ្យាល័យ</p>
                 </div>
                 <div class="card-block">
                     <div class="row">
@@ -37,22 +40,13 @@
 
                     </div>
                     <div class="m-t row  show_class">
-                        <div class="col-lg-3 col-md-3">
+                        <div class="col-lg-3 col-md-6">
                             <select class="form-control" id="select_class">
 
                             </select>
                         </div>
-                        <div class="col-lg-3 col-md-3">
-                            <select class="form-control" id="select_month">
 
-                                @foreach ($month as $row)
-                                    <option value="{{ $row->id }}">
-                                        {{ $row->name_kh }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="col-lg-3 col-md-3">
+                        <div class="col-lg-3 col-md-6 ">
                             <button class="btn btn-primary btn-sm" id="btn_show_report">បង្ហាញទិន្ន័យ</button>
                             <button class="btn btn-primary btn-sm" id="btn_print">Print</button>
                         </div>
@@ -93,39 +87,42 @@
 
                                 </div>
                                 <div class="m-t">
-                                    <p style="text-align: center">ចំណាត់ថ្នាក់ប្រចាំ ខែ <span id="txt_month"></span> <br />
+                                    <p style="text-align: center">ចំណាត់ថ្នាក់ប្រចាំឆមាសទី១ <br />
                                         <span id="txt_grade"></span>
-                                         <span id="txt_year"></span>
+                                        <span id="txt_year"></span>
                                     </p>
 
                                 </div>
                                 <table class="table table-bordered table-condensed " id="tbl_result">
                                     <thead style=" color: black;
-                                    font-size: 12px;background-color: white">
+                                    font-size: 14px;background-color: white">
                                        <tr>
-                                        <th style="text-align: center ;width: 5%">
+                                        <th style="text-align: center ; ; width: 3%;">
                                             លរ
                                         </th>
 
-                                        <th style="text-align: center;width: 30%">
-                                            ឈ្មោះសិស្ស
+                                        <th style="text-align: center; ; width: 20%;">
+                                            គោត្តនាម និង នាម
                                         </th>
-                                        <th style="text-align: center;width: 5%">
+                                        <th style="text-align: center; ; width: 3%;">
                                             ភេទ
                                         </th>
-                                        <th style="text-align: center;width: 10%">
-                                            ពិន្ទុសរុប
+                                        <th style="text-align: center; ; width: 10%;">
+                                            ម.ឆមាស
                                         </th>
-                                        <th style="text-align: center;width: 10%">
-                                            មធ្យមភាគ
+                                        <th style="text-align: center ; width: 13%;">
+                                            ម.ខែឆមាស
                                         </th>
-                                        <th style="text-align: center;width: 5%;">
+                                        <th style="text-align: center; ; width: 15%;">
+                                            ម.ប្រចាំឆមាស១
+                                        </th>
+                                        <th style="text-align: center ; width: 7%;">
                                             ចំ.ថ្នាក់
                                         </th>
-                                        <th style="text-align: center;width: 15%;">
+                                        <th style="text-align: center; ; width: 12%;">
                                             និទ្ទេសន៍
                                         </th>
-                                        <th style="text-align: center;width: 20%;">
+                                        <th style="text-align: center ; width: 17%;">
                                             ផ្សេងៗ
                                         </th>
                                        </tr>
@@ -135,8 +132,6 @@
 
                                     </tbody>
                                 </table>
-
-
                             </div>
                             <div class="buttom_print_footer">
                                 <div class="m-t">
@@ -175,7 +170,7 @@
 
                 {
                     type: "post",
-                    url: '{{ route('getclassuppercc') }}',
+                    url: '{{ route('getclasssecondary') }}',
                     data: {
                         id_ac: $('#select_academic').val(),
                         '_token': '{{ csrf_token() }}',
@@ -205,7 +200,7 @@
                     data.class.forEach(function(d) {
 
                         select += "<option data-grade=" + d.grade + " value=" + d.id +
-                            ">ថ្នាក់ទី : " + d.grade + "  </option>"
+                            ">ថ្នាកទី : " + d.grade + "  </option>"
                     })
 
                     $('.status_loading').hide()
@@ -223,6 +218,10 @@
         })
 
         function printDiv() {
+            $('#btn_print').html('Priting')
+            setTimeout(() => {
+                $('#btn_print').html('Print')
+            }, 2000);
             $('#show_report').printThis({
                 importCSS: true,
                 importStyle: true,
@@ -248,7 +247,6 @@
             // Replace each Arabic digit in the input with the corresponding Khmer digit
             return input.replace(/[0-9]/g, digit => arabicToKhmerMap[digit]);
         }
-
 
         function getGrade(average) {
             let grade = '';
@@ -276,11 +274,6 @@
             return arr.map((x) => sorted.indexOf(x) + 1);
         }
         $('#btn_print').click(function() {
-            $('#btn_print').html('Priting')
-            setTimeout(() => {
-                $('#btn_print').html('Print')
-            }, 2000);
-
             printDiv({
                 importCSS: true,
                 importStyle: true,
@@ -288,21 +281,21 @@
             })
         })
         $('#btn_show_report').click(function() {
-
-            var class_id = $('#select_class').val()
-            var month_id = $('#select_month').val()
             var total_student = 0
-           var total_student_girl =0
+            var total_student_girl =0
+            var class_id = $('#select_class').val()
+            // var month_id = $('#select_month').val()
+
             $('#txt_year').html(convertToKhmerNumbers($('#select_academic option:selected').text()))
             $('#txt_grade').html(convertToKhmerNumbers($('#select_class option:selected').text()))
-            $('#txt_month').html($('#select_month option:selected').text())
+            // $('#txt_month').html($('#select_month option:selected').text())
             $.ajax({
                 type: 'post',
-                url: '{{ route('reportuper_cc_per_month') }}',
+                url: '{{ route('reportsecondary_cc_semmester_one') }}',
                 data: {
                     '_token': '{{ csrf_token() }}',
                     'class_id': class_id,
-                    'month_id': month_id
+                    // 'month_id': month_id
                 },
                 beforeSend: function() {
                     $('#btn_show_report').html('កំពុងទាញទិន្ន័យ')
@@ -316,38 +309,10 @@
                     var i = 1
                     var sum_score
                     data.data.forEach(function(student) {
-                        student.khmer = student.khmer == null ? 0 : student.khmer
-                        student.morality = student.morality == null ? 0 : student.morality
-                        student.history = student.history == null ? 0 : student.history
-                        student.geography = student.geography == null ? 0 : student.geography
-                        student.math = student.math == null ? 0 : student.math
-                        student.geography = student.geography == null ? 0 : student.geography
-                        student.math = student.math == null ? 0 : student.math
-                        student.physical = student.physical == null ? 0 : student.physical
-                        student.chemistry = student.chemistry == null ? 0 : student.chemistry
-                        student.biology = student.biology == null ? 0 : student.biology
-                        student.earth_science = student.earth_science == null ? 0 : student
-                            .earth_science
-                        student.english = student.english == null ? 0 : student
-                            .english
-                        // student.english = student.english == null ? 0 : student.english
-                        if (student.computer == "0.0.1") {
-                            student.computer = 0
-                        } else {
-                            student.computer = student.computer
-                        }
-                        if (student.pe == "0.0.1") {
-                            student.pe = 0
-                        } else {
-                            student.pe = student.pe
-                        }
 
-                        student.totalScore = student.khmer + student.morality + student.history +
-                            student.geography + student.math + student.physical + student
-                            .chemistry + student.biology +
-                            student.earth_science + student.english + parseFloat(student.pe) +
-                            parseFloat(student.computer)
 
+                        student.totalScore =  ((student.avg_month / 3)+(student.avg_score_semsterone)) / 2
+                        console.log(student.totalScore)
                     })
                     let sortedStudents = data.data.sort((a, b) => b.totalScore - a
                         .totalScore);
@@ -378,12 +343,8 @@
                         } else {
                             color_check = "black"
                         }
-                        if(student.sex == "ស")
-                        {
-                            total_student_girl=total_student_girl+1;
-
-                        }
                         // var total_avg =1;
+                        // var total_avg_month_semester1 =student.totalScore / student.avg_m
                         var total_avg = parseFloat(student.totalScore) / parseFloat(student.avg_m)
                         var rank_print
                         if(total_avg == 0 )
@@ -392,24 +353,31 @@
                         }else{
                             rank_print =student.rank
                         }
+                        if(student.sex == "ស")
+                        {
+                            total_student_girl=total_student_girl+1;
+                        }
                         output_data +=
-                            "<tr style='text-align:center;'><td style='font-size:12px'>" + i++ +
+                            "<tr style='text-align:center;'><td style='font-size:14px'>" + i++ +
                             "</td>" +
-                            "<td style='font-size:12px;text-align:left;'>" + student
+                            "<td style='font-size:14px;text-align:left;'>" + student
                             .kh_name +
                             "</td>" +
-                            "<td style='font-size:12px'>" + student
+                            "<td style='font-size:14px'>" + student
                             .sex +
                             "</td>" +
-                            "<td style='font-size:12px'>" + student.totalScore +
+                            "<td style='font-size:14px'>" + (student.avg_month / 3).toFixed(2)+
                             "</td>" +
-                            "<td style='font-size:12px'>" +
-                            total_avg.toFixed(2) +
+                            "<td style='font-size:14px'>" +
+                            student.avg_score_semsterone.toFixed(2) +
                             "</td>" +
-                            "<td style='font-size:12px;color:" + color_check + "'>" + student.rank +
+                            "<td style='font-size:14px'>" + student.totalScore.toFixed(2) +
                             "</td>" +
-                            "<td style='font-size:12px'>"+getGrade(total_avg.toFixed(2))+"</td>" +
-                            "<td style='font-size:12px'></td><tr/>"
+                            "<td style='font-size:14px;color:" + color_check + "'>" + student.rank +
+                            "<td style='font-size:14px'>"+getGrade(student.totalScore.toFixed(2) )+"</td>"+
+                            "<td style='font-size:14px'></td>"+
+
+                            "<tr/>"
 
                     })
                     for(i;i<=35;i)
@@ -422,6 +390,7 @@
                             "<td style='font-size:12px'> </td>" +
                             "<td style='font-size:12px'></td>" +
                             "<td style='font-size:12px;'></td>" +
+                            "<td style='font-size:12px'></td>" +
                             "<td style='font-size:12px'></td>" +
                             "<td style='font-size:12px'></td><tr/>"
                     }

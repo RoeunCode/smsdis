@@ -18,7 +18,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header bg-blue bg-inverse">
-                    <p style="text-align: left">លទ្ធផលប្រចាំខែសម្រាប់ថ្នាក់​វិទ្យាល័យ</p>
+                    <p style="text-align: left">លទ្ធផលប្រចាំខែសម្រាប់ថ្នាក់​បឋម</p>
                 </div>
                 <div class="card-block">
                     <div class="row">
@@ -63,43 +63,46 @@
                         <div id="show_report">
 
 
-                            <div style="margin-top: 30px">
+                            <div style="margin-top: 0px">
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <div style="text-align: left;">
-                                            <br />
-                                            <img src="http://localhost:8000/theme/pic/logo.png" alt=""
-                                                style="width: 60px;height: 70px;float: left;">
-                                            <p class="m-l" style="padding-top: 10px;">សាលាចំណេះទូទៅអរន្តជាតិ​ ឌូវី
-                                                <br /><span class="m-a">ទីតាំងរំចេក៤ ខេត្តបាត់ដំបង</span>
-                                            </p>
 
-                                        </div>
-                                        <div style="text-align: right;margin-top: -120px">
-                                            {{-- <p style="padding-right: 15px">ព្រះរាជាណាចក្រកម្ពុជា
-                                            </p>
-                                            <p style="margin-top: -5px;">
-                                             ជាតិ សាសនា
-                                                    ព្រះមហាក្សត្រ</span>
-                                            </p>
-                                            <p style="font-family:'tacteing'">
-                                                3
-                                            </p> --}}
+                                        <div style="text-align: center;margin-top: 0px">
+
                                             <img src="{{ asset('fonts/mOUcogV.jpg') }}" alt=""
-                                                style="width: 250px;height: 120px;">
+                                                style="width: 250px;height: 120px;margin-left: 50px">
                                         </div>
                                     </div>
 
+                                    <div class="col-lg-12" style="margin-top: -50px">
+                                        <div style="text-align: left;">
+
+                                            <img src="http://localhost:8000/theme/pic/logo.png" alt=""
+                                                style="width: 60px;height: 70px;margin-left: 90px;">
+                                            <p class="m-l moul-regular " style="padding-top: 5px;margin-top:10px;font-size: 14px">សាលាចំណេះទូទៅអរន្តជាតិ​ ឌូវី
+                                            </p>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12" style="">
+                                        <div style="text-align: right;">
+
+                                            <p class="m-l moul-regular" style="margin-right: 70px;font-size: 14px"> <span id="txt_grade"></span>
+                                            </p>
+
+                                        </div>
+                                    </div>
 
                                 </div>
+
                                 <div class="m-t">
-                                    <p style="text-align: center">ចំណាត់ថ្នាក់ប្រចាំ ខែ <span id="txt_month"></span> <br />
-                                        <span id="txt_grade"></span>
-                                         <span id="txt_year"></span>
+                                    <p class="moul-regular" style="text-align: center;font-size: 14px">ចំណាត់ថ្នាក់ប្រចាំ ខែ <span id="txt_month"></span>
+
+                                        <span id="txt_year"></span>
                                     </p>
 
                                 </div>
-                                <table class="table table-bordered table-condensed " id="tbl_result">
+                                <table class="table table-bordered table-condensed m-t " id="tbl_result">
                                     <thead style=" color: black;
                                     font-size: 12px;background-color: white">
                                        <tr>
@@ -108,7 +111,7 @@
                                         </th>
 
                                         <th style="text-align: center;width: 30%">
-                                            ឈ្មោះសិស្ស
+                                            នាមត្រកូល និងនាមខ្លួន
                                         </th>
                                         <th style="text-align: center;width: 5%">
                                             ភេទ
@@ -138,19 +141,20 @@
 
 
                             </div>
-                            <div class="buttom_print_footer">
+                            <div class="buttom_print_footer" style="margin-top: -20">
                                 <div class="m-t">
-                                    <p style="margin-left:50px;font-size: 12px;"> សិស្សសរុបមាន : <span id="total_student"></span></p>
+                                    <p style="margin-left:50px;font-size: 12px;"> សិស្សសរុបមាន : <span id="total_student"></span>&nbsp;នាក់</p>
                                     <p style="margin-top: -5px;margin-left:50px;font-size: 12px;"> សិស្សស្រីមាន : <span
-                                            id="total_student_girl"></span></p>
+                                            id="total_student_girl"></span>&nbsp;នាក់</p>
                                 </div>
                                 <div style="text-align: right;">
-                                    <p style="font-size: 12px;">ឌូវី , ថ្ងៃទី ៣១ ខែ កក្កដា ឆ្នាំ២០២៤</p>
-                                    <p style="padding-right: 50px;margin-top: -12px;font-size: 12px;">គ្រូបន្ទុកថ្នាក់</p>
+                                    <p style="font-size: 12px;">បាត់ដំបង , ថ្ងៃ...........ទី ..........ខែ .........ឆ្នាំ............</p>
+                                    <p style="padding-right: 100px;margin-top: -12px;font-size: 12px;">គ្រូបន្ទុកថ្នាក់</p>
                                 </div>
-                                <div style="text-align: left;    margin-left: 40px;">
-                                    <p style="font-size: 12px;">បានឃើញ និងងកភាព</p>
-                                    <p style="padding-left: 25px;margin-top: -15px;font-size: 12px;">នាយកសាលា</p>
+                                <div style="text-align: left;  margin-left: 40px;">
+                                    <p style="font-size: 12px;margin-top: -50;">បាត់ដំបង , ថ្ងៃ...........ទី ..........ខែ .........ឆ្នាំ............</p>
+                                    <p style="padding-left: 80px;font-size: 12px;">បានឃើញ និងងកភាព</p>
+                                    <p style="padding-left: 100px;margin-top: -15px;font-size: 12px;">នាយកសាលា</p>
                                 </div>
                             </div>
                         </div>
@@ -175,7 +179,7 @@
 
                 {
                     type: "post",
-                    url: '{{ route('getclassuppercc') }}',
+                    url: '{{ route('getclass') }}',
                     data: {
                         id_ac: $('#select_academic').val(),
                         '_token': '{{ csrf_token() }}',
@@ -298,7 +302,7 @@
             $('#txt_month').html($('#select_month option:selected').text())
             $.ajax({
                 type: 'post',
-                url: '{{ route('reportuper_cc_per_month') }}',
+                url: '{{ route('result_primary_cc_per_month') }}',
                 data: {
                     '_token': '{{ csrf_token() }}',
                     'class_id': class_id,
@@ -316,37 +320,12 @@
                     var i = 1
                     var sum_score
                     data.data.forEach(function(student) {
-                        student.khmer = student.khmer == null ? 0 : student.khmer
-                        student.morality = student.morality == null ? 0 : student.morality
-                        student.history = student.history == null ? 0 : student.history
-                        student.geography = student.geography == null ? 0 : student.geography
-                        student.math = student.math == null ? 0 : student.math
-                        student.geography = student.geography == null ? 0 : student.geography
-                        student.math = student.math == null ? 0 : student.math
-                        student.physical = student.physical == null ? 0 : student.physical
-                        student.chemistry = student.chemistry == null ? 0 : student.chemistry
-                        student.biology = student.biology == null ? 0 : student.biology
-                        student.earth_science = student.earth_science == null ? 0 : student
-                            .earth_science
-                        student.english = student.english == null ? 0 : student
-                            .english
-                        // student.english = student.english == null ? 0 : student.english
-                        if (student.computer == "0.0.1") {
-                            student.computer = 0
-                        } else {
-                            student.computer = student.computer
-                        }
-                        if (student.pe == "0.0.1") {
-                            student.pe = 0
-                        } else {
-                            student.pe = student.pe
-                        }
 
-                        student.totalScore = student.khmer + student.morality + student.history +
-                            student.geography + student.math + student.physical + student
-                            .chemistry + student.biology +
-                            student.earth_science + student.english + parseFloat(student.pe) +
-                            parseFloat(student.computer)
+
+                        student.totalScore = student.listent + student.speaking + student.writing+student.reading
+                                            +student.essay+student.grammar+student.math+student.chemistry+student.physical
+                                            +student.history+student.morality+student.art+student.word+student.pe+student.homework
+                                            +student.healthy
 
                     })
                     let sortedStudents = data.data.sort((a, b) => b.totalScore - a
@@ -369,7 +348,7 @@
                         rank++;
                     });
                     var color_check = "black"
-
+                    var gender=""
                     data.data.forEach(function(student) {
 
                         if (student.rank == 1 || student.rank == 2 || student.rank == 3) {
@@ -383,8 +362,13 @@
                             total_student_girl=total_student_girl+1;
 
                         }
+                        if(student.sex == "ស"){
+                            gender="ស្រី"
+                        }else{
+                            gender ="ប្រុស"
+                        }
                         // var total_avg =1;
-                        var total_avg = parseFloat(student.totalScore) / parseFloat(student.avg_m)
+                        var total_avg = parseFloat(student.totalScore) / 14
                         var rank_print
                         if(total_avg == 0 )
                         {
@@ -398,8 +382,7 @@
                             "<td style='font-size:12px;text-align:left;'>" + student
                             .kh_name +
                             "</td>" +
-                            "<td style='font-size:12px'>" + student
-                            .sex +
+                            "<td style='font-size:12px'>" + gender +
                             "</td>" +
                             "<td style='font-size:12px'>" + student.totalScore +
                             "</td>" +

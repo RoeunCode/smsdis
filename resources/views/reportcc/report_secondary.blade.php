@@ -18,7 +18,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header bg-blue bg-inverse">
-                    <p style="text-align: left">លទ្ធផលប្រចាំខែសម្រាប់ថ្នាក់​វិទ្យាល័យ</p>
+                    <p style="text-align: left">លទ្ធផលប្រចាំខែសម្រាប់ថ្នាក់អនុ​វិទ្យាល័យ</p>
                 </div>
                 <div class="card-block">
                     <div class="row">
@@ -175,7 +175,7 @@
 
                 {
                     type: "post",
-                    url: '{{ route('getclassuppercc') }}',
+                    url: '{{ route('getclasssecondary') }}',
                     data: {
                         id_ac: $('#select_academic').val(),
                         '_token': '{{ csrf_token() }}',
@@ -264,8 +264,10 @@
             else if (average >= 25.00 || average >= 32.49) {
                 grade = 'មធ្យម';
             }
-            else {
+            else if(average >=19.64 || average >= 24.99){
                 grade = 'ធ្លាក់';
+            }else{
+                grade = 'គ្មានចំ.ថ្នាក់';
             }
 
             return grade;
@@ -298,7 +300,7 @@
             $('#txt_month').html($('#select_month option:selected').text())
             $.ajax({
                 type: 'post',
-                url: '{{ route('reportuper_cc_per_month') }}',
+                url: '{{ route('reportsecondary_cc_per_month') }}',
                 data: {
                     '_token': '{{ csrf_token() }}',
                     'class_id': class_id,
@@ -316,21 +318,23 @@
                     var i = 1
                     var sum_score
                     data.data.forEach(function(student) {
-                        student.khmer = student.khmer == null ? 0 : student.khmer
+
+                        student.writing = student.writing == null ? 0 : student.writing
+                        student.essay = student.essay  == null ? 0 : student.essay
+                        student.khmer  = student.khmer  == null ? 0 : student.khmer
                         student.morality = student.morality == null ? 0 : student.morality
                         student.history = student.history == null ? 0 : student.history
-                        student.geography = student.geography == null ? 0 : student.geography
-                        student.math = student.math == null ? 0 : student.math
                         student.geography = student.geography == null ? 0 : student.geography
                         student.math = student.math == null ? 0 : student.math
                         student.physical = student.physical == null ? 0 : student.physical
                         student.chemistry = student.chemistry == null ? 0 : student.chemistry
                         student.biology = student.biology == null ? 0 : student.biology
-                        student.earth_science = student.earth_science == null ? 0 : student
-                            .earth_science
-                        student.english = student.english == null ? 0 : student
-                            .english
-                        // student.english = student.english == null ? 0 : student.english
+                        student.geology = student.geology == null ? 0 : student.geology
+                        student.house_education = student.house_education == null ? 0 : student.house_education
+                        student.english = student.english == null ? 0 : student.english
+                        student.computer = student.computer == null ? 0 : student.computer
+                        student.pe = student.pe == null ? 0 : student.pe
+
                         if (student.computer == "0.0.1") {
                             student.computer = 0
                         } else {
@@ -341,12 +345,12 @@
                         } else {
                             student.pe = student.pe
                         }
+                        student.totalScore = student.writing + student.essay + student.khmer +student.morality
+                                            +student.history+student.geography+student.math+student.physical
+                                            +student.chemistry + student.biology + student.geology + student.house_education
+                                            +student.english + parseFloat(student.computer )+ parseFloat(student.pe)
 
-                        student.totalScore = student.khmer + student.morality + student.history +
-                            student.geography + student.math + student.physical + student
-                            .chemistry + student.biology +
-                            student.earth_science + student.english + parseFloat(student.pe) +
-                            parseFloat(student.computer)
+                     //  console.log(student.totalScore)
 
                     })
                     let sortedStudents = data.data.sort((a, b) => b.totalScore - a

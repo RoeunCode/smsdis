@@ -17,8 +17,13 @@ class AttendanceController extends Controller
      */
     public function index()
     {
-        $cur = DB::table('curriculum')->get();
-        return view('attendance.attendance')->with(['cur'=>$cur]);
+        // $cur = DB::table('curriculum')->get();
+        // return view('attendance.attendance')->with(['cur'=>$cur]);
+
+        $academic = DB::table('academic_year')->orderby('name','DESC')->get();
+        $month = DB::table('month')->get();
+        return view('attendance.attendance')->with('academic',$academic)
+        ->with('month',$month);
     }
 
     public function ajcl(Request $r)
@@ -50,7 +55,25 @@ class AttendanceController extends Controller
     {
         //
     }
+    public function showclassattendance(Request $request)
+    {
+        $class = DB::table('class_view')
 
+            ->where('ac_id',$request->id_ac)
+            ->where('cur_id',$request->cur_id)
+            ->where('deleted',0)
+
+            // ->whereRaw('CAST(`grade` AS SIGNED) BETWEEN ? AND ?', [1, 6])
+            ->orderby('academic_year','DESC')
+            ->get();
+
+        return response()->json(
+            [
+                "class"=>$class,
+
+            ]
+        ) ;
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -60,6 +83,77 @@ class AttendanceController extends Controller
     public function store(Request $request)
     {
         //
+
+        $check_score = DB::table('tbl_attendance')
+        ->where('class_id',$request->class_id)
+        ->where('month_id',$request->month_id)
+        ->count();
+
+
+            if($check_score == 0 )
+            {
+
+
+
+                $student_class = DB::table('v_student_class')
+                ->where('class_id',$request->class_id)
+                ->orderby('sort')
+                ->get();
+                return response()->json(
+                [
+                    "student_class"=>$student_class,
+                    "status"=>1
+                ]
+            ) ;
+            }else{
+
+                $seachStudent = DB::table('tbl_attendance')
+                                ->join('student','tbl_attendance.student_id' ,'=','student.id')
+                                ->where('class_id',$request->class_id)
+                                ->where('month_id',$request->month_id)
+                ->select(DB::raw('tbl_attendance.*,student.kh_name'))
+                ->get();
+
+                $seachStudent2 = DB::table('student_class')
+                ->join('student','student_class.student_id' ,'=','student.id')
+                ->join('class','student_class.class_id','=','class.id')
+                ->where('class.id',$request->class_id)
+                // ->where('score_primary_cc.month_id',$request->month_id)
+                ->whereRaw('student_class.student_id NOT IN (SELECT student_id from tbl_attendance where student_class.class_id='.$request->class_id.' and
+                tbl_attendance.month_id = '.$request->month_id.' )')
+                ->select(DB::raw(''.$request->class_id.' as class_id,student.id as student_id ,'.$request->month_id.' as month_id, 0 as absen , 0 as permission , null as note'))
+                ->get()->toArray();
+
+                if(count($seachStudent2) > 0 )
+                {
+                $item= array();
+                foreach($seachStudent as $obj)
+                {
+                    $array1[] = (array) $obj;
+                }
+                    // dd($array1);
+                    $new_data = array_merge($array1,$seachStudent2);
+                    //   dd($new_data);
+                    return response()->json(
+                        [
+                            "student_class"=>$new_data,
+                            "status"=>2
+                        ]
+                    ) ;
+            }else{
+
+
+
+                return response()->json(
+                    [
+                        "student_class"=>$seachStudent,
+                        "status"=>3
+                    ]
+                ) ;
+
+
+            }
+        }
     }
 
     /**

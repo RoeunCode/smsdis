@@ -24,9 +24,9 @@ class ClassController extends Controller
         $class = DB::table('classroom')->where('deleted','=',0)->where('campus_id',Auth::user()->camp_id)->get();
         $year = DB::table('academic_year')->where('deleted','=',0)->get();
         if(Auth::user()->role == 1){
-            $data = DB::table('v_class')->where(['deleted'=>0,'cur_id'=>Auth::user()->cur_id,'campus_id'=>Auth::user()->camp_id])->get();
+            $data = DB::table('v_class')->where(['deleted'=>0,'cur_id'=>Auth::user()->cur_id,'campus_id'=>Auth::user()->camp_id])->orderby('id','DESC')->get();
         }else{
-            $data = DB::table('v_class')->where(['deleted'=>0,'cur_id'=>Auth::user()->cur_id,'campus_id'=>Auth::user()->camp_id])->get();
+            $data = DB::table('v_class')->where(['deleted'=>0,'cur_id'=>Auth::user()->cur_id,'campus_id'=>Auth::user()->camp_id])->orderby('id','DESC')->get();
         }
         return view('class.class')->with(['data'=>$data,'gr'=>$grade,'cmp'=>$cmp,'cur'=>$cur,'cl'=>$class,'yr'=>$year]);
     }

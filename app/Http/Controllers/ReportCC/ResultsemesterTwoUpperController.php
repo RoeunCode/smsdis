@@ -34,11 +34,29 @@ class ResultsemesterTwoUpperController extends Controller
     }
     public function result_report_uppersemestertwo(Request $request)
     {
+        if($request->grade == 12)
+        {
+            $data_month_4 = DB::select(DB::raw("SELECT *,student.kh_name,student.sex FROM score_upper_cc INNER JOIN student ON score_upper_cc.student_id = student.id WHERE class_id=".$request->class_id."  and month_id=3"));
+            $data_month_5 = DB::select(DB::raw("SELECT *,student.kh_name,student.sex FROM score_upper_cc INNER JOIN student ON score_upper_cc.student_id = student.id WHERE class_id=".$request->class_id."  and month_id=4"));
+            $data_month_6 = DB::select(DB::raw("SELECT *,student.kh_name,student.sex FROM score_upper_cc INNER JOIN student ON score_upper_cc.student_id = student.id WHERE class_id=".$request->class_id."  and month_id=5"));
+            $data_month_7 = DB::select(DB::raw("SELECT *,student.kh_name,student.sex FROM score_upper_cc INNER JOIN student ON score_upper_cc.student_id = student.id WHERE class_id=".$request->class_id."  and month_id=6"));
 
-        $data_month_4 = DB::select(DB::raw("SELECT *,student.kh_name,student.sex FROM score_upper_cc INNER JOIN student ON score_upper_cc.student_id = student.id WHERE class_id=".$request->class_id."  and month_id=4"));
-        $data_month_5 = DB::select(DB::raw("SELECT *,student.kh_name,student.sex FROM score_upper_cc INNER JOIN student ON score_upper_cc.student_id = student.id WHERE class_id=".$request->class_id."  and month_id=5"));
-        $data_month_6 = DB::select(DB::raw("SELECT *,student.kh_name,student.sex FROM score_upper_cc INNER JOIN student ON score_upper_cc.student_id = student.id WHERE class_id=".$request->class_id."  and month_id=6"));
-        $data_month_7 = DB::select(DB::raw("SELECT *,student.kh_name,student.sex FROM score_upper_cc INNER JOIN student ON score_upper_cc.student_id = student.id WHERE class_id=".$request->class_id."  and month_id=7"));
+
+        }else{
+
+            // old
+            // $data_month_4 = DB::select(DB::raw("SELECT *,student.kh_name,student.sex FROM score_upper_cc INNER JOIN student ON score_upper_cc.student_id = student.id WHERE class_id=".$request->class_id."  and month_id=4"));
+            // $data_month_5 = DB::select(DB::raw("SELECT *,student.kh_name,student.sex FROM score_upper_cc INNER JOIN student ON score_upper_cc.student_id = student.id WHERE class_id=".$request->class_id."  and month_id=5"));
+            // $data_month_6 = DB::select(DB::raw("SELECT *,student.kh_name,student.sex FROM score_upper_cc INNER JOIN student ON score_upper_cc.student_id = student.id WHERE class_id=".$request->class_id."  and month_id=6"));
+            // $data_month_7 = DB::select(DB::raw("SELECT *,student.kh_name,student.sex FROM score_upper_cc INNER JOIN student ON score_upper_cc.student_id = student.id WHERE class_id=".$request->class_id."  and month_id=7"));
+
+            $data_month_4 = DB::select(DB::raw("SELECT *,student.kh_name,student.sex FROM score_upper_cc INNER JOIN student ON score_upper_cc.student_id = student.id WHERE class_id=".$request->class_id."  and month_id=5"));
+            $data_month_5 = DB::select(DB::raw("SELECT *,student.kh_name,student.sex FROM score_upper_cc INNER JOIN student ON score_upper_cc.student_id = student.id WHERE class_id=".$request->class_id."  and month_id=6"));
+            $data_month_6 = DB::select(DB::raw("SELECT *,student.kh_name,student.sex FROM score_upper_cc INNER JOIN student ON score_upper_cc.student_id = student.id WHERE class_id=".$request->class_id."  and month_id=7"));
+            $data_month_7 = DB::select(DB::raw("SELECT *,student.kh_name,student.sex FROM score_upper_cc INNER JOIN student ON score_upper_cc.student_id = student.id WHERE class_id=".$request->class_id."  and month_id=8"));
+
+
+        }
 
         $store_score_4=[];
         $store_score_5=[];

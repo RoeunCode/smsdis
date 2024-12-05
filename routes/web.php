@@ -23,6 +23,26 @@ Route::post('result_report_uppersemestertwo','ReportCC\ResultsemesterTwoUpperCon
 Route::resource('reportyearupper', 'ReportCC\ResultYearUpperController');
 Route::post('resultyearupper','ReportCC\ResultYearUpperController@resultyearupper')->name('resultyearupper');
 
+// Secondary CC Report
+Route::resource('reportsecondarycc', 'ReportCC\ResultSecondaryController');
+Route::post('reportsecondary_cc_per_month', 'ReportCC\ResultSecondaryController@reportsecondary_cc_per_month')->name('reportsecondary_cc_per_month');
+
+Route::get('reportsecondary_cc_semmester', 'ReportCC\ResultSecondaryController@reportsecondary_cc_semmester')->name('reportsecondary_cc_semmester');
+Route::post('reportsecondary_cc_semmester_one', 'ReportCC\ResultSecondaryController@reportsecondary_cc_semmester_one')->name('reportsecondary_cc_semmester_one');
+
+Route::get('secondary_cc_semmester_two', 'ReportCC\ResultSecondaryController@secondary_cc_semmester_two')->name('secondary_cc_semmester_two');
+Route::post('reportsecondary_cc_semmester_two', 'ReportCC\ResultSecondaryController@reportsecondary_cc_semmester_two')->name('reportsecondary_cc_semmester_two');
+
+Route::get('report_year_secondary', 'ReportCC\ResultSecondaryController@report_year_secondary')->name('report_year_secondary');
+Route::post('result_year_secondary', 'ReportCC\ResultSecondaryController@result_year_secondary')->name('result_year_secondary');
+
+
+// Primary CC Report
+
+Route::resource('reportprimarycc', 'ReportCC\ReportPrimaryController');
+Route::post('result_primary_cc_per_month', 'ReportCC\ReportPrimaryController@result_primary_cc_per_month')->name('result_primary_cc_per_month');
+
+
 
 
 Route::GET('/placement',function (){
@@ -152,13 +172,15 @@ Route::middleware(['auth','isactive','setlanguage'])->group(function () {
     });
     //Attendance
     Route::resource('attendance','AttendanceController');
-    Route::post('takeatt','AttendanceController@take')->name('takeatt');
-    Route::post('addatt','AttendanceController@add')->name('addatt');
-    Route::get('viewatt','AttendanceController@editatt')->name('viewatt');
-    Route::post('ajatt','AttendanceController@ajatt')->name('ajatt');
-    Route::post('ajattp','AttendanceController@ajattp')->name('ajattp');
-    Route::post('upatt','AttendanceController@upatt')->name('upatt');
-    Route::post('ajcl','AttendanceController@ajcl')->name('ajcl');
+    Route::post('showclassattendance','AttendanceController@showclassattendance')->name('showclassattendance');
+
+    // Route::post('takeatt','AttendanceController@take')->name('takeatt');
+    // Route::post('addatt','AttendanceController@add')->name('addatt');
+    // Route::get('viewatt','AttendanceController@editatt')->name('viewatt');
+    // Route::post('ajatt','AttendanceController@ajatt')->name('ajatt');
+    // Route::post('ajattp','AttendanceController@ajattp')->name('ajattp');
+    // Route::post('upatt','AttendanceController@upatt')->name('upatt');
+    // Route::post('ajcl','AttendanceController@ajcl')->name('ajcl');
 
 
 //EndAttendance
