@@ -321,8 +321,6 @@
                         student.history = student.history == null ? 0 : student.history
                         student.geography = student.geography == null ? 0 : student.geography
                         student.math = student.math == null ? 0 : student.math
-                        student.geography = student.geography == null ? 0 : student.geography
-                        student.math = student.math == null ? 0 : student.math
                         student.physical = student.physical == null ? 0 : student.physical
                         student.chemistry = student.chemistry == null ? 0 : student.chemistry
                         student.biology = student.biology == null ? 0 : student.biology
@@ -330,7 +328,6 @@
                             .earth_science
                         student.english = student.english == null ? 0 : student
                             .english
-                        // student.english = student.english == null ? 0 : student.english
                         if (student.computer == "0.0.1") {
                             student.computer = 0
                         } else {
@@ -342,11 +339,16 @@
                             student.pe = student.pe
                         }
 
-                        student.totalScore = student.khmer + student.morality + student.history +
-                            student.geography + student.math + student.physical + student
-                            .chemistry + student.biology +
-                            student.earth_science + student.english + parseFloat(student.pe) +
-                            parseFloat(student.computer)
+                        // student.totalScore = student.total_score
+
+                        // student.totalScore = student.khmer + student.morality + student.history +
+                        //     student.geography + student.math + student.physical + student
+                        //     .chemistry + student.biology + student.earth_science + student.english + parseFloat(student.pe) +
+                        //     parseFloat(student.computer)
+
+                        student.totalScore = student.khmer + student.morality + student.history+
+                                            student.geography+student.math+student.physical+student.chemistry+student.biology
+                                            +student.earth_science+student.english + parseFloat(student.pe) + parseFloat(student.computer)
 
                     })
                     let sortedStudents = data.data.sort((a, b) => b.totalScore - a

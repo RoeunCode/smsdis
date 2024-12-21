@@ -229,11 +229,11 @@
                             </ul>
                         </li>
                         <li class="nav-item nav-item-has-subnav">
-                            <a href="javascript:void(0)"><i class="fas fa-university"></i>ឆ្នាំសិក្សារ</a>
+                            <a href="javascript:void(0)"><i class="fas fa-university"></i>ឆ្នាំសិក្សា</a>
                             <ul class="nav nav-subnav">
                                 <li>
                                     {{--<a href="{{route('student.index')}}">@lang('layout.m1_s1')</a>--}}{{-- Sela URL--}}
-                                    <a href="{{route('academic_year.index')}}">បង្កើតឆ្នាំសិក្សារ</a>
+                                    <a href="{{route('academic_year.index')}}">បង្កើតឆ្នាំសិក្សា</a>
                                 </li>
 
 
@@ -257,10 +257,10 @@
                                     {{--<a href="{{route('student.index')}}">@lang('layout.m1_s1')</a>--}}{{-- Sela URL--}}
                                     <a href="{{route('user.index')}}">Create User</a>
                                 </li>
-                                <li>
-                                    {{--<a href="{{route('student.index')}}">@lang('layout.m1_s1')</a>--}}{{-- Sela URL--}}
+                                {{-- <li>
+
                                     <a href="{{route('campus.index')}}">Campus</a>
-                                </li>
+                                </li> --}}
                                 <li>
                                     <a class="dropdown-item btn-link" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();

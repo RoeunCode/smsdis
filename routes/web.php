@@ -14,33 +14,44 @@ use Illuminate\Support\Facades\Route;
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
-Route::resource('reportuppercc', 'ReportCC\ReportUpperController');
-Route::post('reportuper_cc_per_month','ReportCC\ReportUpperController@reportuper_cc_per_month')->name('reportuper_cc_per_month');
-Route::resource('uppersemesterone', 'ReportCC\ResultsemesterOneUpperController');
-Route::post('result_report','ReportCC\ResultsemesterOneUpperController@result_report')->name('result_report');
-Route::resource('uppersemestertwo', 'ReportCC\ResultsemesterTwoUpperController');
-Route::post('result_report_uppersemestertwo','ReportCC\ResultsemesterTwoUpperController@result_report_uppersemestertwo')->name('result_report_uppersemestertwo');
-Route::resource('reportyearupper', 'ReportCC\ResultYearUpperController');
-Route::post('resultyearupper','ReportCC\ResultYearUpperController@resultyearupper')->name('resultyearupper');
-
-// Secondary CC Report
-Route::resource('reportsecondarycc', 'ReportCC\ResultSecondaryController');
-Route::post('reportsecondary_cc_per_month', 'ReportCC\ResultSecondaryController@reportsecondary_cc_per_month')->name('reportsecondary_cc_per_month');
-
-Route::get('reportsecondary_cc_semmester', 'ReportCC\ResultSecondaryController@reportsecondary_cc_semmester')->name('reportsecondary_cc_semmester');
-Route::post('reportsecondary_cc_semmester_one', 'ReportCC\ResultSecondaryController@reportsecondary_cc_semmester_one')->name('reportsecondary_cc_semmester_one');
-
-Route::get('secondary_cc_semmester_two', 'ReportCC\ResultSecondaryController@secondary_cc_semmester_two')->name('secondary_cc_semmester_two');
-Route::post('reportsecondary_cc_semmester_two', 'ReportCC\ResultSecondaryController@reportsecondary_cc_semmester_two')->name('reportsecondary_cc_semmester_two');
-
-Route::get('report_year_secondary', 'ReportCC\ResultSecondaryController@report_year_secondary')->name('report_year_secondary');
-Route::post('result_year_secondary', 'ReportCC\ResultSecondaryController@result_year_secondary')->name('result_year_secondary');
+Route::get('clear', function (){
+    Artisan::call('route:clear');
+    Artisan::call('cache:clear');
+    Artisan::call('optimize');
+    Artisan::call('view:clear');
+    Artisan::call('config:clear');
+    Artisan::call('clear-compiled');
+  	return "Clear Complete";
+});
 
 
-// Primary CC Report
+// Route::resource('reportuppercc', 'ReportCC\ReportUpperController');
+// Route::post('reportuper_cc_per_month','ReportCC\ReportUpperController@reportuper_cc_per_month')->name('reportuper_cc_per_month');
+// Route::resource('uppersemesterone', 'ReportCC\ResultsemesterOneUpperController');
+// Route::post('result_report','ReportCC\ResultsemesterOneUpperController@result_report')->name('result_report');
+// Route::resource('uppersemestertwo', 'ReportCC\ResultsemesterTwoUpperController');
+// Route::post('result_report_uppersemestertwo','ReportCC\ResultsemesterTwoUpperController@result_report_uppersemestertwo')->name('result_report_uppersemestertwo');
+// Route::resource('reportyearupper', 'ReportCC\ResultYearUpperController');
+// Route::post('resultyearupper','ReportCC\ResultYearUpperController@resultyearupper')->name('resultyearupper');
 
-Route::resource('reportprimarycc', 'ReportCC\ReportPrimaryController');
-Route::post('result_primary_cc_per_month', 'ReportCC\ReportPrimaryController@result_primary_cc_per_month')->name('result_primary_cc_per_month');
+// // Secondary CC Report
+// Route::resource('reportsecondarycc', 'ReportCC\ResultSecondaryController');
+// Route::post('reportsecondary_cc_per_month', 'ReportCC\ResultSecondaryController@reportsecondary_cc_per_month')->name('reportsecondary_cc_per_month');
+
+// Route::get('reportsecondary_cc_semmester', 'ReportCC\ResultSecondaryController@reportsecondary_cc_semmester')->name('reportsecondary_cc_semmester');
+// Route::post('reportsecondary_cc_semmester_one', 'ReportCC\ResultSecondaryController@reportsecondary_cc_semmester_one')->name('reportsecondary_cc_semmester_one');
+
+// Route::get('secondary_cc_semmester_two', 'ReportCC\ResultSecondaryController@secondary_cc_semmester_two')->name('secondary_cc_semmester_two');
+// Route::post('reportsecondary_cc_semmester_two', 'ReportCC\ResultSecondaryController@reportsecondary_cc_semmester_two')->name('reportsecondary_cc_semmester_two');
+
+// Route::get('report_year_secondary', 'ReportCC\ResultSecondaryController@report_year_secondary')->name('report_year_secondary');
+// Route::post('result_year_secondary', 'ReportCC\ResultSecondaryController@result_year_secondary')->name('result_year_secondary');
+
+
+// // Primary CC Report
+
+// Route::resource('reportprimarycc', 'ReportCC\ReportPrimaryController');
+// Route::post('result_primary_cc_per_month', 'ReportCC\ReportPrimaryController@result_primary_cc_per_month')->name('result_primary_cc_per_month');
 
 
 
@@ -59,6 +70,38 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::middleware(['auth','isactive','setlanguage'])->group(function () {
+
+
+    /// New Route
+    Route::resource('reportuppercc', 'ReportCC\ReportUpperController');
+    Route::post('reportuper_cc_per_month','ReportCC\ReportUpperController@reportuper_cc_per_month')->name('reportuper_cc_per_month');
+    Route::resource('uppersemesterone', 'ReportCC\ResultsemesterOneUpperController');
+    Route::post('result_report','ReportCC\ResultsemesterOneUpperController@result_report')->name('result_report');
+    Route::resource('uppersemestertwo', 'ReportCC\ResultsemesterTwoUpperController');
+    Route::post('result_report_uppersemestertwo','ReportCC\ResultsemesterTwoUpperController@result_report_uppersemestertwo')->name('result_report_uppersemestertwo');
+    Route::resource('reportyearupper', 'ReportCC\ResultYearUpperController');
+    Route::post('resultyearupper','ReportCC\ResultYearUpperController@resultyearupper')->name('resultyearupper');
+
+    // Secondary CC Report
+    Route::resource('reportsecondarycc', 'ReportCC\ResultSecondaryController');
+    Route::post('reportsecondary_cc_per_month', 'ReportCC\ResultSecondaryController@reportsecondary_cc_per_month')->name('reportsecondary_cc_per_month');
+
+    Route::get('reportsecondary_cc_semmester', 'ReportCC\ResultSecondaryController@reportsecondary_cc_semmester')->name('reportsecondary_cc_semmester');
+    Route::post('reportsecondary_cc_semmester_one', 'ReportCC\ResultSecondaryController@reportsecondary_cc_semmester_one')->name('reportsecondary_cc_semmester_one');
+
+    Route::get('secondary_cc_semmester_two', 'ReportCC\ResultSecondaryController@secondary_cc_semmester_two')->name('secondary_cc_semmester_two');
+    Route::post('reportsecondary_cc_semmester_two', 'ReportCC\ResultSecondaryController@reportsecondary_cc_semmester_two')->name('reportsecondary_cc_semmester_two');
+
+    Route::get('report_year_secondary', 'ReportCC\ResultSecondaryController@report_year_secondary')->name('report_year_secondary');
+    Route::post('result_year_secondary', 'ReportCC\ResultSecondaryController@result_year_secondary')->name('result_year_secondary');
+
+
+    // Primary CC Report
+
+    Route::resource('reportprimarycc', 'ReportCC\ReportPrimaryController');
+    Route::post('result_primary_cc_per_month', 'ReportCC\ReportPrimaryController@result_primary_cc_per_month')->name('result_primary_cc_per_month');
+
+
 
     Route::get('noperm',function (){
         return view('noperm');

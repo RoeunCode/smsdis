@@ -41,6 +41,7 @@ class ResultSecondaryController extends Controller
             return response()->json([
                 "status"=>0,
                 "data"=>$data,
+                "attandance"=>0,
                 "message"=>"Succesfully"
             ]);
         } else{
@@ -118,7 +119,9 @@ class ResultSecondaryController extends Controller
                 $computer = $student['computer'];
             }
 
-            $result_12 = ($geology+$essay+$writting+$khmer+$morality+$history+$geography+$math+$physical+$chemistry+$biology+$earth_science+$english+$pe+$computer)/$student['avg_m'];
+            // $result_12 = ($geology+$essay+$writting+$khmer+$morality+$history+$geography+$math+$physical+$chemistry+$biology+$earth_science+$english+$pe+$computer);
+            // dd($result_12);
+            $result_12 = $student['total_avg'];
 
             array_push($store_score_12,[ "id"=>$student['id'], "kh_name" =>$student['kh_name'],
             "avg_month" =>$result_12,"sex"=>$student['sex'],"avg_score_semsterone"=>0]);
@@ -155,7 +158,10 @@ class ResultSecondaryController extends Controller
             }else{
                 $computer = $student['computer'];
             }
-            $result_1 = ($geology+$essay+$writting+$khmer+$morality+$history+$geography+$math+$physical+$chemistry+$biology+$earth_science+$english+$pe+$computer)/$student['avg_m'];
+            // $result_1 = ($geology+$essay+$writting+$khmer+$morality+$history+$geography+$math+$physical+$chemistry+$biology+$earth_science+$english+$pe+$computer)/$student['avg_m'];
+
+            $result_1 = $student['total_avg'];
+
             array_push($store_score_1,[ "id"=>$student['id'], "kh_name" =>$student['kh_name'],
             "avg_month" =>$result_1,"sex"=>$student['sex'],"avg_score_semsterone"=>0]);
 
@@ -192,7 +198,8 @@ class ResultSecondaryController extends Controller
                 $computer = $student['computer'];
             }
 
-            $result_2 = ($geology+$essay+$writting+$khmer+$morality+$history+$geography+$math+$physical+$chemistry+$biology+$earth_science+$english+$pe+$computer)/$student['avg_m'];
+            // $result_2 = ($geology+$essay+$writting+$khmer+$morality+$history+$geography+$math+$physical+$chemistry+$biology+$earth_science+$english+$pe+$computer)/$student['avg_m'];
+            $result_2= $student['total_avg'];
             array_push($store_score_2,[ "id"=>$student['id'], "kh_name" =>$student['kh_name'],
             "avg_month" =>$result_2,"sex"=>$student['sex'],"avg_score_semsterone"=>0]);
 
@@ -228,13 +235,17 @@ class ResultSecondaryController extends Controller
                 $computer = $student['computer'];
             }
 
-            $result_3= ($geology+$essay+$writting+$khmer+$morality+$history+$geography+$math+$physical+$chemistry+$biology+$earth_science+$english+$pe+$computer)/$student['avg_m'];
+            // $result_3= ($geology+$essay+$writting+$khmer+$morality+$history+$geography+$math+$physical+$chemistry+$biology+$earth_science+$english+$pe+$computer)/$student['avg_m'];
+
+            $result_3 = $student['total_avg'];
+
             array_push($store_score_3,[ "id"=>$student['id'], "kh_name" =>$student['kh_name'],
             "avg_month" =>0,"sex"=>$student['sex'],"avg_score_semsterone"=>$result_3]);
 
 
         }
         $merge_arr  = array_merge($store_score_12,$store_score_1,$store_score_2,$store_score_3);
+
         $cv = json_decode(json_encode($merge_arr),true);
         $result = [];
         foreach($cv as $student){
@@ -340,7 +351,8 @@ class ResultSecondaryController extends Controller
                 $computer = $student['computer'];
             }
 
-            $result_12 = ($geology+$essay+$writting+$khmer+$morality+$history+$geography+$math+$physical+$chemistry+$biology+$earth_science+$english+$pe+$computer)/$student['avg_m'];
+            // $result_12 = ($geology+$essay+$writting+$khmer+$morality+$history+$geography+$math+$physical+$chemistry+$biology+$earth_science+$english+$pe+$computer)/$student['avg_m'];
+            $result_12 = $student['total_avg'];
 
             array_push($store_score_12,[ "id"=>$student['id'], "kh_name" =>$student['kh_name'],
             "avg_month" =>$result_12,"sex"=>$student['sex'],"avg_score_semsterone"=>0]);
@@ -377,7 +389,8 @@ class ResultSecondaryController extends Controller
             }else{
                 $computer = $student['computer'];
             }
-            $result_1 = ($geology+$essay+$writting+$khmer+$morality+$history+$geography+$math+$physical+$chemistry+$biology+$earth_science+$english+$pe+$computer)/$student['avg_m'];
+            // $result_1 = ($geology+$essay+$writting+$khmer+$morality+$history+$geography+$math+$physical+$chemistry+$biology+$earth_science+$english+$pe+$computer)/$student['avg_m'];
+            $result_1= $student['total_avg'];
             array_push($store_score_1,[ "id"=>$student['id'], "kh_name" =>$student['kh_name'],
             "avg_month" =>$result_1,"sex"=>$student['sex'],"avg_score_semsterone"=>0]);
 
@@ -414,7 +427,10 @@ class ResultSecondaryController extends Controller
                 $computer = $student['computer'];
             }
 
-            $result_2 = ($geology+$essay+$writting+$khmer+$morality+$history+$geography+$math+$physical+$chemistry+$biology+$earth_science+$english+$pe+$computer)/$student['avg_m'];
+            // $result_2 = ($geology+$essay+$writting+$khmer+$morality+$history+$geography+$math+$physical+$chemistry+$biology+$earth_science+$english+$pe+$computer)/$student['avg_m'];
+
+            $result_2 = $student['total_avg'];
+
             array_push($store_score_2,[ "id"=>$student['id'], "kh_name" =>$student['kh_name'],
             "avg_month" =>$result_2,"sex"=>$student['sex'],"avg_score_semsterone"=>0]);
 
@@ -450,7 +466,9 @@ class ResultSecondaryController extends Controller
                 $computer = $student['computer'];
             }
 
-            $result_3= ($geology+$essay+$writting+$khmer+$morality+$history+$geography+$math+$physical+$chemistry+$biology+$earth_science+$english+$pe+$computer)/$student['avg_m'];
+            // $result_3= ($geology+$essay+$writting+$khmer+$morality+$history+$geography+$math+$physical+$chemistry+$biology+$earth_science+$english+$pe+$computer)/$student['avg_m'];
+            $result_3 = $student['total_avg'];
+
             array_push($store_score_3,[ "id"=>$student['id'], "kh_name" =>$student['kh_name'],
             "avg_month" =>0,"sex"=>$student['sex'],"avg_score_semsterone"=>$result_3]);
 
@@ -584,8 +602,9 @@ class ResultSecondaryController extends Controller
                 $computer = $student['computer'];
             }
 
-            $result_12 = ($geology+$essay+$writting+$khmer+$morality+$history+$geography+$math+$physical+$chemistry+$biology+$earth_science+$english+$pe+$computer)/$student['avg_m'];
-            array_push($store_score_12,[ "id"=>$student['id'], "kh_name" =>$student['kh_name'],
+            // $result_12 = ($geology+$essay+$writting+$khmer+$morality+$history+$geography+$math+$physical+$chemistry+$biology+$earth_science+$english+$pe+$computer)/$student['avg_m'];
+            $result_12 = $student['total_avg'];
+           $result_3 = $student['total_avg'];   array_push($store_score_12,[ "id"=>$student['id'], "kh_name" =>$student['kh_name'],
             "avg_month" =>$result_12,"sex"=>$student['sex'],"avg_score_semsterone"=>0]);
 
 
@@ -620,7 +639,8 @@ class ResultSecondaryController extends Controller
             }else{
                 $computer = $student['computer'];
             }
-            $result_1 = ($geology+$essay+$writting+$khmer+$morality+$history+$geography+$math+$physical+$chemistry+$biology+$earth_science+$english+$pe+$computer)/$student['avg_m'];
+            // $result_1 = ($geology+$essay+$writting+$khmer+$morality+$history+$geography+$math+$physical+$chemistry+$biology+$earth_science+$english+$pe+$computer)/$student['avg_m'];
+            $result_1 = $student['total_avg'];
             array_push($store_score_1,[ "id"=>$student['id'], "kh_name" =>$student['kh_name'],
             "avg_month" =>$result_1,"sex"=>$student['sex'],"avg_score_semsterone"=>0]);
 
@@ -657,7 +677,8 @@ class ResultSecondaryController extends Controller
                 $computer = $student['computer'];
             }
 
-            $result_2 = ($geology+$essay+$writting+$khmer+$morality+$history+$geography+$math+$physical+$chemistry+$biology+$earth_science+$english+$pe+$computer)/$student['avg_m'];
+            // $result_2 = ($geology+$essay+$writting+$khmer+$morality+$history+$geography+$math+$physical+$chemistry+$biology+$earth_science+$english+$pe+$computer)/$student['avg_m'];
+            $result_2 = $student['total_avg'];
             array_push($store_score_2,[ "id"=>$student['id'], "kh_name" =>$student['kh_name'],
             "avg_month" =>$result_2,"sex"=>$student['sex'],"avg_score_semsterone"=>0]);
 
@@ -693,7 +714,8 @@ class ResultSecondaryController extends Controller
                 $computer = $student['computer'];
             }
 
-            $result_3= ($geology+$essay+$writting+$khmer+$morality+$history+$geography+$math+$physical+$chemistry+$biology+$earth_science+$english+$pe+$computer)/$student['avg_m'];
+            // $result_3= ($geology+$essay+$writting+$khmer+$morality+$history+$geography+$math+$physical+$chemistry+$biology+$earth_science+$english+$pe+$computer)/$student['avg_m'];
+            $result_3 = $student['total_avg'];
             array_push($store_score_3,[ "id"=>$student['id'], "kh_name" =>$student['kh_name'],
             "avg_month" =>0,"avg_score_semsterone"=>$result_3]);
 
@@ -771,8 +793,8 @@ class ResultSecondaryController extends Controller
                 $computer = $student['computer'];
             }
 
-            $result_4 = ($geology+$essay+$writting+$khmer+$morality+$history+$geography+$math+$physical+$chemistry+$biology+$earth_science+$english+$pe+$computer)/$student['avg_m'];
-
+            // $result_4 = ($geology+$essay+$writting+$khmer+$morality+$history+$geography+$math+$physical+$chemistry+$biology+$earth_science+$english+$pe+$computer)/$student['avg_m'];
+            $result_4 = $student['total_avg'];
             array_push($store_score_4,[ "id"=>$student['id'],"sex"=>$student['sex'],"kh_name" =>$student['kh_name'],
             "avg_month" =>$result_4,"sex"=>$student['sex'],"avg_score_semsterone"=>0]);
 
@@ -808,7 +830,8 @@ class ResultSecondaryController extends Controller
             }else{
                 $computer = $student['computer'];
             }
-            $result_5 = ($geology+$essay+$writting+$khmer+$morality+$history+$geography+$math+$physical+$chemistry+$biology+$earth_science+$english+$pe+$computer)/$student['avg_m'];
+            // $result_5 = ($geology+$essay+$writting+$khmer+$morality+$history+$geography+$math+$physical+$chemistry+$biology+$earth_science+$english+$pe+$computer)/$student['avg_m'];
+            $result_5 = $student['total_avg'];
             array_push($store_score_5,[ "id"=>$student['id'], "kh_name" =>$student['kh_name'],
             "avg_month" =>$result_5,"sex"=>$student['sex'],"avg_score_semsterone"=>0]);
 
@@ -844,7 +867,8 @@ class ResultSecondaryController extends Controller
                 $computer = $student['computer'];
             }
 
-            $result_6 = ($geology+$essay+$writting+$khmer+$morality+$history+$geography+$math+$physical+$chemistry+$biology+$earth_science+$english+$pe+$computer)/$student['avg_m'];
+            // $result_6 = ($geology+$essay+$writting+$khmer+$morality+$history+$geography+$math+$physical+$chemistry+$biology+$earth_science+$english+$pe+$computer)/$student['avg_m'];
+            $result_6 = $student['total_avg'];
             array_push($store_score_6,[ "id"=>$student['id'], "kh_name" =>$student['kh_name'],
             "avg_month" =>$result_6,"sex"=>$student['sex'],"avg_score_semsterone"=>0]);
 
@@ -880,7 +904,8 @@ class ResultSecondaryController extends Controller
                 $computer = $student['computer'];
             }
 
-            $result_7= ($geology+$essay+$writting+$khmer+$morality+$history+$geography+$math+$physical+$chemistry+$biology+$earth_science+$english+$pe+$computer)/$student['avg_m'];
+            // $result_7= ($geology+$essay+$writting+$khmer+$morality+$history+$geography+$math+$physical+$chemistry+$biology+$earth_science+$english+$pe+$computer)/$student['avg_m'];
+            $result_7 = $student['total_avg'];
             array_push($store_score_7,[ "id"=>$student['id'], "kh_name" =>$student['kh_name'],
             "avg_month" =>0,"sex"=>$student['sex'],"avg_score_semsterone"=>$result_7]);
 
