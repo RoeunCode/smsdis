@@ -73,7 +73,7 @@ class StudentController extends Controller
         ];
 
         $data = Student::create($data);
-        return redirect()->route('heang.create')->with('message','Data has been inserted!');
+        return redirect()->route('student.create')->with('message','Data has been inserted!');
     }
 
     /**
@@ -148,7 +148,7 @@ class StudentController extends Controller
             'address_farther' => $request->input('pob_vf'),
             'address_mother' => $request->input('pob_vm')
         ]);
-        return redirect()->route('heang.index');
+        return redirect()->route('student.index');
     }
 
     /**

@@ -43,7 +43,9 @@
                                     <a href="{{route('student.show',$d->id)}}"
                                        class="btn btn-md btn-pill btn-app-blue"><i
                                                 class="fas fa-search"></i></a>
+                                                
                                 </td>
+                                
                             </tr>
                         @endforeach
                         </tbody>

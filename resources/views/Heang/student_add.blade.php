@@ -69,47 +69,47 @@
                             </div>
                             <div class="col-sm-12 col-md-3 col-lg-3">
                                 <label>លេខទូរស័ព្ទ*</label>
-                                <input type="tel" class="form-control" required name="stel" id="stel" placeholder="Enter Phone Number">
+                                <input type="tel" class="form-control"  name="stel" id="stel" placeholder="Enter Phone Number">
                             </div>
                             <div class="col-sm-12 col-md-3 col-lg-3">
                                 <label>សញ្ជាតិ*</label>
-                                <input type="text" class="form-control" required name="national" id="national" placeholder="Enter National">
+                                <input type="text" class="form-control"  name="national" id="national" placeholder="Enter National">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-12 col-md-3 col-lg-3">
                                 <label>ភូមិកំណើត*</label>
-                                <input class="form-control" type="text" required name="pob_v" id="pob_v" placeholder="បញ្ចូលភូមិកំណើត">
+                                <input class="form-control" type="text"  name="pob_v" id="pob_v" placeholder="បញ្ចូលភូមិកំណើត">
                             </div>
                             <div class="col-sm-12 col-md-3 col-lg-3">
                                 <label>ឃុំ/សង្កាត់កំណើត*</label>
-                                <input class="form-control" type="text" required name="pob_c" id="pob_c" placeholder="បញ្ចូលឃុំ/សង្កាត់កំណើត">
+                                <input class="form-control" type="text"  name="pob_c" id="pob_c" placeholder="បញ្ចូលឃុំ/សង្កាត់កំណើត">
                             </div>
                             <div class="col-sm-12 col-md-3 col-lg-3">
                                 <label>ស្រុកកំណើត*</label>
-                                <input class="form-control" type="text" required name="pob_d" id="pob_d" placeholder="បញ្ចូលស្រុកកំណើត">
+                                <input class="form-control" type="text"  name="pob_d" id="pob_d" placeholder="បញ្ចូលស្រុកកំណើត">
                             </div>
                             <div class="col-sm-12 col-md-3 col-lg-3">
                                 <label>ខេត្តកំណើត*</label>
-                                <input class="form-control" type="text" required name="pob_p" id="pob_p" placeholder="បញ្ចូលខេត្តកំណើត">
+                                <input class="form-control" type="text"  name="pob_p" id="pob_p" placeholder="បញ្ចូលខេត្តកំណើត">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-12 col-md-3 col-lg-3">
                                 <label>ភូមិបច្ចប្បុន្ន*</label>
-                                <input class="form-control" type="text" required name="cur_v" id="cur_v" placeholder="បញ្ចូលភូមិបច្ចប្បុន្ន">
+                                <input class="form-control" type="text"  name="cur_v" id="cur_v" placeholder="បញ្ចូលភូមិបច្ចប្បុន្ន">
                             </div>
                             <div class="col-sm-12 col-md-3 col-lg-3">
                                 <label>ឃុំ/សង្កាត់បច្ចប្បុន្ន*</label>
-                                <input class="form-control" type="text" required name="cur_c" id="cur_c" placeholder="បញ្ចូលឃុំ/សង្កាត់បច្ចប្បុន្ន">
+                                <input class="form-control" type="text"  name="cur_c" id="cur_c" placeholder="បញ្ចូលឃុំ/សង្កាត់បច្ចប្បុន្ន">
                             </div>
                             <div class="col-sm-12 col-md-3 col-lg-3">
                                 <label>ស្រុកបច្ចប្បុន្ន*</label>
-                                <input class="form-control" type="text" required name="cur_d" id="cur_d" placeholder="បញ្ចូលស្រុកបច្ចប្បុន្ន">
+                                <input class="form-control" type="text"  name="cur_d" id="cur_d" placeholder="បញ្ចូលស្រុកបច្ចប្បុន្ន">
                             </div>
                             <div class="col-sm-12 col-md-3 col-lg-3">
                                 <label>ខេត្តបច្ចប្បុន្ន*</label>
-                                <input class="form-control" type="text" required name="cur_p" id="cur_p" placeholder="បញ្ចូលខេត្តបច្ចប្បុន្ន">
+                                <input class="form-control" type="text"  name="cur_p" id="cur_p" placeholder="បញ្ចូលខេត្តបច្ចប្បុន្ន">
                             </div>
                         </div>
                         <div class="row">
@@ -133,11 +133,11 @@
                         <div class="row">
                             <div class="col-sm-12 col-md-3 col-lg-3">
                                 <label>Mother Name*</label>
-                                <input class="form-control" type="text" required name="mname" id="mname" placeholder="Enter Mother's Name...">
+                                <input class="form-control" type="text"  name="mname" id="mname" placeholder="Enter Mother's Name...">
                             </div>
                             <div class="col-sm-12 col-md-3 col-lg-3">
                                 <label>មុខរបរម្ដាយ*</label>
-                                <input class="form-control" type="text" required name="jobm" id="jobm" placeholder="បញ្ចូលមុខរបរម្ដាយ...">
+                                <input class="form-control" type="text"  name="jobm" id="jobm" placeholder="បញ្ចូលមុខរបរម្ដាយ...">
                             </div>
                             <div class="col-sm-12 col-md-3 col-lg-3">
                                 <label>សញ្ជាតិម្ដាយ</label>
@@ -148,17 +148,17 @@
                             </div>
                             <div class="col-sm-12 col-md-3 col-lg-3">
                                 <label>អាស័ដ្ឋាន*</label>
-                                <input class="form-control" type="text" required name="pob_vm" id="pob_vm" placeholder="បញ្ចូលអាស័ដ្ឋាន">
+                                <input class="form-control" type="text"  name="pob_vm" id="pob_vm" placeholder="បញ្ចូលអាស័ដ្ឋាន">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-12 col-md-3 col-lg-3">
                                 <label>Father Name*</label>
-                                <input class="form-control" type="text" required name="fnm" id="fnm" placeholder="Enter Father's Name...">
+                                <input class="form-control" type="text"  name="fnm" id="fnm" placeholder="Enter Father's Name...">
                             </div>
                             <div class="col-sm-12 col-md-3 col-lg-3">
                                 <label>Father Job*</label>
-                                <input class="form-control" type="text" required name="jobf" id="jobf" placeholder="Enter Father Job...">
+                                <input class="form-control" type="text"  name="jobf" id="jobf" placeholder="Enter Father Job...">
                             </div>
                             <div class="col-sm-12 col-md-3 col-lg-3">
                                 <label>សញ្ជាតិម្ដាយ</label>
@@ -169,7 +169,7 @@
                             </div>
                             <div class="col-sm-12 col-md-3 col-lg-3">
                                 <label>លេខទូរស័ព្ទ*</label>
-                                <input class="form-control" type="text" required name="telf" id="telf" placeholder="Enter Phone Number...">
+                                <input class="form-control" type="text"  name="telf" id="telf" placeholder="Enter Phone Number...">
                             </div>
                         </div>
                         <div class="row">

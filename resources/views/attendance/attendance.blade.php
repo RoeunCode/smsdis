@@ -245,24 +245,22 @@
             var class_id = $('#select_class').val()
             var month_id = $('#selectprom_month').val()
             var program = $('#select_program').val()
-            if(program == '' || program == null)
-            {
+            if (program == '' || program == null) {
                 Swal.fire({
-                        type: 'warning',
-                        title: '',
-                        text: 'សូមជ្រើសរើសកម្មវិធីសិក្សា'
-               })
-               return
+                    type: 'warning',
+                    title: '',
+                    text: 'សូមជ្រើសរើសកម្មវិធីសិក្សា'
+                })
+                return
             }
 
-            if(class_id == '' || class_id == null)
-            {
+            if (class_id == '' || class_id == null) {
                 Swal.fire({
-                        type: 'warning',
-                        title: '',
-                        text: 'សូមជ្រើសរើសថ្នាក់រៀន'
-               })
-               return
+                    type: 'warning',
+                    title: '',
+                    text: 'សូមជ្រើសរើសថ្នាក់រៀន'
+                })
+                return
             }
 
             $.ajax({
@@ -274,7 +272,7 @@
                     class_id: class_id,
                     month_id: month_id
                 },
-                beforeSend:function(){
+                beforeSend: function() {
                     $('#btn_get_student').html('កំពុងទាញទិន្ន័យ')
                 }
 
@@ -304,6 +302,8 @@
                             "<td><input type='number' class='form-control txt_absen'></td>" +
                             "<td><input type='number' class='form-control txt_permission'></td>" +
                             "<td><textarea class='form-control txt_note'></textarea></td>" +
+                            "<td hidden><input class='form-control txt_student_id' value=" + student
+                            .id +
                             "</tr>";
                     })
                     $('#btn_get_student').html('បង្ហាញទិន្ន័យ')
@@ -311,11 +311,62 @@
                     $('#show_student').slideDown()
                 } else {
 
+                    var output_data = "";
+                    data.student_class.forEach(function(student) {
+                        output_data +=
+                            "<tr style='text-align:center;'><td style='font-size:12px'>" + student
+                            .kh_name +
+                            "</td>" +
+                            "<td><input type='number' value="+student.absen+" class='form-control txt_absen'></td>" +
+                            "<td><input type='number' value="+student.permission+" class='form-control txt_permission'></td>" +
+                            "<td><textarea class='form-control txt_note' value="+student.permission+" ></textarea></td>" +
+                            "<td hidden><input class='form-control txt_student_id' value=" + student
+                            .student_id +
+                            "</tr>";
+                    })
+                    $('#btn_get_student').html('បង្ហាញទិន្ន័យ')
+                    $('#tbl_list tbody').html(output_data)
+                    $('#show_student').slideDown()
                 }
 
             }).fail((data) => {
                 $('#btn_get_student').html('បង្ហាញទិន្ន័យ')
             })
+        })
+        $('#btn_save_score').click(function(){
+            var student_id = []
+            var adsen = []
+            var note = []
+            var permision = []
+            var class_id = $('#select_class').val()
+            var month_id = $('#select_month').val()
+            $('.txt_student_id').each(function() {
+                student_id.push($(this).val())
+            })
+            $('.txt_absen').each(function() {
+                adsen.push($(this).val())
+            })
+            $('.txt_permission').each(function() {
+                permision.push($(this).val())
+            })
+            $('.txt_note').each(function() {
+                note.push($(this).val())
+            })
+            $.ajax({
+                type:'post',
+                url:'{{ route('attendance.store') }}',
+                data:{
+                    '_token': '{{ csrf_token() }}',
+                }
+            }).then((data)=>{
+
+
+
+
+            }).fail((err)=>{
+
+            })
+
         })
     </script>
 

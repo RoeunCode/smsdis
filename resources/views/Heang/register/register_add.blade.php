@@ -236,7 +236,7 @@
                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                     <div class="form-group">
                                         <label>ឈ្មោះខ្មែរ*</label>
-                                        <input class="form-control form-control-sm" type="text" required name="kh_name" id="kh_name" placeholder="Enter Name Khmer"/>
+                                        <input class="form-control form-control-sm" type="text"  name="kh_name" id="kh_name" placeholder="Enter Name Khmer"/>
                                     </div>
                                 </div>
                             </div>
@@ -244,7 +244,7 @@
                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                     <div class="form-group">
                                         <label>ឈ្មោះអង់គ្លេស*</label>
-                                        <input class="form-control form-control-sm" type="text" required name="en_name" id="en_name" placeholder="Enter Name English">
+                                        <input class="form-control form-control-sm" type="text"  name="en_name" id="en_name" placeholder="Enter Name English">
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6">
@@ -262,7 +262,7 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                     <label>លេខទូរស័ព្ទ*</label>
-                                    <input type="number" class="form-control form-control-sm" required name="stel" id="stel" placeholder="Enter Phone Number">
+                                    <input type="number" class="form-control form-control-sm"  name="stel" id="stel" placeholder="Enter Phone Number">
                                 </div>
                             </div>
                         </div>
