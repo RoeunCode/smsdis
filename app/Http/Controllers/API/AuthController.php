@@ -13,7 +13,8 @@ class AuthController extends Controller
 {
 
     protected  $setAuth;
-
+    public $global_rank1;
+    public $global_rank2;
 
 
     public function register(Request $request)
@@ -486,6 +487,7 @@ class AuthController extends Controller
                                 "total_avg_year"=>$total_score,
                                 "total_avg_year_muti"=>$total_score / 2,
                                 "rank"=>$student['rank'],
+                                "grade"=>$this->getGrade(number_format($total_score / 2,2)),
                                 "type"=>"Semester1"
                             ]
                     );
@@ -813,6 +815,7 @@ class AuthController extends Controller
                                 "total_avg_year"=>$total_score,
                                 "total_avg_year_muti"=>$total_score / 2,
                                 "rank"=>$student['rank'],
+                                "grade"=>$this->getGrade(number_format($total_score / 2,2)),
                                 "type"=>"Semester2"
                             ]
                     );
@@ -1962,6 +1965,7 @@ class AuthController extends Controller
                                 "total_avg_year"=>$total_score,
                                 "total_avg_year_muti"=>$total_score / 2,
                                 "rank"=>$student['rank'],
+                                "grade"=>$this->getGrade(number_format($total_score / 2,2)),
                                 "type"=>"Semester1"
                             ]
                     );
@@ -1996,13 +2000,325 @@ class AuthController extends Controller
             if(str_contains($check_class->grade,"12"))
             {
 
+                $data_month_3 = DB::select(DB::raw("SELECT * FROM score_upper_cc INNER JOIN student ON score_upper_cc.student_id = student.id WHERE class_id=".$class_id."  and month_id=3"));
+                $data_month_4 = DB::select(DB::raw("SELECT * FROM score_upper_cc INNER JOIN student ON score_upper_cc.student_id = student.id WHERE class_id=".$class_id."  and month_id=4"));
+                $data_month_5 = DB::select(DB::raw("SELECT *  FROM score_upper_cc INNER JOIN student ON score_upper_cc.student_id = student.id WHERE class_id=".$class_id."  and month_id=5"));
+                $data_month_6 = DB::select(DB::raw("SELECT * FROM score_upper_cc INNER JOIN student ON score_upper_cc.student_id = student.id WHERE class_id=".$class_id."  and month_id=6"));
+
 
             }else{
 
+                $data_month_3 = DB::select(DB::raw("SELECT * FROM score_upper_cc INNER JOIN student ON score_upper_cc.student_id = student.id WHERE class_id=".$class_id."  and month_id=5"));
+                $data_month_4 = DB::select(DB::raw("SELECT * FROM score_upper_cc INNER JOIN student ON score_upper_cc.student_id = student.id WHERE class_id=".$class_id."  and month_id=6"));
+                $data_month_5 = DB::select(DB::raw("SELECT *  FROM score_upper_cc INNER JOIN student ON score_upper_cc.student_id = student.id WHERE class_id=".$class_id."  and month_id=7"));
+                $data_month_6 = DB::select(DB::raw("SELECT * FROM score_upper_cc INNER JOIN student ON score_upper_cc.student_id = student.id WHERE class_id=".$class_id."  and month_id=8"));
+
+
+            }
+            $store_score_3=[];
+            $store_score_4=[];
+            $store_score_5=[];
+            $store_score_6=[];
+            foreach(json_decode(json_encode($data_month_3),true) as $student)
+            {
+
+
+
+                    array_push(
+                        $store_score_3 ,
+                        [
+                            "student_id"=>$student['id'],
+                            "kh_name"=>$student['kh_name'],
+                            "en_name"=>$student['en_name'],
+                            "sex"=>$student['sex'],
+                            "class_id"=>$student['class_id'],
+                            "avg_m"=>$student['avg_m'],
+                            "khmer"=>0,
+                            "morality"=>0,
+                            "history"=>0,
+                            "geography"=>0,
+                            "math"=>0,
+                            "physical"=>0,
+                            "chemistry"=>0,
+                            "biology"=>0,
+                            "earth_science"=>0,
+                            "english"=>0,
+                            "pe"=>0,
+                            "computer"=>0,
+                            "total_score"=>$student['total_score'],
+                            "total_avg"=>$student['total_avg'],
+                            "total_semester_month"=>0,
+                            "type"=>"Month"
+                        ]
+                     );
+
+            }
+
+            foreach(json_decode(json_encode($data_month_4),true) as $student)
+            {
+
+
+
+                    array_push(
+                        $store_score_4 ,
+                        [
+                            "student_id"=>$student['id'],
+                            "kh_name"=>$student['kh_name'],
+                            "en_name"=>$student['en_name'],
+                            "sex"=>$student['sex'],
+                            "class_id"=>$student['class_id'],
+                            "avg_m"=>$student['avg_m'],
+                            "khmer"=>0,
+                            "morality"=>0,
+                            "history"=>0,
+                            "geography"=>0,
+                            "math"=>0,
+                            "physical"=>0,
+                            "chemistry"=>0,
+                            "biology"=>0,
+                            "earth_science"=>0,
+                            "english"=>0,
+                            "pe"=>0,
+                            "computer"=>0,
+                            "total_score"=>$student['total_score'],
+                            "total_avg"=>$student['total_avg'],
+                            "total_semester_month"=>0,
+                            "type"=>"Month"
+                        ]
+                     );
+
+            }
+
+            foreach(json_decode(json_encode($data_month_5),true) as $student)
+            {
+
+
+
+                    array_push(
+                        $store_score_5 ,
+                        [
+                            "student_id"=>$student['id'],
+                            "kh_name"=>$student['kh_name'],
+                            "en_name"=>$student['en_name'],
+                            "sex"=>$student['sex'],
+                            "class_id"=>$student['class_id'],
+                            "avg_m"=>$student['avg_m'],
+                            "khmer"=>0,
+                            "morality"=>0,
+                            "history"=>0,
+                            "geography"=>0,
+                            "math"=>0,
+                            "physical"=>0,
+                            "chemistry"=>0,
+                            "biology"=>0,
+                            "earth_science"=>0,
+                            "english"=>0,
+                            "pe"=>0,
+                            "computer"=>0,
+                            "total_score"=>$student['total_score'],
+                            "total_avg"=>$student['total_avg'],
+                            "total_semester_month"=>0,
+                            "type"=>"Month"
+                        ]
+                     );
 
             }
 
 
+            foreach(json_decode(json_encode($data_month_6),true) as $student)
+            {
+
+
+
+                    array_push(
+                        $store_score_6 ,
+                        [
+                            "student_id"=>$student['id'],
+                            "kh_name"=>$student['kh_name'],
+                            "en_name"=>$student['en_name'],
+                            "sex"=>$student['sex'],
+                            "class_id"=>$student['class_id'],
+                            "avg_m"=>$student['avg_m'],
+                            "khmer"=>$student['khmer'],
+                            "morality"=>$student['morality'],
+                            "history"=>$student['history'],
+                            "geography"=>$student['geography'],
+                            "math"=>$student['math'],
+                            "physical"=>$student['physical'],
+                            "chemistry"=>$student['chemistry'],
+                            "biology"=>$student['biology'],
+                            "earth_science"=>$student['earth_science'],
+                            "english"=>$student['english'],
+                            "pe"=>$student['pe'],
+                            "computer"=>$student['computer'],
+                            "total_score"=>$student['total_score'],
+                            "total_avg"=>0,
+                            "total_semester_month"=>$student['total_avg'],
+                            "type"=>"Month"
+                        ]
+                     );
+
+            }
+
+            $merge_arr_sem2= array_merge($store_score_3,$store_score_4,$store_score_5,$store_score_6);
+            $cv_data_sems2 = json_decode(json_encode($merge_arr_sem2),true);
+            $result_4_month_sem2 = [];
+            foreach($cv_data_sems2 as $student){
+
+                $avg = $student['total_avg'] ;
+                $id= $student['student_id'];
+                if(isset($result_4_month_sem2[$id]))
+                {
+                     $total_avg+=$avg ;
+                     $result_4_month_sem2[$id]['total_avg']+= $student['total_avg'] / 3  ;
+                     $result_4_month_sem2[$id]['total_semester_month'] = $student['total_semester_month'];
+                     $result_4_month_sem2[$id]['khmer'] = $student['khmer'];
+                     $result_4_month_sem2[$id]['morality'] = $student['morality'];
+                     $result_4_month_sem2[$id]['history'] = $student['history'];
+                     $result_4_month_sem2[$id]['geography'] = $student['geography'];
+                     $result_4_month_sem2[$id]['math'] = $student['math'];
+                     $result_4_month_sem2[$id]['physical'] = $student['physical'];
+                     $result_4_month_sem2[$id]['chemistry'] = $student['chemistry'];
+                     $result_4_month_sem2[$id]['biology'] = $student['biology'];
+                     $result_4_month_sem2[$id]['earth_science'] = $student['earth_science'];
+                     $result_4_month_sem2[$id]['english'] = $student['english'];
+                     $result_4_month_sem2[$id]['pe'] = $student['pe'];
+                     $result_4_month_sem2[$id]['computer'] = $student['computer'];
+
+
+
+                }else{
+                    $total_avg =$student['total_avg'] / 3  ;
+                    $total_score = $student['total_score'];
+                    $result_4_month_sem2[$id]=[
+                         "student_id"=>$student['student_id'],
+                         "kh_name"=>$student['kh_name'],
+                         "sex"=>$student['sex'],
+                         "total_avg"=>$total_avg,
+                         "total_semester_month"=>$student['total_semester_month'],
+                         "khmer"=>$student['khmer'],
+                         "morality"=>$student['morality'],
+                         "history"=>$student['history'],
+                         "geography"=>$student['geography'],
+                         "math"=>$student['math'],
+                         "physical"=>$student['physical'],
+                         "chemistry"=>$student['chemistry'],
+                         "biology"=>$student['biology'],
+                         "earth_science"=>$student['earth_science'],
+                         "english"=>$student['english'],
+                         "pe"=>$student['pe'],
+                         "computer"=>$student['computer'],
+
+
+
+                    ];
+                }
+
+
+            }
+
+            $last_new_2 = [];
+            foreach(json_decode(json_encode($result_4_month_sem2),true) as $student)
+            {
+                $total_score = $student['total_avg']+$student['total_semester_month'];
+                    array_push(
+                        $last_new_2,
+                        [
+                            "student_id"=>$student['student_id'],
+                            "kh_name"=>$student['kh_name'],
+                            "sex"=>$student['sex'],
+                            "khmer"=>$student['khmer'],
+                            "morality"=>$student['morality'],
+                            "history"=>$student['history'],
+                            "geography"=>$student['geography'],
+                            "math"=>$student['math'],
+                            "physical"=>$student['physical'],
+                            "chemistry"=>$student['chemistry'],
+                            "biology"=>$student['biology'],
+                            "earth_science"=>$student['earth_science'],
+                            "english"=>$student['english'],
+                            "pe"=>$student['pe'],
+                            "computer"=>$student['computer'],
+                            "total_avg_3_month"=>$student['total_avg'],
+                            "total_semester_month"=>$student['total_semester_month'],
+                            "total_avg_year"=>$total_score,
+                            "total_avg_year_muti"=>$total_score / 2,
+                        ]
+                );
+
+            }
+
+               // Step 1: Sort the students by total score in descending order
+            $last_new_2 = array_values($last_new_2);
+               usort($last_new_2, function ($a, $b) {
+                   return $b['total_avg_year_muti'] <=> $a['total_avg_year_muti'];
+               });
+
+               // Step 2: Assign ranks based on total scores
+               $rank = 1;
+               foreach ($last_new_2 as $index => &$student) {
+
+                   if ($index > 0 && $student['total_avg_year_muti'] === $last_new_2[$index - 1]['total_avg_year_muti']) {
+                       $student['rank'] = $last_new_2[$index - 1]['rank']; // Same rank as previous student
+                   } else {
+                       $student['rank'] = $rank;
+                   }
+                   $rank++;
+               }
+            $all_result_semester_2=[];
+            foreach(json_decode(json_encode($last_new_2),true) as $student)
+            {
+
+                if($student['student_id'] == $student_id)
+                {
+                    $total_score = $student['total_avg_3_month']+$student['total_semester_month'];
+                        array_push(
+                            $all_result_semester_2,
+                            [
+                                "student_id"=>$student['student_id'],
+                                "kh_name"=>$student['kh_name'],
+                                "sex"=>$student['sex'],
+                                "khmer"=>$student['khmer'],
+                                "morality"=>$student['morality'],
+                                "history"=>$student['history'],
+                                "geography"=>$student['geography'],
+                                "math"=>$student['math'],
+                                "physical"=>$student['physical'],
+                                "chemistry"=>$student['chemistry'],
+                                "biology"=>$student['biology'],
+                                "earth_science"=>$student['earth_science'],
+                                "english"=>$student['english'],
+                                "pe"=>$student['pe'],
+                                "computer"=>$student['computer'],
+                                "total_avg_3_month"=>$student['total_avg_3_month'],
+                                "total_semester_month"=>$student['total_semester_month'],
+                                "total_avg_year"=>$total_score,
+                                "total_avg_year_muti"=>$total_score / 2,
+                                "rank"=>$student['rank'],
+                                "grade"=>$this->getGrade(number_format($total_score / 2,2)),
+                                "type"=>"Semester2"
+                            ]
+                    );
+                }
+
+            }
+
+            $all_result_semester_2 = array_values($all_result_semester_2);
+            if($data_month_3 && $data_month_4 && $data_month_5 && $data_month_6)
+            {
+
+                return response()->json([
+                    "status"=>0,
+                    "data"=>$all_result_semester_2,
+                    "message"=>"Succesfully"
+                ]);
+            } else{
+
+                return response()->json([
+                    "status"=>1,
+                    "message"=>"UnSuccesfully"
+                ]);
+            }
 
 
 
@@ -2010,8 +2326,743 @@ class AuthController extends Controller
         }else{
 
 
+            $semsester1= $this->getSemesterOne($student_id,$class_id,$month_id);
+            $semsester2= $this->getSemesterTwo($student_id,$class_id,$month_id);
+            $store_rank1="";
+            $store_rank2="";
+            $result_year = array_merge($semsester1,$semsester2);
+            $result_year = json_decode(json_encode($result_year),true);
+            $total_year = [];
+            // print_r($result_year);
+            foreach($result_year as $student){
+
+                    $id= $student['student_id'];
+                    if(isset($total_year[$id]))
+                    {
+
+                        $total_year[$id]['total_avg_year_muti'] += $student['total_avg_year_muti'];
+                        $total_year[$id]['total_avg_year_muti_2'] += $student['total_avg_year_muti_2'] ;
+
+                    }else{
+
+                        $total_year[$id]=[
+                            "student_id"=>$student['student_id'],
+                            "kh_name"=>$student['kh_name'],
+                            "sex"=>$student['sex'],
+                            "total_avg_year_muti"=>$student['total_avg_year_muti'] ,
+                            "total_avg_year_muti_2"=>$student['total_avg_year_muti_2'],
+
+                        ];
+                    }
 
 
+             }
+             $total_year = array_values($total_year);
+             $show_result_year = [];
+             foreach(json_decode(json_encode($total_year),true) as $student)
+             {
+                $total_sum = ($student['total_avg_year_muti'] + $student['total_avg_year_muti_2'] )/ 2;
+                array_push(
+                    $show_result_year,
+                    [
+                        "student_id"=>$student['student_id'],
+                        "kh_name"=>$student['kh_name'],
+                        "sex"=>$student['sex'],
+                        "total_avg_year_muti"=>$student['total_avg_year_muti'] ,
+                        "total_avg_year_muti_2"=>$student['total_avg_year_muti_2'],
+                        "total_sum_semester" =>$total_sum,
+                        // "rankSemsester"=>$student['rankSemsester']
+
+                    ]
+
+                );
+
+             }
+             $show_result_year = array_values($show_result_year);
+             usort($show_result_year, function ($a, $b) {
+                 return $b['total_sum_semester'] <=> $a['total_sum_semester'];
+             });
+
+             // Step 2: Assign ranks based on total scores
+             $rank = 1;
+             foreach ($show_result_year as $index => &$student) {
+
+                 if ($index > 0 && $student['total_sum_semester'] === $show_result_year[$index - 1]['total_sum_semester']) {
+                     $student['rank'] = $show_result_year[$index - 1]['rank']; // Same rank as previous student
+                 } else {
+                     $student['rank'] = $rank;
+                 }
+                 $rank++;
+             }
+             $all_data_year=[];
+             foreach(json_decode(json_encode($show_result_year),true) as $student)
+             {
+                   if($student['student_id'] == $student_id)
+                   {
+                        array_push(
+                            $all_data_year,
+                            [
+                                "kh_name"=>$student['kh_name'],
+                                "sex"=>$student['sex'],
+                                "total_avg_year_muti"=>$student['total_avg_year_muti'] ,
+                                "total_avg_year_muti_2"=>$student['total_avg_year_muti_2'],
+                                "total_sum_semester_mutil" =>$student['total_sum_semester'],
+                                "rankYear"=>$student['rank'],
+                                "rankSemester1"=>$this->global_rank1,
+                                "rankSemester2"=>$this->global_rank2,
+                                "type"=>"All"
+                            ]
+
+                        );
+
+                   }
+
+             }
+           $all_data_year = array_values($all_data_year);
+            return response()->json([
+                "status"=>0,
+                "data"=>$all_data_year,
+                "message"=>"Succesfully"
+             ]);
+
+
+        }
+    }
+
+    public function getSemesterOne($student_id,$class_id,$month_id)
+    {
+        $data_month_11 = DB::select(DB::raw("SELECT * FROM score_upper_cc INNER JOIN student ON score_upper_cc.student_id = student.id WHERE class_id=".$class_id."  and month_id=11"));
+        $data_month_12 = DB::select(DB::raw("SELECT * FROM score_upper_cc INNER JOIN student ON score_upper_cc.student_id = student.id WHERE class_id=".$class_id."  and month_id=12"));
+        $data_month_1 = DB::select(DB::raw("SELECT *  FROM score_upper_cc INNER JOIN student ON score_upper_cc.student_id = student.id WHERE class_id=".$class_id."  and month_id=1"));
+        $data_month_2 = DB::select(DB::raw("SELECT * FROM score_upper_cc INNER JOIN student ON score_upper_cc.student_id = student.id WHERE class_id=".$class_id."  and month_id=2"));
+
+        $store_score_11=[];
+        $store_score_12=[];
+        $store_score_1=[];
+        $store_score_2=[];
+
+        foreach(json_decode(json_encode($data_month_11),true) as $student)
+        {
+
+
+
+                array_push(
+                    $store_score_11 ,
+                    [
+                        "student_id"=>$student['id'],
+                        "kh_name"=>$student['kh_name'],
+                        "en_name"=>$student['en_name'],
+                        "sex"=>$student['sex'],
+                        "class_id"=>$student['class_id'],
+                        "avg_m"=>$student['avg_m'],
+                        "khmer"=>0,
+                        "morality"=>0,
+                        "history"=>0,
+                        "geography"=>0,
+                        "math"=>0,
+                        "physical"=>0,
+                        "chemistry"=>0,
+                        "biology"=>0,
+                        "earth_science"=>0,
+                        "english"=>0,
+                        "pe"=>0,
+                        "computer"=>0,
+                        "total_score"=>$student['total_score'],
+                        "total_avg"=>$student['total_avg'],
+                        "total_semester_month"=>0,
+                        "type"=>"Month"
+                    ]
+                 );
+
+        }
+
+        foreach(json_decode(json_encode($data_month_12),true) as $student)
+        {
+
+
+
+                array_push(
+                    $store_score_12 ,
+                    [
+                        "student_id"=>$student['id'],
+                        "kh_name"=>$student['kh_name'],
+                        "en_name"=>$student['en_name'],
+                        "sex"=>$student['sex'],
+                        "class_id"=>$student['class_id'],
+                        "avg_m"=>$student['avg_m'],
+                        "khmer"=>0,
+                        "morality"=>0,
+                        "history"=>0,
+                        "geography"=>0,
+                        "math"=>0,
+                        "physical"=>0,
+                        "chemistry"=>0,
+                        "biology"=>0,
+                        "earth_science"=>0,
+                        "english"=>0,
+                        "pe"=>0,
+                        "computer"=>0,
+                        "total_score"=>$student['total_score'],
+                        "total_avg"=>$student['total_avg'],
+                        "total_semester_month"=>0,
+                        "type"=>"Month"
+                    ]
+                 );
+
+        }
+
+        foreach(json_decode(json_encode($data_month_1),true) as $student)
+        {
+
+
+
+                array_push(
+                    $store_score_1 ,
+                    [
+                        "student_id"=>$student['id'],
+                        "kh_name"=>$student['kh_name'],
+                        "en_name"=>$student['en_name'],
+                        "sex"=>$student['sex'],
+                        "class_id"=>$student['class_id'],
+                        "avg_m"=>$student['avg_m'],
+                        "khmer"=>0,
+                        "morality"=>0,
+                        "history"=>0,
+                        "geography"=>0,
+                        "math"=>0,
+                        "physical"=>0,
+                        "chemistry"=>0,
+                        "biology"=>0,
+                        "earth_science"=>0,
+                        "english"=>0,
+                        "pe"=>0,
+                        "computer"=>0,
+                        "total_score"=>$student['total_score'],
+                        "total_avg"=>$student['total_avg'],
+                        "total_semester_month"=>0,
+                        "type"=>"Month"
+                    ]
+                 );
+
+        }
+
+        foreach(json_decode(json_encode($data_month_2),true) as $student)
+        {
+
+
+
+                array_push(
+                    $store_score_2 ,
+                    [
+                        "student_id"=>$student['id'],
+                        "kh_name"=>$student['kh_name'],
+                        "en_name"=>$student['en_name'],
+                        "sex"=>$student['sex'],
+                        "class_id"=>$student['class_id'],
+                        "avg_m"=>$student['avg_m'],
+                        "khmer"=>$student['khmer'],
+                        "morality"=>$student['morality'],
+                        "history"=>$student['history'],
+                        "geography"=>$student['geography'],
+                        "math"=>$student['math'],
+                        "physical"=>$student['physical'],
+                        "chemistry"=>$student['chemistry'],
+                        "biology"=>$student['biology'],
+                        "earth_science"=>$student['earth_science'],
+                        "english"=>$student['english'],
+                        "pe"=>$student['pe'],
+                        "computer"=>$student['computer'],
+                        "total_score"=>$student['total_score'],
+                        "total_avg"=>0,
+                        "total_semester_month"=>$student['total_avg'],
+                        "type"=>"Month"
+                    ]
+                 );
+
+        }
+
+        $merge_arr_sem1= array_merge($store_score_11,$store_score_12,$store_score_1,$store_score_2);
+        $cv_data_sems1 = json_decode(json_encode($merge_arr_sem1),true);
+        $result_4_month_sem1 = [];
+        foreach($cv_data_sems1 as $student){
+
+            $avg = $student['total_avg'] ;
+            $id= $student['student_id'];
+            if(isset($result_4_month_sem1[$id]))
+            {
+                 $total_avg+=$avg ;
+                 $result_4_month_sem1[$id]['total_avg']+= $student['total_avg'] / 3  ;
+                 $result_4_month_sem1[$id]['total_semester_month'] = $student['total_semester_month'];
+                 $result_4_month_sem1[$id]['khmer'] = $student['khmer'];
+                 $result_4_month_sem1[$id]['morality'] = $student['morality'];
+                 $result_4_month_sem1[$id]['history'] = $student['history'];
+                 $result_4_month_sem1[$id]['geography'] = $student['geography'];
+                 $result_4_month_sem1[$id]['math'] = $student['math'];
+                 $result_4_month_sem1[$id]['physical'] = $student['physical'];
+                 $result_4_month_sem1[$id]['chemistry'] = $student['chemistry'];
+                 $result_4_month_sem1[$id]['biology'] = $student['biology'];
+                 $result_4_month_sem1[$id]['earth_science'] = $student['earth_science'];
+                 $result_4_month_sem1[$id]['english'] = $student['english'];
+                 $result_4_month_sem1[$id]['pe'] = $student['pe'];
+                 $result_4_month_sem1[$id]['computer'] = $student['computer'];
+
+
+
+            }else{
+                $total_avg =$student['total_avg'] / 3  ;
+                $total_score = $student['total_score'];
+                $result_4_month_sem1[$id]=[
+                     "student_id"=>$student['student_id'],
+                     "kh_name"=>$student['kh_name'],
+                     "sex"=>$student['sex'],
+                     "total_avg"=>$total_avg,
+                     "total_semester_month"=>$student['total_semester_month'],
+                     "khmer"=>$student['khmer'],
+                     "morality"=>$student['morality'],
+                     "history"=>$student['history'],
+                     "geography"=>$student['geography'],
+                     "math"=>$student['math'],
+                     "physical"=>$student['physical'],
+                     "chemistry"=>$student['chemistry'],
+                     "biology"=>$student['biology'],
+                     "earth_science"=>$student['earth_science'],
+                     "english"=>$student['english'],
+                     "pe"=>$student['pe'],
+                     "computer"=>$student['computer'],
+
+
+
+                ];
+            }
+
+
+        }
+        $last_new = [];
+        foreach(json_decode(json_encode($result_4_month_sem1),true) as $student)
+        {
+            $total_score = $student['total_avg']+$student['total_semester_month'];
+                array_push(
+                    $last_new,
+                    [
+                        "student_id"=>$student['student_id'],
+                        "kh_name"=>$student['kh_name'],
+                        "sex"=>$student['sex'],
+                        "khmer"=>$student['khmer'],
+                        "morality"=>$student['morality'],
+                        "history"=>$student['history'],
+                        "geography"=>$student['geography'],
+                        "math"=>$student['math'],
+                        "physical"=>$student['physical'],
+                        "chemistry"=>$student['chemistry'],
+                        "biology"=>$student['biology'],
+                        "earth_science"=>$student['earth_science'],
+                        "english"=>$student['english'],
+                        "pe"=>$student['pe'],
+                        "computer"=>$student['computer'],
+                        "total_avg_3_month"=>$student['total_avg'],
+                        "total_semester_month"=>$student['total_semester_month'],
+                        "total_avg_year"=>$total_score,
+
+                        "total_avg_year_muti"=>$total_score / 2,
+                    ]
+            );
+
+        }
+
+           // Step 1: Sort the students by total score in descending order
+        $last_new = array_values($last_new);
+           usort($last_new, function ($a, $b) {
+               return $b['total_avg_year_muti'] <=> $a['total_avg_year_muti'];
+           });
+
+           // Step 2: Assign ranks based on total scores
+           $rank = 1;
+           foreach ($last_new as $index => &$student) {
+
+               if ($index > 0 && $student['total_avg_year_muti'] === $last_new[$index - 1]['total_avg_year_muti']) {
+                   $student['rank'] = $last_new[$index - 1]['rank']; // Same rank as previous student
+               } else {
+                   $student['rank'] = $rank;
+               }
+               $rank++;
+           }
+        $all_result_semester_1=[];
+        foreach(json_decode(json_encode($last_new),true) as $student)
+        {
+
+            // if($student['student_id'] == $student_id)
+            // {
+                if($student['student_id'] == $student_id)
+                {
+
+                    $this->global_rank1= $student['rank'];
+                }
+                $total_score = $student['total_avg_3_month']+$student['total_semester_month'];
+                    array_push(
+                        $all_result_semester_1,
+                        [
+                            "student_id"=>$student['student_id'],
+                            "kh_name"=>$student['kh_name'],
+                            "sex"=>$student['sex'],
+                            "khmer"=>$student['khmer'],
+                            "morality"=>$student['morality'],
+                            "history"=>$student['history'],
+                            "geography"=>$student['geography'],
+                            "math"=>$student['math'],
+                            "physical"=>$student['physical'],
+                            "chemistry"=>$student['chemistry'],
+                            "biology"=>$student['biology'],
+                            "earth_science"=>$student['earth_science'],
+                            "english"=>$student['english'],
+                            "pe"=>$student['pe'],
+                            "computer"=>$student['computer'],
+                            "total_avg_3_month"=>$student['total_avg_3_month'],
+                            "total_semester_month"=>$student['total_semester_month'],
+                            "total_avg_year"=>$total_score,
+                            "total_avg_year_muti"=>$total_score / 2,
+                            "rank"=>$student['rank'],
+                            "total_avg_year_muti_2"=>0,
+                            "type"=>"Semester1"
+                        ]
+                );
+            // }
+
+        }
+
+        $all_result_semester_1 = array_values($all_result_semester_1);
+        if($data_month_11 && $data_month_12 && $data_month_1 && $data_month_2)
+        {
+
+            return $all_result_semester_1;
+        } else{
+
+            return 0;
+        }
+
+    }
+    public function getSemesterTwo($student_id,$class_id,$month_id)
+    {
+        $check_class = DB::table('class_view')->where('id',$class_id)->first();
+
+        if(str_contains($check_class->grade,"12"))
+        {
+
+            $data_month_3 = DB::select(DB::raw("SELECT * FROM score_upper_cc INNER JOIN student ON score_upper_cc.student_id = student.id WHERE class_id=".$class_id."  and month_id=3"));
+            $data_month_4 = DB::select(DB::raw("SELECT * FROM score_upper_cc INNER JOIN student ON score_upper_cc.student_id = student.id WHERE class_id=".$class_id."  and month_id=4"));
+            $data_month_5 = DB::select(DB::raw("SELECT *  FROM score_upper_cc INNER JOIN student ON score_upper_cc.student_id = student.id WHERE class_id=".$class_id."  and month_id=5"));
+            $data_month_6 = DB::select(DB::raw("SELECT * FROM score_upper_cc INNER JOIN student ON score_upper_cc.student_id = student.id WHERE class_id=".$class_id."  and month_id=6"));
+
+
+        }else{
+
+            $data_month_3 = DB::select(DB::raw("SELECT * FROM score_upper_cc INNER JOIN student ON score_upper_cc.student_id = student.id WHERE class_id=".$class_id."  and month_id=5"));
+            $data_month_4 = DB::select(DB::raw("SELECT * FROM score_upper_cc INNER JOIN student ON score_upper_cc.student_id = student.id WHERE class_id=".$class_id."  and month_id=6"));
+            $data_month_5 = DB::select(DB::raw("SELECT *  FROM score_upper_cc INNER JOIN student ON score_upper_cc.student_id = student.id WHERE class_id=".$class_id."  and month_id=7"));
+            $data_month_6 = DB::select(DB::raw("SELECT * FROM score_upper_cc INNER JOIN student ON score_upper_cc.student_id = student.id WHERE class_id=".$class_id."  and month_id=8"));
+
+
+        }
+        $store_score_3=[];
+        $store_score_4=[];
+        $store_score_5=[];
+        $store_score_6=[];
+        foreach(json_decode(json_encode($data_month_3),true) as $student)
+        {
+
+
+
+                array_push(
+                    $store_score_3 ,
+                    [
+                        "student_id"=>$student['id'],
+                        "kh_name"=>$student['kh_name'],
+                        "en_name"=>$student['en_name'],
+                        "sex"=>$student['sex'],
+                        "class_id"=>$student['class_id'],
+                        "avg_m"=>$student['avg_m'],
+                        "khmer"=>0,
+                        "morality"=>0,
+                        "history"=>0,
+                        "geography"=>0,
+                        "math"=>0,
+                        "physical"=>0,
+                        "chemistry"=>0,
+                        "biology"=>0,
+                        "earth_science"=>0,
+                        "english"=>0,
+                        "pe"=>0,
+                        "computer"=>0,
+                        "total_score"=>$student['total_score'],
+                        "total_avg"=>$student['total_avg'],
+                        "total_semester_month"=>0,
+                        "type"=>"Month"
+                    ]
+                 );
+
+        }
+
+        foreach(json_decode(json_encode($data_month_4),true) as $student)
+        {
+
+
+
+                array_push(
+                    $store_score_4 ,
+                    [
+                        "student_id"=>$student['id'],
+                        "kh_name"=>$student['kh_name'],
+                        "en_name"=>$student['en_name'],
+                        "sex"=>$student['sex'],
+                        "class_id"=>$student['class_id'],
+                        "avg_m"=>$student['avg_m'],
+                        "khmer"=>0,
+                        "morality"=>0,
+                        "history"=>0,
+                        "geography"=>0,
+                        "math"=>0,
+                        "physical"=>0,
+                        "chemistry"=>0,
+                        "biology"=>0,
+                        "earth_science"=>0,
+                        "english"=>0,
+                        "pe"=>0,
+                        "computer"=>0,
+                        "total_score"=>$student['total_score'],
+                        "total_avg"=>$student['total_avg'],
+                        "total_semester_month"=>0,
+                        "type"=>"Month"
+                    ]
+                 );
+
+        }
+
+        foreach(json_decode(json_encode($data_month_5),true) as $student)
+        {
+
+
+
+                array_push(
+                    $store_score_5 ,
+                    [
+                        "student_id"=>$student['id'],
+                        "kh_name"=>$student['kh_name'],
+                        "en_name"=>$student['en_name'],
+                        "sex"=>$student['sex'],
+                        "class_id"=>$student['class_id'],
+                        "avg_m"=>$student['avg_m'],
+                        "khmer"=>0,
+                        "morality"=>0,
+                        "history"=>0,
+                        "geography"=>0,
+                        "math"=>0,
+                        "physical"=>0,
+                        "chemistry"=>0,
+                        "biology"=>0,
+                        "earth_science"=>0,
+                        "english"=>0,
+                        "pe"=>0,
+                        "computer"=>0,
+                        "total_score"=>$student['total_score'],
+                        "total_avg"=>$student['total_avg'],
+                        "total_semester_month"=>0,
+                        "type"=>"Month"
+                    ]
+                 );
+
+        }
+
+
+        foreach(json_decode(json_encode($data_month_6),true) as $student)
+        {
+
+
+
+                array_push(
+                    $store_score_6 ,
+                    [
+                        "student_id"=>$student['id'],
+                        "kh_name"=>$student['kh_name'],
+                        "en_name"=>$student['en_name'],
+                        "sex"=>$student['sex'],
+                        "class_id"=>$student['class_id'],
+                        "avg_m"=>$student['avg_m'],
+                        "khmer"=>$student['khmer'],
+                        "morality"=>$student['morality'],
+                        "history"=>$student['history'],
+                        "geography"=>$student['geography'],
+                        "math"=>$student['math'],
+                        "physical"=>$student['physical'],
+                        "chemistry"=>$student['chemistry'],
+                        "biology"=>$student['biology'],
+                        "earth_science"=>$student['earth_science'],
+                        "english"=>$student['english'],
+                        "pe"=>$student['pe'],
+                        "computer"=>$student['computer'],
+                        "total_score"=>$student['total_score'],
+                        "total_avg"=>0,
+                        "total_semester_month"=>$student['total_avg'],
+                        "type"=>"Month"
+                    ]
+                 );
+
+        }
+
+        $merge_arr_sem2= array_merge($store_score_3,$store_score_4,$store_score_5,$store_score_6);
+        $cv_data_sems2 = json_decode(json_encode($merge_arr_sem2),true);
+        $result_4_month_sem2 = [];
+        foreach($cv_data_sems2 as $student){
+
+            $avg = $student['total_avg'] ;
+            $id= $student['student_id'];
+            if(isset($result_4_month_sem2[$id]))
+            {
+                 $total_avg+=$avg ;
+                 $result_4_month_sem2[$id]['total_avg']+= $student['total_avg'] / 3  ;
+                 $result_4_month_sem2[$id]['total_semester_month'] = $student['total_semester_month'];
+                 $result_4_month_sem2[$id]['khmer'] = $student['khmer'];
+                 $result_4_month_sem2[$id]['morality'] = $student['morality'];
+                 $result_4_month_sem2[$id]['history'] = $student['history'];
+                 $result_4_month_sem2[$id]['geography'] = $student['geography'];
+                 $result_4_month_sem2[$id]['math'] = $student['math'];
+                 $result_4_month_sem2[$id]['physical'] = $student['physical'];
+                 $result_4_month_sem2[$id]['chemistry'] = $student['chemistry'];
+                 $result_4_month_sem2[$id]['biology'] = $student['biology'];
+                 $result_4_month_sem2[$id]['earth_science'] = $student['earth_science'];
+                 $result_4_month_sem2[$id]['english'] = $student['english'];
+                 $result_4_month_sem2[$id]['pe'] = $student['pe'];
+                 $result_4_month_sem2[$id]['computer'] = $student['computer'];
+
+
+
+            }else{
+                $total_avg =$student['total_avg'] / 3  ;
+                $total_score = $student['total_score'];
+                $result_4_month_sem2[$id]=[
+                     "student_id"=>$student['student_id'],
+                     "kh_name"=>$student['kh_name'],
+                     "sex"=>$student['sex'],
+                     "total_avg"=>$total_avg,
+                     "total_semester_month"=>$student['total_semester_month'],
+                     "khmer"=>$student['khmer'],
+                     "morality"=>$student['morality'],
+                     "history"=>$student['history'],
+                     "geography"=>$student['geography'],
+                     "math"=>$student['math'],
+                     "physical"=>$student['physical'],
+                     "chemistry"=>$student['chemistry'],
+                     "biology"=>$student['biology'],
+                     "earth_science"=>$student['earth_science'],
+                     "english"=>$student['english'],
+                     "pe"=>$student['pe'],
+                     "computer"=>$student['computer'],
+
+
+
+                ];
+            }
+
+
+        }
+
+        $last_new_2 = [];
+        foreach(json_decode(json_encode($result_4_month_sem2),true) as $student)
+        {
+            $total_score = $student['total_avg']+$student['total_semester_month'];
+                array_push(
+                    $last_new_2,
+                    [
+                        "student_id"=>$student['student_id'],
+                        "kh_name"=>$student['kh_name'],
+                        "sex"=>$student['sex'],
+                        "khmer"=>$student['khmer'],
+                        "morality"=>$student['morality'],
+                        "history"=>$student['history'],
+                        "geography"=>$student['geography'],
+                        "math"=>$student['math'],
+                        "physical"=>$student['physical'],
+                        "chemistry"=>$student['chemistry'],
+                        "biology"=>$student['biology'],
+                        "earth_science"=>$student['earth_science'],
+                        "english"=>$student['english'],
+                        "pe"=>$student['pe'],
+                        "computer"=>$student['computer'],
+                        "total_avg_3_month"=>$student['total_avg'],
+                        "total_semester_month"=>$student['total_semester_month'],
+                        "total_avg_year"=>$total_score,
+                        "total_avg_year_muti"=>$total_score / 2,
+                    ]
+            );
+
+        }
+
+           // Step 1: Sort the students by total score in descending order
+        $last_new_2 = array_values($last_new_2);
+           usort($last_new_2, function ($a, $b) {
+               return $b['total_avg_year_muti'] <=> $a['total_avg_year_muti'];
+           });
+
+           // Step 2: Assign ranks based on total scores
+           $rank = 1;
+           foreach ($last_new_2 as $index => &$student) {
+
+               if ($index > 0 && $student['total_avg_year_muti'] === $last_new_2[$index - 1]['total_avg_year_muti']) {
+                   $student['rank'] = $last_new_2[$index - 1]['rank']; // Same rank as previous student
+               } else {
+                   $student['rank'] = $rank;
+               }
+               $rank++;
+           }
+        $all_result_semester_2=[];
+        foreach(json_decode(json_encode($last_new_2),true) as $student)
+        {
+
+            if($student['student_id'] == $student_id)
+            {
+
+                $this->global_rank2= $student['rank'];
+            }
+            // if($student['student_id'] == $student_id)
+            // {
+                $total_score = $student['total_avg_3_month']+$student['total_semester_month'];
+                    array_push(
+                        $all_result_semester_2,
+                        [
+                            "student_id"=>$student['student_id'],
+                            "kh_name"=>$student['kh_name'],
+                            "sex"=>$student['sex'],
+                            "khmer"=>$student['khmer'],
+                            "morality"=>$student['morality'],
+                            "history"=>$student['history'],
+                            "geography"=>$student['geography'],
+                            "math"=>$student['math'],
+                            "physical"=>$student['physical'],
+                            "chemistry"=>$student['chemistry'],
+                            "biology"=>$student['biology'],
+                            "earth_science"=>$student['earth_science'],
+                            "english"=>$student['english'],
+                            "pe"=>$student['pe'],
+                            "computer"=>$student['computer'],
+                            "total_avg_3_month"=>$student['total_avg_3_month'],
+                            "total_semester_month"=>$student['total_semester_month'],
+                            "total_avg_year"=>$total_score,
+                            "total_avg_year_muti_2"=>$total_score / 2,
+                            "total_avg_year_muti"=>0,
+                            "rank"=>$student['rank'],
+                            "type"=>"Semester2"
+                        ]
+                );
+            // }
+
+        }
+
+        $all_result_semester_2 = array_values($all_result_semester_2);
+        if($data_month_3 && $data_month_4 && $data_month_5 && $data_month_6)
+        {
+
+            return $all_result_semester_2;
+        } else{
+
+            return 0;
         }
     }
     public function login(Request $request)
@@ -2063,6 +3114,33 @@ class AuthController extends Controller
 
     }
 
+    public function getclass($student_id,$ac_id)
+    {
+
+        if($ac_id == "0" )
+        {
+            $class = DB::select(DB::raw('SELECT v_student_class.*,v_class.grade,v_class.academic_year,v_class.id as clid ,v_class.yid,v_class.curriculum, v_class.grade  as grade ,v_class.cur_id as cur_id FROM v_student_class INNER JOIN v_class ON v_student_class.class_id = v_class.id where v_student_class.id="'.$student_id.'" and v_class.deleted=0 GROUP BY class_id'));
+
+        }else{
+            $class = DB::select(DB::raw('SELECT v_student_class.*,v_class.grade,v_class.academic_year,v_class.id as clid ,v_class.yid,v_class.curriculum,v_class.grade as grade  ,v_class.cur_id as cur_id FROM v_student_class INNER JOIN v_class ON v_student_class.class_id = v_class.id where v_class.yid = "'.$ac_id.'" and  v_student_class.id="'.$student_id.'" and v_class.deleted=0 GROUP BY class_id'));
+
+        }
+        if($class)
+        {
+            return  response()->json([
+                'status'=>0,
+                'class'=>$class,
+                "message"=>"Have Class"
+
+            ]);
+        }else{
+            return  response()->json([
+                'status'=>1,
+                "message"=>"No Class"
+
+            ]);
+        }
+    }
 
     public function athenticateds(){
 
@@ -2088,38 +3166,71 @@ class AuthController extends Controller
     }
 
 
-
-    public function getacademic(){
+    public function getmonth($type){
         header('Access-Control-Allow-Origin: *');
-        $db = DB::table('academic_year')->where('deleted',0)->get();
-        return response()->json([
+        if($type == "khmer")
+        {
+            $ac = DB::table('month')->get();
+            if($ac)
+            {
+                return response()->json([
+                    'status'=>0,
+                    'data'=>$ac
+                ]);
+            }else{
+                return response()->json([
+                     'status'=>1,
+                     'data'=>$ac
+                ]);
+            }
 
-            'data'=>$db
-        ]);
+        }
+
+
 
 
     }
 
-    public function countattendance(Request $r){
+    public function getacademic(){
+        header('Access-Control-Allow-Origin: *');
+        $ac = DB::table('academic_year')->where('deleted',0)->get();
+        if($ac)
+        {
+            return response()->json([
+                'status'=>1,
+                'data'=>$ac
+            ]);
+        }else{
+            return response()->json([
+                 'status'=>0,
+                'data'=>$ac
+            ]);
+        }
+
+
+
+    }
+
+    public function getattendance($student_id,$class_id,$month_id){
 
         header('Access-Control-Allow-Origin: *');
 
-        $db = DB::table('attendance')
-         ->where('class_id',$r->class_id)
-         ->where('semester_id',$r->semester_id)
-         ->where('student_id',$r->student_id)
+        $db = DB::table('tbl_attendance')
+         ->where('class_id',$class_id)
+         ->where('month_id',$month_id)
+         ->where('student_id',$student_id)
          ->first();
 
         if($db)
         {
             return response()->json([
-
-                'data'=>$db->count_attendance
+                'status'=>0,
+                'data'=>$db
             ]);
         }else{
 
             return response()->json([
-
+                'status'=>1,
                 'data'=>0
             ]);
         }

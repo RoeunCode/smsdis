@@ -43,11 +43,11 @@
                             </div>
                             <div class="col-sm-12 col-md-3 col-lg-3">
                                 <label>ឈ្មោះជាភាសាខ្មែរ*</label>
-                                <input class="form-control" type="text" required name="kh_name" id="kh_name" placeholder="បញ្ចូលឈ្មោះ..." value="{{$student->kh_name}}" />
+                                <input class="form-control" type="text"  name="kh_name" id="kh_name" placeholder="បញ្ចូលឈ្មោះ..." value="{{$student->kh_name}}" />
                             </div>
                             <div class="col-sm-12 col-md-3 col-lg-3">
                                 <label>Full Name*</label>
-                                <input class="form-control" type="text" required name="en_name" id="en_name" placeholder="Enter Student's Name..." value="{{$student->en_name}}">
+                                <input class="form-control" type="text"  name="en_name" id="en_name" placeholder="Enter Student's Name..." value="{{$student->en_name}}">
                             </div>
                             <div class="col-sm-12 col-md-3 col-lg-3">
                                 <label for="simple-classic-email">Sex*</label>
@@ -63,51 +63,51 @@
                             </div>
                             <div class="col-sm-12 col-md-3 col-lg-3">
                                 <label>DOB*</label>
-                                <input class="form-control" type="date" required name="dob" id="dob" placeholder="Please enter student's Date Of Birth..." value="{{$student->dob}}">
+                                <input class="form-control" type="date"  name="dob" id="dob" placeholder="Please enter student's Date Of Birth..." value="{{$student->dob}}">
                             </div>
                             <div class="col-sm-12 col-md-3 col-lg-3">
                                 <label>លេខទូរស័ព្ទ*</label>
-                                <input type="tel" class="form-control" required name="stel" id="stel" placeholder="Enter Phone Number" value="{{$student->phone_student}}">
+                                <input type="tel" class="form-control"  name="stel" id="stel" placeholder="Enter Phone Number" value="{{$student->phone_student}}">
                             </div>
                             <div class="col-sm-12 col-md-3 col-lg-3">
                                 <label>សញ្ជាតិ*</label>
-                                <input type="text" class="form-control" required name="national" id="national" placeholder="Enter National" value="{{$student->national}}">
+                                <input type="text" class="form-control"  name="national" id="national" placeholder="Enter National" value="{{$student->national}}">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-12 col-md-3 col-lg-3">
                                 <label>ភូមិកំណើត*</label>
-                                <input class="form-control" type="text" required name="pob_v" id="pob_v" placeholder="បញ្ចូលភូមិកំណើត" value="{{$student->village_pob}}">
+                                <input class="form-control" type="text"  name="pob_v" id="pob_v" placeholder="បញ្ចូលភូមិកំណើត" value="{{$student->village_pob}}">
                             </div>
                             <div class="col-sm-12 col-md-3 col-lg-3">
                                 <label>ឃុំ/សង្កាត់កំណើត*</label>
-                                <input class="form-control" type="text" required name="pob_c" id="pob_c" placeholder="បញ្ចូលឃុំ/សង្កាត់កំណើត" value="{{$student->commue_pob}}">
+                                <input class="form-control" type="text"  name="pob_c" id="pob_c" placeholder="បញ្ចូលឃុំ/សង្កាត់កំណើត" value="{{$student->commue_pob}}">
                             </div>
                             <div class="col-sm-12 col-md-3 col-lg-3">
                                 <label>ស្រុកកំណើត*</label>
-                                <input class="form-control" type="text" required name="pob_d" id="pob_d" placeholder="បញ្ចូលស្រុកកំណើត" value="{{$student->district_pob}}">
+                                <input class="form-control" type="text"  name="pob_d" id="pob_d" placeholder="បញ្ចូលស្រុកកំណើត" value="{{$student->district_pob}}">
                             </div>
                             <div class="col-sm-12 col-md-3 col-lg-3">
                                 <label>ខេត្តកំណើត*</label>
-                                <input class="form-control" type="text" required name="pob_p" id="pob_p" placeholder="បញ្ចូលខេត្តកំណើត" value="{{$student->province_pob}}">
+                                <input class="form-control" type="text"  name="pob_p" id="pob_p" placeholder="បញ្ចូលខេត្តកំណើត" value="{{$student->province_pob}}">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-12 col-md-3 col-lg-3">
                                 <label>ភូមិបច្ចប្បុន្ន*</label>
-                                <input class="form-control" type="text" required name="cur_v" id="cur_v" placeholder="បញ្ចូលភូមិបច្ចប្បុន្ន" value="{{$student->village_current}}">
+                                <input class="form-control" type="text"  name="cur_v" id="cur_v" placeholder="បញ្ចូលភូមិបច្ចប្បុន្ន" value="{{$student->village_current}}">
                             </div>
                             <div class="col-sm-12 col-md-3 col-lg-3">
                                 <label>ឃុំ/សង្កាត់បច្ចប្បុន្ន*</label>
-                                <input class="form-control" type="text" required name="cur_c" id="cur_c" placeholder="បញ្ចូលឃុំ/សង្កាត់បច្ចប្បុន្ន" value="{{$student->commue_current}}">
+                                <input class="form-control" type="text"  name="cur_c" id="cur_c" placeholder="បញ្ចូលឃុំ/សង្កាត់បច្ចប្បុន្ន" value="{{$student->commue_current}}">
                             </div>
                             <div class="col-sm-12 col-md-3 col-lg-3">
                                 <label>ស្រុកបច្ចប្បុន្ន*</label>
-                                <input class="form-control" type="text" required name="cur_d" id="cur_d" placeholder="បញ្ចូលស្រុកបច្ចប្បុន្ន" value="{{$student->district_current}}">
+                                <input class="form-control" type="text"  name="cur_d" id="cur_d" placeholder="បញ្ចូលស្រុកបច្ចប្បុន្ន" value="{{$student->district_current}}">
                             </div>
                             <div class="col-sm-12 col-md-3 col-lg-3">
                                 <label>ខេត្តបច្ចប្បុន្ន*</label>
-                                <input class="form-control" type="text" required name="cur_p" id="cur_p" placeholder="បញ្ចូលខេត្តបច្ចប្បុន្ន" value="{{$student->province_current}}">
+                                <input class="form-control" type="text"  name="cur_p" id="cur_p" placeholder="បញ្ចូលខេត្តបច្ចប្បុន្ន" value="{{$student->province_current}}">
                             </div>
                         </div>
                         <div class="row">
@@ -131,11 +131,11 @@
                         <div class="row">
                             <div class="col-sm-12 col-md-3 col-lg-3">
                                 <label>Mother Name*</label>
-                                <input class="form-control" type="text" required name="mname" id="mname" placeholder="Enter Mother's Name..." value="{{$student->mother_name}}">
+                                <input class="form-control" type="text"  name="mname" id="mname" placeholder="Enter Mother's Name..." value="{{$student->mother_name}}">
                             </div>
                             <div class="col-sm-12 col-md-3 col-lg-3">
                                 <label>មុខរបរម្ដាយ*</label>
-                                <input class="form-control" type="text" required name="jobm" id="jobm" placeholder="បញ្ចូលមុខរបរម្ដាយ..." value="{{$student->mother_job}}">
+                                <input class="form-control" type="text"  name="jobm" id="jobm" placeholder="បញ្ចូលមុខរបរម្ដាយ..." value="{{$student->mother_job}}">
                             </div>
                             <div class="col-sm-12 col-md-3 col-lg-3">
                                 <label>សញ្ជាតិម្ដាយ</label>
@@ -151,17 +151,17 @@
                             </div>
                             <div class="col-sm-12 col-md-3 col-lg-3">
                                 <label>អាស័ដ្ឋាន*</label>
-                                <input class="form-control" type="text" required name="pob_vm" id="pob_vm" placeholder="បញ្ចូលអាស័ដ្ឋាន" value="{{$student->address_mother}}">
+                                <input class="form-control" type="text"  name="pob_vm" id="pob_vm" placeholder="បញ្ចូលអាស័ដ្ឋាន" value="{{$student->address_mother}}">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-12 col-md-3 col-lg-3">
                                 <label>Father Name*</label>
-                                <input class="form-control" type="text" required name="fnm" id="fnm" placeholder="Enter Father's Name..." value="{{$student->farther_name}}">
+                                <input class="form-control" type="text"  name="fnm" id="fnm" placeholder="Enter Father's Name..." value="{{$student->farther_name}}">
                             </div>
                             <div class="col-sm-12 col-md-3 col-lg-3">
                                 <label>Father Job*</label>
-                                <input class="form-control" type="text" required name="jobf" id="jobf" placeholder="Enter Father Job..." value="{{$student->farther_job}}">
+                                <input class="form-control" type="text"  name="jobf" id="jobf" placeholder="Enter Father Job..." value="{{$student->farther_job}}">
                             </div>
                             <div class="col-sm-12 col-md-3 col-lg-3">
                                 <label>សញ្ជាតិឪពុក</label>
@@ -177,7 +177,7 @@
                             </div>
                             <div class="col-sm-12 col-md-3 col-lg-3">
                                 <label>លេខទូរស័ព្ទ*</label>
-                                <input class="form-control" type="text" required name="telf" id="telf" placeholder="Enter Phone Number..." value="{{$student->phone_farther}}">
+                                <input class="form-control" type="text"  name="telf" id="telf" placeholder="Enter Phone Number..." value="{{$student->phone_farther}}">
                             </div>
                         </div>
                         <div class="row">

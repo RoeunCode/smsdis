@@ -100,7 +100,7 @@ Route::middleware(['auth','isactive','setlanguage'])->group(function () {
 
     Route::resource('reportprimarycc', 'ReportCC\ReportPrimaryController');
     Route::post('result_primary_cc_per_month', 'ReportCC\ReportPrimaryController@result_primary_cc_per_month')->name('result_primary_cc_per_month');
-
+    Route::post('save_attendance','AttendanceController@save_attendance')->name('save_attendance');
 
 
     Route::get('noperm',function (){

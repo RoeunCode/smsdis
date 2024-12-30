@@ -232,10 +232,12 @@
                 if (data.student_class.length == 0) {
                     // $('#show_student').slideDown()
                     $('#msg_showstudent').show()
+                          $('#show_student').hide()
                     $('#btn_get_student').html('    <i class="fa fa-search"></i> &nbsp;បង្ហាញសិស្ស​')
                     return;
                 }
                 status = data.status
+                  $('#show_student').show()
                 if (data.status == 1) {
 
 

@@ -10,7 +10,7 @@
     <meta name="robots" content="noindex, nofollow" />
     <link rel="apple-touch-icon" href="{{asset('theme/pic/logo.png')}}" />
     <link rel="icon" href="{{asset('theme/pic/logo.png')}}" /><link rel="icon" href="{{asset('theme/pic/logo.png')}}" />
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,900%7CRoboto+Slab:300,400%7CRoboto+Mono:400" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,900%7CRoboto+Slab:300,400%7CRoboto+Mono:400" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
     <link rel="stylesheet" id="css-ionicons" href="{{asset('theme/dist/assets/css/ionicons.css')}}" />
     <link rel="stylesheet" id="css-bootstrap" href="{{asset('theme/dist/assets/css/bootstrap.css')}}" />
@@ -24,7 +24,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Moul&display=swap" rel="stylesheet">
 
-    {{--<link href="https://fonts.googleapis.com/css2?family=Battambang&display=swap" rel="stylesheet">--}}
+    <link href="https://fonts.googleapis.com/css2?family=Battambang&display=swap" rel="stylesheet">
     <style>
         /* @media print {
             body {
@@ -43,11 +43,11 @@
             font-style: normal;
         }
 
-        @font-face {
-            font-family: 'Battambang', cursive;
-            {{--src: url('{{ public_path('fonts/KhmerOSbattambang.tff') }}');--}}
-            src:url("https://fonts.googleapis.com/css2?family=Battambang&display=swap");
-        }
+        /*@font-face {*/
+        /*    font-family: 'Battambang', cursive;*/
+        /*    {{--src: url('{{ public_path('fonts/KhmerOSbattambang.tff') }}');--}}*/
+        /*    src:url("https://fonts.googleapis.com/css2?family=Battambang&display=swap");*/
+        /*}*/
 
         @font-face {
             font-family: 'tacteing';
@@ -253,10 +253,17 @@
                         <li class="nav-item nav-item-has-subnav">
                             <a href="javascript:void(0)"><i class="fas fa-cog"></i>Setting</a>
                             <ul class="nav nav-subnav">
+<<<<<<< HEAD
                                 <li>
                                     {{--<a href="{{route('student.index')}}">@lang('layout.m1_s1')</a>--}}{{-- Sela URL--}}
                                     <a href="{{route('user.index')}}">Create User</a>
                                 </li>
+=======
+                                <!--<li>-->
+                                    
+                                <!--    <a href="{{route('user.index')}}">Create User</a>-->
+                                <!--</li>-->
+>>>>>>> origin/main
                                 {{-- <li>
 
                                     <a href="{{route('campus.index')}}">Campus</a>

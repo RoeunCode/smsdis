@@ -28,6 +28,7 @@
 								<td>{{ $student->dob }}</td>
 								<td>
 									<a href="{{ route('student.show', $student->id) }}" class="btn btn-md btn-pill btn-app-blue"><i class="fa fa-search"></i></a>
+										<a href="{{ route('student.edit', $student->id) }}" class="btn btn-md btn-pill btn-app-red"><i class="fa fa-edit"></i></a>
 								</td>
 							</tr>
 						@endforeach

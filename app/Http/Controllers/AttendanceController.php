@@ -155,7 +155,99 @@ class AttendanceController extends Controller
             }
         }
     }
+    public function save_attendance(Request $request)
+    {
 
+        if($request->status == 1 )
+        {
+            $array_save=[];
+            for($i=0;$i<count($request->student_id);$i++)
+            {
+                $array_save[]=[
+
+                    'class_id'=>$request->class_id,
+                    'student_id'=>$request->student_id[$i],
+                    'month_id'=>$request->month_id,
+                    'absen'=>$request->adsen[$i],
+                    'permission'=>$request->permision[$i],
+                    'note'=>$request->note[$i]
+                ];
+            }
+
+            $data = DB::table('tbl_attendance')->insert($array_save);
+
+            if($data)
+            {
+                return response()->json(
+                    [
+                        "message"=>"Save Successfully",
+                        "status"=>0
+
+
+                    ]
+                ) ;
+            }else{
+                return response()->json(
+                    [
+                        "message"=>"Something Wrong !",
+                        "status"=>1
+
+                    ]
+                ) ;
+            }
+
+
+        }else{
+
+             $del = DB::table('tbl_attendance')
+            ->where('class_id',$request->class_id)
+            ->where('month_id',$request->month_id)
+            ->delete();
+
+            if($del)
+            {
+
+                $array_save=[];
+                for($i=0;$i<count($request->student_id);$i++)
+                {
+                    $array_save[]=[
+
+                        'class_id'=>$request->class_id,
+                        'student_id'=>$request->student_id[$i],
+                        'month_id'=>$request->month_id,
+                        'absen'=>$request->adsen[$i],
+                        'permission'=>$request->permision[$i],
+                        'note'=>$request->note[$i]
+                    ];
+                }
+
+                $data = DB::table('tbl_attendance')->insert($array_save);
+
+                if($data)
+                {
+                    return response()->json(
+                        [
+                            "message"=>"Save Successfully",
+                            "status"=>0
+
+
+                        ]
+                    ) ;
+                }else{
+                    return response()->json(
+                        [
+                            "message"=>"Something Wrong !",
+                            "status"=>1
+
+                        ]
+                    ) ;
+                }
+
+            }
+
+
+        }
+    }
     /**
      * Display the specified resource.
      *

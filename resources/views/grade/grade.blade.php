@@ -36,10 +36,12 @@
                                             <div class="form-group">
                                                 <label>@lang('grade.m_cur')</label>
                                                 <select class="form-control" name="text" id="cur">
-                                                    <option value="">@lang('grade.m_cur_ph')</option>
+                                                    <option value="1">@lang('grade.m_cur_ph')</option>
                                                         @foreach($cur as $c)
                                                             <option value="{{$c->id}}">{{$c->name}}</option>
                                                         @endforeach
+                                                 
+                                                    <!--<option value="1">កម្មវិធីជាតិ</option>-->
                                                 </select>
                                             </div>
                                         </div>
@@ -81,7 +83,7 @@
                                 <td style="display: none">{{$d->id}}</td>
                                 <td>{{$d->name}}</td>
                                 <td style="display: none">{{$d->cur_id}}</td>
-                                <td>@php if($d->cur_id == 1){echo "កម្មវិធីជាតិ";}elseif($d->cur_id == 2){echo "American Curriculum";}elseif($d->cur_id == 3){echo "Foreign Language Academy";} @endphp</td>
+                                <td>@php if($d->cur_id == 1){echo "កម្មវិធីចំណេះទូទៅខ្មែរ";}elseif($d->cur_id == 2){echo "American Curriculum";}elseif($d->cur_id == 3){echo "Foreign Language Academy";} @endphp</td>
                                 <td>
                                     <button class="btn btn-pill btn-primary edit"><i class="fa fa-pen"></i></button>
                                     <a class="btn btn-app-red btn-pill" onclick="return confirm('Are You Sure You Want To Delete ?')" href="{{route('gdel',$d->id)}}"><i class="fa fa-trash"></i></a>

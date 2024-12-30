@@ -142,7 +142,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col text-center">
-                                <button class="btn btn-primary btn-sm" id="btn_save_score">បញ្ជូលពិន្ទុ</button>
+                                <button class="btn btn-primary btn-sm" id="btn_save_score">បញ្ជូលអវត្តមាន</button>
                             </div>
                         </div>
                     </div>
@@ -243,7 +243,7 @@
         $('#btn_show_attandance_list').click(function() {
 
             var class_id = $('#select_class').val()
-            var month_id = $('#selectprom_month').val()
+            var month_id = $('#select_month').val()
             var program = $('#select_program').val()
             if (program == '' || program == null) {
                 Swal.fire({
@@ -303,7 +303,7 @@
                             "<td><input type='number' class='form-control txt_permission'></td>" +
                             "<td><textarea class='form-control txt_note'></textarea></td>" +
                             "<td hidden><input class='form-control txt_student_id' value=" + student
-                            .id +
+                            .id + "></td>" +
                             "</tr>";
                     })
                     $('#btn_get_student').html('បង្ហាញទិន្ន័យ')
@@ -313,15 +313,19 @@
 
                     var output_data = "";
                     data.student_class.forEach(function(student) {
+                        student.note = student.note == null ? '' : student.note
                         output_data +=
                             "<tr style='text-align:center;'><td style='font-size:12px'>" + student
                             .kh_name +
                             "</td>" +
-                            "<td><input type='number' value="+student.absen+" class='form-control txt_absen'></td>" +
-                            "<td><input type='number' value="+student.permission+" class='form-control txt_permission'></td>" +
-                            "<td><textarea class='form-control txt_note' value="+student.permission+" ></textarea></td>" +
+                            "<td><input type='number' value=" + student.absen +
+                            " class='form-control txt_absen'></td>" +
+                            "<td><input type='number' value=" + student.permission +
+                            " class='form-control txt_permission'></td>" +
+                            "<td><textarea class='form-control txt_note'  >" + student.note +
+                            "</textarea></td>" +
                             "<td hidden><input class='form-control txt_student_id' value=" + student
-                            .student_id +
+                            .student_id + "></td>" +
                             "</tr>";
                     })
                     $('#btn_get_student').html('បង្ហាញទិន្ន័យ')
@@ -333,7 +337,7 @@
                 $('#btn_get_student').html('បង្ហាញទិន្ន័យ')
             })
         })
-        $('#btn_save_score').click(function(){
+        $('#btn_save_score').click(function() {
             var student_id = []
             var adsen = []
             var note = []
@@ -353,18 +357,41 @@
                 note.push($(this).val())
             })
             $.ajax({
-                type:'post',
-                url:'{{ route('attendance.store') }}',
-                data:{
+                type: 'post',
+                url: '{{ route('save_attendance') }}',
+                data: {
                     '_token': '{{ csrf_token() }}',
+                    'class_id': class_id,
+                    'month_id': month_id,
+                    'student_id': student_id,
+                    'adsen': adsen,
+                    'permision': permision,
+                    'note': note,
+                    'status': status
+                },
+                beforeSend:function(){
+                    $('#btn_save_score').addClass('disabled')
+                    $('#btn_save_score').html('កំពុងបញ្ជូលអវត្តមាន')
                 }
-            }).then((data)=>{
+            }).then((data) => {
+
+                if (data.status == 0) {
+                    $('#btn_save_score').removeClass('disabled')
+                    $('#btn_save_score').html('បញ្ជូលអវត្តមាន')
+
+                    Swal.fire({
+                        'type': 'success',
+                        'text': 'បញ្ជូលពិន្ទុបានជោគជ័យ',
+                        'title': 'ពិន្ទុ'
+                    }).then(function() {
+                        $('#show_student').slideUp()
+                    })
+                }
 
 
-
-
-            }).fail((err)=>{
-
+            }).fail((err) => {
+                $('#btn_save_score').removeClass('disabled')
+                $('#btn_save_score').html('បញ្ជូលអវត្តមាន')
             })
 
         })

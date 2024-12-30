@@ -54,7 +54,6 @@ class UpperSecondaryController extends Controller
         $check_score = DB::table('score_upper_cc')
         ->where('class_id',$request->class_id)
         ->where('month_id',$request->month_id)
-
         ->count();
 
 
@@ -65,7 +64,7 @@ class UpperSecondaryController extends Controller
 
             $student_class = DB::table('v_student_class')
             ->where('class_id',$request->class_id)
-            ->orderby('sort')
+            ->orderby('kh_name')
             ->get();
             return response()->json(
                 [
@@ -73,7 +72,7 @@ class UpperSecondaryController extends Controller
                     "status"=>1
                 ]
             ) ;
-            }else{
+         }else{
 
                 $seachStudent = DB::table('score_upper_cc')
                                 ->join('student','score_upper_cc.student_id' ,'=','student.id')
