@@ -102,6 +102,8 @@ Route::middleware(['auth','isactive','setlanguage'])->group(function () {
     Route::post('result_primary_cc_per_month', 'ReportCC\ReportPrimaryController@result_primary_cc_per_month')->name('result_primary_cc_per_month');
     Route::post('save_attendance','AttendanceController@save_attendance')->name('save_attendance');
 
+    // Account Student
+    Route::resource('accountstudent','AccountstudentController');
 
     Route::get('noperm',function (){
         return view('noperm');
