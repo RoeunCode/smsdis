@@ -273,7 +273,7 @@
                     month_id: month_id
                 },
                 beforeSend: function() {
-                    $('#btn_get_student').html('កំពុងទាញទិន្ន័យ')
+                    $('#btn_show_attandance_list').html('កំពុងទាញទិន្ន័យ')
                 }
 
             }).then((data) => {
@@ -286,7 +286,7 @@
                         text: 'មិនមានសិស្សក្នុងថ្នាក់នេះទេ'
                     })
                     $('#show_student').slideUp()
-                    $('#btn_get_student').html('បង្ហាញទិន្ន័យ')
+                    $('#btn_show_attandance_list').html('បង្ហាញទិន្ន័យ')
                     return;
                 }
                 status = data.status
@@ -306,7 +306,7 @@
                             .id + "></td>" +
                             "</tr>";
                     })
-                    $('#btn_get_student').html('បង្ហាញទិន្ន័យ')
+                    $('#btn_show_attandance_list').html('បង្ហាញទិន្ន័យ')
                     $('#tbl_list tbody').html(output_data)
                     $('#show_student').slideDown()
                 } else {
@@ -328,13 +328,13 @@
                             .student_id + "></td>" +
                             "</tr>";
                     })
-                    $('#btn_get_student').html('បង្ហាញទិន្ន័យ')
+                    $('#btn_show_attandance_list').html('បង្ហាញទិន្ន័យ')
                     $('#tbl_list tbody').html(output_data)
                     $('#show_student').slideDown()
                 }
 
             }).fail((data) => {
-                $('#btn_get_student').html('បង្ហាញទិន្ន័យ')
+                $('#btn_show_attandance_list').html('បង្ហាញទិន្ន័យ')
             })
         })
         $('#btn_save_score').click(function() {
