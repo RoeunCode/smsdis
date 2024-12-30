@@ -97,7 +97,7 @@ class AttendanceController extends Controller
 
                 $student_class = DB::table('v_student_class')
                 ->where('class_id',$request->class_id)
-                ->orderby('sort')
+                // ->orderby('sort')
                 ->get();
                 return response()->json(
                 [
