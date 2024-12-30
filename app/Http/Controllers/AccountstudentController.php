@@ -127,5 +127,8 @@ class AccountstudentController extends Controller
     public function destroy($id)
     {
         //
+
+        $del=DB::table('users')->where('id',$id)->delete();
+        return 1;
     }
 }
