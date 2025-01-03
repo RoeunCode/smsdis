@@ -234,7 +234,7 @@ Route::middleware(['auth','isactive','setlanguage'])->group(function () {
 //        Route::resource('student','StudentController');
         Route::get('stdd', 'StudentController@deleted')->name('stdd');
 //        Route::post('chksid','StudentController@chksid')->name('chksid');
-//        Route::post('proup', 'StudentController@proup')->name('proup');
+        Route::post('proup', 'StudentController@proup')->name('proup');
 //        Route::get('stdl/{id}', 'StudentController@delete')->name('stdl');
 //        Route::get('strst/{id}', 'StudentController@restore')->name('strst');
         //End Student

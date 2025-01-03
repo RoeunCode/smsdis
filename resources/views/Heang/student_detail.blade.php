@@ -47,11 +47,13 @@
         <div class="card-profile-img bg-img" style="background-image: url({{asset('theme/pic/cover.jpg')}});">
         </div>
         <div class="card-block card-profile-block text-xs-center text-sm-left">
-           {{--  @php if($d->photo == ""){ $src = asset('theme/pic/nophoto.png');}else{$src = asset('uploads/photo/'.$d->photo.'');} @endphp --}}
-            <img class="img-avatar img-avatar-96" src="" alt=""/>
-            <div class="profile-info font-500">
-                <div class="small text-muted m-t-xs"></div>
-            </div>
+             @foreach($student as $d) 
+                @php if($d->photo == ""){ $src = asset('theme/pic/nophoto.png');}else{$src = asset('uploads/photo/'.$d->photo.'');} @endphp
+                <img class="img-avatar img-avatar-96" src="{{ $src }}" alt="No Photo"/>
+                <div class="profile-info font-500">
+                    <div class="small text-muted m-t-xs"></div>
+                </div>
+            @endforeach        
             @foreach($student as $student)
             <div>
                 <ul style="margin-top: -30px;"
@@ -95,11 +97,11 @@
                         </li>
                     </ul>
                 </div>
-                <form action="" enctype="multipart/form-data" method="post">
+                <form action="{{ route('proup') }}" enctype="multipart/form-data" method="post">
                     <div class="card-block">
                         @lang('student.sel')
                         @csrf
-                        <input type="hidden" name="id" value="">
+                        <input type="hidden" name="id" value="{{ $student->id }}">
                         <input class="form-control" name="photo" type="file" id="photo" onchange="loadFile(event)"
                                required>
                         <center>

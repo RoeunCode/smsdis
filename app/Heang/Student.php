@@ -13,6 +13,7 @@ class Student extends Model
     	"en_name",
     	"sex",
     	"dob",
+    	"photo",
     	"phone_student",
     	"national",
     	"village_pob",
