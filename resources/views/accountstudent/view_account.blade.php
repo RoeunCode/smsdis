@@ -11,6 +11,18 @@
     .search-sec {
         padding: 1rem;
     }
+    .select2-container--default .select2-selection--single {
+    background-color: #fff;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    padding-top: 6px;
+    font-size: 12px;
+}
+    .select2-container--default .select2-results>.select2-results__options {
+        max-height: 200px;
+        overflow-y: auto;
+        font-size: 12px;
+    }
 </style>
 
 @section('content')
@@ -85,7 +97,7 @@
                             </option>
                             @foreach ($student as $row)
                                 <option value="{{ $row->id }}">
-                                    {{ $row->kh_name }}
+                                    {{ $row->kh_name }} - {{ $row->en_name }}
                                 </option>
                             @endforeach
                         </select>
