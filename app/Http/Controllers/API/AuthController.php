@@ -1552,6 +1552,15 @@ class AuthController extends Controller
         }
 
     }
+    public function viewprofile($id)
+    {
+        $student = DB::table('student')->where('id',$id)->first();
+        return response()->json([
+                "status"=>0,
+                "data"=>$student,
+                "message"=>"Succesfully"
+        ]);
+    }
 
     public function viewscoreuppersecondary($student_id,$class_id,$month_id,$type)
     {
