@@ -2428,15 +2428,49 @@ class AuthController extends Controller
 
         }
     }
-    
+     public function viewallstudent()
+    {
+       $student = DB::select(DB::raw("SELECT id,student_id,student_id_fla,student_id_ac,en_name,kh_name,dob,phone_student,sex FROM student"));
+        if($student)
+        {
+            
+            return response()->json([
+                    "status"=>0,
+                    "data"=>$student,
+                    "message"=>"Succesfully"
+            ],200);
+            
+            
+        }else{
+              return response()->json([
+                    "status"=>1,
+                    "message"=>"UnSuccesfully"
+            ],400);
+            
+        }
+     
+    }
     public function viewprofile($id)
     {
-        $student = DB::table('student')->where('id',$id)->first();
-        return response()->json([
+      //  $student = DB::table('student')->where('id',$id)->first();
+       $student = DB::select(DB::raw("SELECT id,student_id,student_id_fla,student_id_ac,en_name,kh_name,dob,phone_student,sex FROM student where id=".$id." "));
+        if($student)
+        {
+            return response()->json([
                 "status"=>0,
                 "data"=>$student,
                 "message"=>"Succesfully"
-        ]);
+              ],200);
+              
+        }else{
+            
+              return response()->json([
+                    "status"=>1,
+                    "message"=>"UnSuccesfully"
+            ],400);
+            
+        }
+     
     }
 
     public function getSemesterOne($student_id,$class_id,$month_id)

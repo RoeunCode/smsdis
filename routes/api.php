@@ -17,6 +17,7 @@ Route::get('viewporfile/{student_id}',[App\Http\Controllers\API\AuthController::
 Route::get('viewscore-secondary/{student_id}/{class_id}/{month_id}/{type}',[App\Http\Controllers\API\AuthController::class, 'viewscoresecondary']);
 Route::get('viewscore-uppersecondary/{student_id}/{class_id}/{month_id}/{type}',[App\Http\Controllers\API\AuthController::class, 'viewscoreuppersecondary']);
 Route::get('viewporfile/{student_id}',[App\Http\Controllers\API\AuthController::class, 'viewprofile']);
+Route::get('viewallstudent',[App\Http\Controllers\API\AuthController::class, 'viewallstudent']);
 Route::get('/athenticateds', [App\Http\Controllers\API\AuthController::class, 'athenticateds']);
 Route::get('/getclass/{student_id}/{academic_year}', [App\Http\Controllers\API\AuthController::class, 'getclass']);
 Route::GET('/getacademic',[App\Http\Controllers\API\AuthController::class, 'getacademic']);
