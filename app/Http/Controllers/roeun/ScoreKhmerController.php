@@ -38,7 +38,8 @@ class ScoreKhmerController extends Controller
 
             $student_class = DB::table('v_student_class')
             ->where('class_id',$request->class_id)
-            ->orderby('sort')
+            // ->orderby('sort')
+               ->orderby('kh_name')
             ->get();
             return response()->json(
                 [
@@ -179,7 +180,8 @@ class ScoreKhmerController extends Controller
                     'word'=>$request->word[$i],
                     'pe'=>$request->pe[$i],
                     'homework'=>$request->homework[$i],
-                    'healthy'=>$request->healthy[$i]
+                    'healthy'=>$request->healthy[$i],
+                    'steam'=>$request->steam[$i]
 
                 ];
 
@@ -237,7 +239,8 @@ class ScoreKhmerController extends Controller
                     'word'=>$request->word[$i],
                     'pe'=>$request->pe[$i],
                     'homework'=>$request->homework[$i],
-                    'healthy'=>$request->healthy[$i]
+                    'healthy'=>$request->healthy[$i],
+                    'steam'=>$request->steam[$i]
 
                 ];
                 // $del = DB::table('score_primary_cc')

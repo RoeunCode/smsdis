@@ -125,10 +125,10 @@
                                 ឈ្មោះសិស្ស
                             </th>
                             <th style="text-align: center;font-size: 12px">
-                                ចំនួនសុំច្បាប់
+                                មានច្បាប់
                             </th>
                             <th style="text-align: center;font-size: 12px">
-                                ចំនួនអត់ច្បាប់​
+                                ឥតច្បាប់
                             </th>
                             <th style="text-align: center;font-size: 12px">
                                 ចំណាំ

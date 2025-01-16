@@ -118,6 +118,9 @@
                                         <th style="text-align: center;font-size: 12px">
                                             អនាម័យ
                                         </th>
+                                        <th style="text-align: center;font-size: 12px">
+                                            STEAM
+                                        </th>
                                     </thead>
                                     <tbody>
 
@@ -266,6 +269,7 @@
                             "<td><input class='form-control txt_pe'></td>" +
                             "<td><input class='form-control txt_homework'></td>" +
                             "<td><input class='form-control txt_healthy'/></td>" +
+                            "<td><input class='form-control txt_steam'/></td>" +
                             "<td hidden><input class='form-control txt_student_id' value=" + student
                             .id +
                             "></td>" +
@@ -297,6 +301,7 @@
                         var pe = student.pe == null ? '' : student.pe
                         var homework = student.homework == null ? '' : student.homework
                         var healthy = student.healthy == null ? '' : student.healthy
+                        var steam = student.steam == null ? '' : student.steam
                         output_data +=
                             "<tr style='text-align:center;'><td style='font-size:12px'>" + student
                             .kh_name +
@@ -326,6 +331,8 @@
                             "<td><input class='form-control txt_homework' value=" + homework +
                             "></td>" +
                             "<td><input class='form-control txt_healthy' value=" + healthy +
+                            "></td>" +
+                            "<td><input class='form-control txt_steam' value=" + steam +
                             "></td>" +
                             "<td hidden><input class='form-control txt_student_id' value=" + student
                             .student_id +
@@ -378,6 +385,7 @@
             var pe = []
             var homework = []
             var healthy = []
+            var steam=[]
             var student_id = []
             var id = []
             var class_id = $('#select_class').val()
@@ -493,6 +501,12 @@
                 healthy.push($(this).val())
 
             })
+            $('.txt_steam').each(function() {
+
+
+                steam.push($(this).val())
+
+            })
 
             Swal.fire({
                 type: "warning",
@@ -533,6 +547,7 @@
                             'pe': pe,
                             'homework': homework,
                             'healthy': healthy,
+                            'steam':steam,
                             'id': id,
 
 

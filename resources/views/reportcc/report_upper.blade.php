@@ -68,7 +68,7 @@
                                     <div class="col-lg-12">
                                         <div style="text-align: left;">
                                             <br />
-                                            <img src="http://localhost:8000/theme/pic/logo.png" alt=""
+                                            <img src="https://disreportcard.com/theme/pic/logo.png" alt=""
                                                 style="width: 60px;height: 70px;float: left;">
                                             <p class="m-l" style="padding-top: 10px;">សាលាចំណេះទូទៅអរន្តជាតិ​ ឌូវី
                                                 <br /><span class="m-a">ទីតាំងរំចេក៤ ខេត្តបាត់ដំបង</span>
@@ -145,7 +145,7 @@
                                             id="total_student_girl"></span></p>
                                 </div>
                                 <div style="text-align: right;">
-                                    <p style="font-size: 12px;">ឌូវី , ថ្ងៃទី ៣១ ខែ កក្កដា ឆ្នាំ២០២៤</p>
+                              <p style="font-size: 12px;">បាត់ដំបង,ថ្ងៃ........ទី.........ខែ.......ឆ្នាំ..........</p>
                                     <p style="padding-right: 50px;margin-top: -12px;font-size: 12px;">គ្រូបន្ទុកថ្នាក់</p>
                                 </div>
                                 <div style="text-align: left;    margin-left: 40px;">
@@ -380,10 +380,17 @@
                         } else {
                             color_check = "black"
                         }
-                        if(student.sex == "ស")
+                        if(student.sex == "F")
                         {
                             total_student_girl=total_student_girl+1;
 
+                        }
+                        var sex = ""
+                        if(student.sex == "M")
+                        {
+                            sex='ប្រុស'
+                        }else{
+                            sex='ស្រី'
                         }
                         // var total_avg =1;
                         var total_avg = parseFloat(student.totalScore) / parseFloat(student.avg_m)
@@ -400,8 +407,7 @@
                             "<td style='font-size:12px;text-align:left;'>" + student
                             .kh_name +
                             "</td>" +
-                            "<td style='font-size:12px'>" + student
-                            .sex +
+                            "<td style='font-size:12px'>" +sex +
                             "</td>" +
                             "<td style='font-size:12px'>" + student.totalScore +
                             "</td>" +

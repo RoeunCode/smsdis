@@ -13,9 +13,14 @@ use Illuminate\Http\Request;
 |
 */
 Route::post('/login', [App\Http\Controllers\API\AuthController::class, 'login']);
+Route::post('/requestpermission', [App\Http\Controllers\API\AuthController::class, 'requestpermission']);
 Route::get('viewporfile/{student_id}',[App\Http\Controllers\API\AuthController::class, 'viewprofile']);
+Route::get('updaterequest/{id}/{type}',[App\Http\Controllers\API\AuthController::class, 'updaterequest']);
+Route::get('viewrequest/{student_id}',[App\Http\Controllers\API\AuthController::class, 'viewrequest']);
 Route::get('viewscore-secondary/{student_id}/{class_id}/{month_id}/{type}',[App\Http\Controllers\API\AuthController::class, 'viewscoresecondary']);
 Route::get('viewscore-uppersecondary/{student_id}/{class_id}/{month_id}/{type}',[App\Http\Controllers\API\AuthController::class, 'viewscoreuppersecondary']);
+
+Route::get('viewscoreprimary/{student_id}/{class_id}/{month_id}/{type}',[App\Http\Controllers\API\AuthController::class, 'viewprimary']);
 Route::get('viewporfile/{student_id}',[App\Http\Controllers\API\AuthController::class, 'viewprofile']);
 Route::get('viewallstudent',[App\Http\Controllers\API\AuthController::class, 'viewallstudent']);
 Route::get('/athenticateds', [App\Http\Controllers\API\AuthController::class, 'athenticateds']);

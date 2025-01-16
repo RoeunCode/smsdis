@@ -101,11 +101,12 @@
                                             ផែនដីវិទ្យា
                                         </th>
                                         <th style="text-align: center;font-size: 12px">
-                                            អង់គ្លេស
-                                        </th>
-                                        <th style="text-align: center;font-size: 12px">
                                             កីឡា
                                         </th>
+                                        <th style="text-align: center;font-size: 12px">
+                                            អង់គ្លេស
+                                        </th>
+                                      
                                         <th style="text-align: center;font-size: 12px">
                                             កុំព្យូទ័រ
                                         </th>
@@ -259,13 +260,16 @@
                         if(grade_check == 12)
                         {
                             input_grade ="<td><input disabled value='0.0.1'  class='form-control txt_pe'></td>" +
+                                       "<td><input class='form-control txt_english'></td>" +
                                      "<td><input  disabled value='0.0.1' class='form-control txt_computer'></td>" ;
 
                         }else if(grade_check == 11) {
                             input_grade ="<td><input disabled value='0.0.1' class='form-control txt_pe'></td>" +
+                                            "<td><input class='form-control txt_english'></td>" +
                                          "<td><input  class='form-control txt_computer'></td>" ;
                         }else{
                             input_grade ="<td><input class='form-control txt_pe'></td>" +
+                                         "<td><input class='form-control txt_english'></td>" +
                                         "<td><input  class='form-control txt_computer'></td>" ;
                         }
                         output_data +=
@@ -281,7 +285,6 @@
                             "<td><input class='form-control txt_chem'></td>" +
                             "<td><input class='form-control txt_bio'></td>" +
                             "<td><input class='form-control txt_earth'></td>" +
-                            "<td><input class='form-control txt_english'></td>" +
                             input_grade+
                             "<td hidden><input class='form-control txt_student_id' value=" + student
                             .id +
@@ -321,13 +324,19 @@
                         if(grade_check == 12)
                         {
                             input_grade_edit ="<td><input disabled value='0.0.1'  class='form-control txt_pe'></td>" +
+                                      "<td><input class='form-control txt_english' value=" + student.english +
+                                    "></td>" +
                                      "<td><input disabled value='0.0.1'  class='form-control txt_computer'></td>";
 
                         }else if(grade_check == 11) {
                             input_grade_edit ="<td><input disabled value='0.0.1' class='form-control txt_pe'></td>" +
+                                      "<td><input class='form-control txt_english' value=" + student.english +
+                                    "></td>" +
                                          "<td><input value='"+student.computer+"'  class='form-control txt_computer'></td>" ;
                         }else{
                             input_grade_edit ="<td><input value='"+student.pe+"' class='form-control txt_pe'></td>" +
+                                          "<td><input class='form-control txt_english' value=" + student.english +
+                                        "></td>" +
                                         "<td><input value='"+student.computer+"'  class='form-control txt_computer'></td>" ;
                         }
                         output_data +=
@@ -351,8 +360,6 @@
                             "<td><input class='form-control txt_bio' value=" + student
                             .biology + "></td>" +
                             "<td><input class='form-control txt_earth' value=" + student.earth_science +
-                            "></td>" +
-                            "<td><input class='form-control txt_english' value=" + student.english +
                             "></td>" +
                             input_grade_edit+
                             "<td hidden><input class='form-control txt_student_id' value=" + student
