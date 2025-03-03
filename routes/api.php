@@ -19,6 +19,10 @@ Route::get('updaterequest/{id}/{type}',[App\Http\Controllers\API\AuthController:
 Route::get('viewrequest/{student_id}',[App\Http\Controllers\API\AuthController::class, 'viewrequest']);
 Route::get('viewscore-secondary/{student_id}/{class_id}/{month_id}/{type}',[App\Http\Controllers\API\AuthController::class, 'viewscoresecondary']);
 Route::get('viewscore-uppersecondary/{student_id}/{class_id}/{month_id}/{type}',[App\Http\Controllers\API\AuthController::class, 'viewscoreuppersecondary']);
+Route::get('allsecondary/{class_id}/{month_id}/{type}',[App\Http\Controllers\roeun\ReportCCController::class, 'viewscoresecondary']);
+Route::get('alluppersecondary/{class_id}/{month_id}/{type}',[App\Http\Controllers\roeun\ReportCCController::class, 'viewscoreuppersecondary']);
+Route::get('allprimary/{class_id}/{month_id}/{type}',[App\Http\Controllers\roeun\ReportCCController::class, 'viewprimary']);
+
 
 Route::get('viewscoreprimary/{student_id}/{class_id}/{month_id}/{type}',[App\Http\Controllers\API\AuthController::class, 'viewprimary']);
 Route::get('viewporfile/{student_id}',[App\Http\Controllers\API\AuthController::class, 'viewprofile']);
